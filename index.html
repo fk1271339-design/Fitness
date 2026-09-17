@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07070A" />
+  <title>Evolve Fitness — Become Unrecognizable</title>
+  
+  <!-- Preconnect & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome & GSAP -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Custom Glowing Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="nav">
+    <a href="#home" class="logo">EVOLVE <span>FITNESS</span><i class="pulse"></i></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">HOME</a>
+      <a href="#transformation">TRANSFORMATION</a>
+      <a href="#facilities">FACILITIES</a>
+      <a href="#trainers">TRAINERS</a>
+      <a href="#perks">PERKS</a>
+    </div>
+    <button class="button modal-open">GET STARTED <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
+    <button class="menu" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+  </nav>
+
+  <main>
+    <!-- Hero Section with Real Image Before/After Transformation Reveal -->
+    <section class="hero wrap" id="home">
+      <div style="width:100%">
+        <div class="hero-top">
+          <span class="eyebrow hero-badge"><i class="fa-solid fa-bolt"></i> 100% MUSCLE GUARANTEE</span>
+          <h1 class="title">BEFORE &amp; AFTER:<br><em>TRANSFORM</em> YOUR LIFE.</h1>
+          <p class="sub">No magic pills. No empty promises. Just an elite environment designed to uncover the person you already know you can be.</p>
+        </div>
+
+        <div class="reveal-wrapper">
+          <div class="reveal" id="transformation" aria-label="Interactive transformation reveal">
+            <!-- Layer 1: BEFORE REAL PHOTO (always visible base) -->
+            <div class="person before">
+              <img src="assets/before.jpg" alt="Before Fitness Transformation — Week 1">
+            </div>
+
+            <!-- Layer 2: AFTER REAL PHOTO (smooth opacity crossfade via slider) -->
+            <div class="person after" id="afterLayer" style="opacity: 0;">
+              <img src="assets/after.jpg" alt="After Fitness Transformation — Week 16">
+            </div>
+
+            <!-- Layer 3: Soft Feathered Spotlight Mask (cursor hover only) -->
+            <div class="spotlight-mask" id="spotlightMask">
+              <img src="assets/after.jpg" alt="">
+            </div>
+
+            <!-- Neon Glow Burst Overlay (activates at 100%) -->
+            <div class="reveal-glow-burst" id="glowBurst"></div>
+
+            <!-- Progress Glow Bar -->
+            <div class="reveal-progress" id="revealProgress"></div>
+
+            <span class="scene-label label-left"><i class="fa-regular fa-clock"></i> BEFORE: WEEK 1</span>
+            <span class="scene-label label-right" id="labelRight"><i class="fa-solid fa-trophy"></i> AFTER: WEEK 16</span>
+
+            <!-- Soft Spotlight Guide Ring (cursor hover) -->
+            <div class="target" id="target">
+              <div class="target-dot"></div>
+            </div>
+
+            <div class="hint" id="hint">
+              <i class="fa-solid fa-crosshairs"></i> HOVER FOR PREVIEW &bull; PULL SLIDER TO TRANSFORM
+            </div>
+          </div>
+
+          <!-- INTERACTIVE TRANSFORMATION METER CONTROLLER -->
+          <div class="meter-control-box" id="meterBox">
+            <div class="meter-control-header">
+              <span><i class="fa-solid fa-bolt" style="color: var(--lime);"></i> &nbsp;PULL TO TRANSFORM</span>
+              <span class="meter-val-badge" id="meterVal">0%</span>
+            </div>
+            <input id="revealSlider" type="range" min="0" max="100" value="0" class="transformation-slider" aria-label="Transformation meter — drag to reveal">
+            <div id="meterStatusText" style="font-size: 11px; color: var(--muted); text-align: center; transition: color 0.5s ease;">
+              Drag the slider to smoothly transform. At 100% the full physique is revealed.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Continuous Marquee Bar -->
+    <div class="marquee">
+      <div class="marquee-track">STRONGER EVERY DAY <b>✦</b> NO EXCUSES <b>✦</b> BUILT DIFFERENT <b>✦</b> STRONGER EVERY DAY <b>✦</b> NO EXCUSES <b>✦</b> BUILT DIFFERENT <b>✦</b></div>
+    </div>
+
+    <!-- Facilities Section -->
+    <section class="section facilities" id="facilities">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">01 — OUR PLAYGROUND</p>
+          <h2 class="title">UNLEASH YOUR <em>POTENTIAL.</em></h2>
+          <p class="sub">Every square foot is engineered to make your next personal best feel inevitable.</p>
+        </div>
+        <div class="facility-grid">
+          <article class="facility glass">
+            <div class="facility-icon"><i class="fa-solid fa-dumbbell"></i></div>
+            <h3>Strength<br>&amp; HIIT</h3>
+            <p>Raw iron, athletic rigs, and the kind of energy that makes you stay for one more round.</p>
+            <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
+          </article>
+          <article class="facility glass">
+            <div class="facility-icon"><i class="fa-solid fa-person-running"></i></div>
+            <h3>Personal<br>Training</h3>
+            <p>Precision coaching built around your biology, ambition, and actual schedule.</p>
+            <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
+          </article>
+          <article class="facility glass">
+            <div class="facility-icon"><i class="fa-solid fa-people-group"></i></div>
+            <h3>Group<br>Classes</h3>
+            <p>High-voltage sessions where accountability becomes contagious.</p>
+            <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
+          </article>
+          <article class="facility glass">
+            <div class="facility-icon"><i class="fa-solid fa-spa"></i></div>
+            <h3>Yoga &amp;<br>Recovery</h3>
+            <p>Recharge your body with guided mobility, restoration, and recovery tech.</p>
+            <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Master Trainer Section (REAL TRAINER PHOTO) -->
+    <section class="section" id="trainers">
+      <div class="wrap">
+        <div class="coach-box glass">
+          <div class="coach-copy">
+            <p class="kicker">02 — MEET YOUR COACH</p>
+            <h2 class="title">MEET THE <em>MASTER.</em></h2>
+            <p class="sub">Coach Titan doesn't do motivational quotes. He builds relentless systems that make progress non-negotiable.</p>
+            <div class="stats-mini">
+              <div><strong>4,200+</strong><span>CLIENTS TRAINED</span></div>
+              <div><strong>98%</strong><span>TRANSFORMATION RATE</span></div>
+            </div>
+            <button class="button modal-open">BOOK FREE CONSULTATION <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+
+          <!-- Real Trainer Image Container with Floating Badges -->
+          <div class="coach-art">
+            <div class="coach-badge badge-one"><i class="fa-solid fa-medal"></i> IFBB Pro Coach</div>
+            <div class="coach-badge badge-two"><i class="fa-solid fa-bolt"></i> 100% Gains Guaranteed</div>
+            <div class="coach-img-wrapper">
+              <img src="assets/trainer.jpg" alt="Titan Fitness Coach Photo">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Perks & Stats Section -->
+    <section class="section" id="perks">
+      <div class="wrap perks-grid">
+        <div>
+          <p class="kicker">03 — MEMBER ADVANTAGE</p>
+          <h2 class="title">EVERYTHING YOU NEED. <em>NOTHING YOU DON'T.</em></h2>
+          <p class="sub">A complete performance ecosystem, always on, always in your corner.</p>
+          <div class="meters">
+            <div class="meter glass">
+              <div class="meter-info"><span>24/7 Premium Access</span><span>100%</span></div>
+              <div class="bar"><i data-width="100%"></i></div>
+            </div>
+            <div class="meter glass">
+              <div class="meter-info"><span>Elite Trainers</span><span>100%</span></div>
+              <div class="bar"><i data-width="100%"></i></div>
+            </div>
+            <div class="meter glass">
+              <div class="meter-info"><span>Custom Nutrition Plan</span><span>95%</span></div>
+              <div class="bar"><i data-width="95%"></i></div>
+            </div>
+            <div class="meter glass">
+              <div class="meter-info"><span>AI Progress Tracking</span><span>98%</span></div>
+              <div class="bar"><i data-width="98%"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="number-grid">
+          <div class="number glass">
+            <strong class="counter" data-value="1452" data-suffix="+">0</strong>
+            <span>Active<br>Members</span>
+          </div>
+          <div class="number glass">
+            <strong class="counter" data-value="24.5" data-suffix="M+">0</strong>
+            <span>Calories<br>Burned</span>
+          </div>
+          <div class="number glass">
+            <strong class="counter" data-value="9870" data-suffix="+">0</strong>
+            <span>Workout<br>Sessions</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-main">
+        <div>
+          <a class="logo" href="#home">EVOLVE <span>FITNESS</span><i class="pulse"></i></a>
+          <p>We aren't here to help you blend in. Your strongest self is waiting inside this room.</p>
+          <div class="socials">
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+        <div class="newsletter">
+          <h3>THE WEEKLY <span style="color:var(--lime)">EDGE.</span></h3>
+          <p>Training intel, recovery hacks, and zero fluff — delivered weekly.</p>
+          <form class="email-row" id="newsletter">
+            <input type="email" aria-label="Email address" required placeholder="Your email address">
+            <button class="button" type="submit" aria-label="Subscribe"><i class="fa-solid fa-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+      <div class="copyright">
+        <span>© 2026 EVOLVE FITNESS. ALL RIGHTS RESERVED.</span>
+        <span>BUILT FOR THE RELENTLESS.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="joinModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="close" aria-label="Close dialog"><i class="fa-solid fa-xmark"></i></button>
+      <p class="kicker">YOUR EVOLUTION STARTS NOW</p>
+      <h2 id="modalTitle">CLAIM YOUR <span>FREE</span> SESSION.</h2>
+      <p>Tell us where to send your personal consultation invite. No contracts, no pressure.</p>
+      <form id="joinForm">
+        <input required aria-label="Your name" placeholder="Your name">
+        <input type="email" required aria-label="Your email" placeholder="Your email address">
+        <button class="button" type="submit">UNLEASH MY POTENTIAL <i class="fa-solid fa-bolt"></i></button>
+      </form>
+      <p class="success">YOU'RE IN. YOUR EVOLUTION CALL IS ON ITS WAY. ⚡</p>
+      <p class="form-note">By joining, you agree to receive performance-related email.</p>
+    </div>
+  </div>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
