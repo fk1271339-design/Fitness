@@ -116,7 +116,7 @@
       <div class="marquee-track">STRONGER EVERY DAY <b>✦</b> NO EXCUSES <b>✦</b> BUILT DIFFERENT <b>✦</b> STRONGER EVERY DAY <b>✦</b> NO EXCUSES <b>✦</b> BUILT DIFFERENT <b>✦</b></div>
     </div>
 
-    <!-- Facilities Section -->
+    <!-- Facilities Carousel Section -->
     <section class="section facilities" id="facilities">
       <div class="wrap">
         <div class="section-head">
@@ -124,31 +124,64 @@
           <h2 class="title">UNLEASH YOUR <em>POTENTIAL.</em></h2>
           <p class="sub">Every square foot is engineered to make your next personal best feel inevitable.</p>
         </div>
-        <div class="facility-grid">
-          <article class="facility glass">
-            <div class="facility-icon"><i class="fa-solid fa-dumbbell"></i></div>
-            <h3>Strength<br>&amp; HIIT</h3>
-            <p>Raw iron, athletic rigs, and the kind of energy that makes you stay for one more round.</p>
-            <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
-          </article>
-          <article class="facility glass">
-            <div class="facility-icon"><i class="fa-solid fa-person-running"></i></div>
-            <h3>Personal<br>Training</h3>
-            <p>Precision coaching built around your biology, ambition, and actual schedule.</p>
-            <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
-          </article>
-          <article class="facility glass">
-            <div class="facility-icon"><i class="fa-solid fa-people-group"></i></div>
-            <h3>Group<br>Classes</h3>
-            <p>High-voltage sessions where accountability becomes contagious.</p>
-            <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
-          </article>
-          <article class="facility glass">
-            <div class="facility-icon"><i class="fa-solid fa-spa"></i></div>
-            <h3>Yoga &amp;<br>Recovery</h3>
-            <p>Recharge your body with guided mobility, restoration, and recovery tech.</p>
-            <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
-          </article>
+
+        <div class="carousel-wrapper" id="facilitiesCarousel">
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="carouselTrack">
+              <article class="facility glass carousel-card active">
+                <div class="facility-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                <h3>Strength<br>&amp; HIIT</h3>
+                <p>Raw iron, athletic rigs, and the kind of energy that makes you stay for one more round.</p>
+                <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
+              </article>
+
+              <article class="facility glass carousel-card">
+                <div class="facility-icon"><i class="fa-solid fa-person-running"></i></div>
+                <h3>Personal<br>Training</h3>
+                <p>Precision coaching built around your biology, ambition, and actual schedule.</p>
+                <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
+              </article>
+
+              <article class="facility glass carousel-card">
+                <div class="facility-icon"><i class="fa-solid fa-people-group"></i></div>
+                <h3>Group<br>Classes</h3>
+                <p>High-voltage sessions where accountability becomes contagious.</p>
+                <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
+              </article>
+
+              <article class="facility glass carousel-card">
+                <div class="facility-icon"><i class="fa-solid fa-spa"></i></div>
+                <h3>Yoga &amp;<br>Recovery</h3>
+                <p>Recharge your body with guided mobility, restoration, and recovery tech.</p>
+                <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
+              </article>
+
+              <article class="facility glass carousel-card">
+                <div class="facility-icon"><i class="fa-solid fa-apple-whole"></i></div>
+                <h3>Nutrition<br>&amp; Fuel Lab</h3>
+                <p>Custom macro protocols and targeted fueling to power hyper-performance.</p>
+                <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
+              </article>
+
+              <article class="facility glass carousel-card">
+                <div class="facility-icon"><i class="fa-solid fa-key"></i></div>
+                <h3>24/7 Smart<br>Access</h3>
+                <p>Seamless biometric keyless access, whenever inspiration or hunger strikes.</p>
+                <button class="learn modal-open">LEARN MORE <i class="fa-solid fa-arrow-right"></i></button>
+              </article>
+            </div>
+          </div>
+
+          <!-- Carousel Controls -->
+          <div class="carousel-controls">
+            <button class="carousel-nav-btn prev-btn" id="carouselPrev" aria-label="Previous slide">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="carousel-dots" id="carouselDots"></div>
+            <button class="carousel-nav-btn next-btn" id="carouselNext" aria-label="Next slide">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
         </div>
       </div>
     </section>

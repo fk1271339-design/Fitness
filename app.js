@@ -274,17 +274,75 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── 4. 3D Tilt Effect on Facility Cards ───────────────────────────────
-  qa('.facility').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      if (touch) return;
-      const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width  - 0.5;
-      const y = (e.clientY - r.top)  / r.height - 0.5;
-      card.style.transform = `perspective(800px) rotateX(${-y * 11}deg) rotateY(${x * 11}deg) translateY(-4px)`;
+  // ── 4. Interactive Facilities 3D Carousel Controller ───────────────
+  const track = q('#carouselTrack');
+  const cards = qa('.carousel-card');
+  const prevBtn = q('#carouselPrev');
+  const nextBtn = q('#carouselNext');
+  const dotsContainer = q('#carouselDots');
+
+  if (track && cards.length) {
+    let currentIndex = 0;
+    let autoPlayTimer = null;
+
+    // Generate dots
+    cards.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = `dot ${i === 0 ? 'active' : ''}`;
+      dot.addEventListener('click', () => goToSlide(i));
+      if (dotsContainer) dotsContainer.appendChild(dot);
     });
-    card.addEventListener('mouseleave', () => (card.style.transform = ''));
-  });
+
+    const dots = qa('.dot');
+
+    function updateCarousel() {
+      const cardWidth = cards[0].offsetWidth + 22;
+      track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+      cards.forEach((card, i) => {
+        if (i === currentIndex) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === currentIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    function goToSlide(index) {
+      currentIndex = (index + cards.length) % cards.length;
+      updateCarousel();
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+    // Auto Play
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayTimer = setInterval(() => goToSlide(currentIndex + 1), 3600);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) clearInterval(autoPlayTimer);
+    }
+
+    const wrapper = q('#facilitiesCarousel');
+    if (wrapper) {
+      wrapper.addEventListener('mouseenter', stopAutoPlay);
+      wrapper.addEventListener('mouseleave', startAutoPlay);
+    }
+
+    startAutoPlay();
+    window.addEventListener('resize', updateCarousel);
+  }
 
   // ── 5. Modal Handlers ─────────────────────────────────────────────────
   const modal = q('#joinModal');

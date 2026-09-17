@@ -691,52 +691,80 @@ input {
   text-shadow: 0 0 15px rgba(255, 183, 3, 0.5);
 }
 
-/* FACILITIES */
-.facility-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+/* FACILITIES CAROUSEL SYSTEM & SLEEK SMALLER ICONS */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
 }
 
-.facility {
-  min-height: 320px;
-  padding: 28px;
+.carousel-viewport {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 15px 5px 35px;
+  perspective: 1000px;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 22px;
+  transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.carousel-card {
+  flex: 0 0 calc(33.333% - 15px);
+  min-width: 280px;
+  min-height: 280px;
+  padding: 24px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  transform-style: preserve-3d;
-  transition: transform 0.25s ease, border-color 0.3s, box-shadow 0.3s;
+  transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease, border-color 0.35s, box-shadow 0.35s;
+  user-select: none;
+  opacity: 0.72;
+  transform: scale(0.95);
 }
 
-.facility:hover {
+.carousel-card.active {
+  opacity: 1;
+  transform: scale(1.03) translateY(-4px);
+  border-color: rgba(255, 183, 3, 0.6);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 183, 3, 0.25);
+  z-index: 5;
+}
+
+.carousel-card:hover {
+  opacity: 1;
   border-color: rgba(255, 183, 3, 0.55);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.7), 0 0 25px rgba(255, 183, 3, 0.25);
 }
 
+/* Sleeker & Smaller Facility Icon */
 .facility-icon {
-  height: 52px;
-  width: 52px;
+  height: 38px;
+  width: 38px;
   display: grid;
   place-items: center;
-  border-radius: 14px;
+  border-radius: 10px;
   background: rgba(255, 183, 3, 0.12);
   border: 1px solid rgba(255, 183, 3, 0.35);
   color: var(--gold);
-  font-size: 20px;
-  box-shadow: 0 0 20px rgba(255, 183, 3, 0.12);
+  font-size: 14px;
+  box-shadow: 0 0 16px rgba(255, 183, 3, 0.12);
 }
 
 .facility h3 {
-  font: 700 24px/1.05 var(--outfit);
+  font: 700 22px/1.05 var(--outfit);
   letter-spacing: -0.04em;
-  margin: 28px 0 12px;
+  margin: 20px 0 10px;
   color: #ffffff;
   text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
 .facility p {
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 13px;
+  line-height: 1.6;
   color: #cbd5e1;
   margin: 0;
 }
@@ -747,7 +775,7 @@ input {
   border: 1px solid rgba(255, 183, 3, 0.5);
   background: rgba(255, 183, 3, 0.08);
   border-radius: 8px;
-  padding: 12px 14px;
+  padding: 10px 12px;
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -756,10 +784,69 @@ input {
   transition: 0.25s;
 }
 
+.learn i {
+  font-size: 10px;
+  margin-left: 4px;
+}
+
 .learn:hover {
   background: linear-gradient(135deg, var(--gold), var(--amber));
   color: #080703;
   box-shadow: 0 0 24px rgba(255, 183, 3, 0.5);
+}
+
+/* CAROUSEL CONTROLS */
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.carousel-nav-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 183, 3, 0.35);
+  background: rgba(12, 16, 26, 0.88);
+  color: #ffffff;
+  font-size: 12px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  transition: transform 0.2s ease, background 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.carousel-nav-btn:hover {
+  background: var(--gold);
+  color: #080703;
+  border-color: var(--gold);
+  transform: scale(1.1);
+  box-shadow: 0 0 22px rgba(255, 183, 3, 0.5);
+}
+
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: width 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
+}
+
+.dot.active {
+  width: 24px;
+  border-radius: 10px;
+  background: var(--gold);
+  box-shadow: 0 0 14px var(--gold);
 }
 
 /* TRAINER SECTION (REAL TRAINER PHOTO) */
@@ -1236,8 +1323,8 @@ input {
     height: 72vw;
     min-height: 330px;
   }
-  .facility-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .carousel-card {
+    flex: 0 0 calc(50% - 11px);
   }
   .coach-box {
     grid-template-columns: 1fr;
@@ -1261,6 +1348,12 @@ input {
   }
 }
 
+@media (max-width: 600px) {
+  .carousel-card {
+    flex: 0 0 100%;
+  }
+}
+
 @media (max-width: 500px) {
   .wrap {
     width: min(100% - 28px, 1160px);
@@ -1278,9 +1371,6 @@ input {
     height: 94vw;
     min-height: 300px;
     border-radius: 20px;
-  }
-  .facility-grid {
-    grid-template-columns: 1fr;
   }
   .facility {
     min-height: 238px;
