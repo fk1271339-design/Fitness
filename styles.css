@@ -223,6 +223,20 @@ input {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 30px rgba(255, 183, 3, 0.4);
+  display: inline-block;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), filter 0.35s ease;
+}
+
+.title em.word-swap-out {
+  opacity: 0;
+  transform: translateY(-16px) scale(0.92);
+  filter: blur(6px);
+}
+
+.title em.word-swap-in {
+  opacity: 0;
+  transform: translateY(16px) scale(0.92);
+  filter: blur(6px);
 }
 
 .sub {

@@ -36,6 +36,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentSliderVal = 0;
 
+  // ── Dynamic Rotating Motivational Words in Hero Title ─────────────
+  const dynamicWordEl = q('#heroDynamicWord') || q('.title em');
+  if (dynamicWordEl) {
+    const motivationalWords = [
+      'TRANSFORM',
+      'EVOLVE',
+      'REBUILD',
+      'CONQUER',
+      'ELEVATE',
+      'DOMINATE',
+      'UNLEASH',
+      'TRANSCEND'
+    ];
+    let wordIdx = 0;
+
+    setInterval(() => {
+      dynamicWordEl.classList.add('word-swap-out');
+      setTimeout(() => {
+        wordIdx = (wordIdx + 1) % motivationalWords.length;
+        dynamicWordEl.textContent = motivationalWords[wordIdx];
+        dynamicWordEl.classList.remove('word-swap-out');
+        dynamicWordEl.classList.add('word-swap-in');
+        
+        requestAnimationFrame(() => {
+          dynamicWordEl.classList.remove('word-swap-in');
+        });
+      }, 350);
+    }, 2200);
+  }
+
   // ── 0. Dynamic Scroll Background Image Switcher ───────────────────
   const bgSlides = qa('.bg-slide');
 
