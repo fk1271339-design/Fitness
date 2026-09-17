@@ -1,11 +1,12 @@
 /* ==========================================================================
-   Evolve Fitness — Smooth Crossfade Transformation Logic
+   Evolve Fitness — Dynamic Background Scroll & Transformation Logic
    
-   Instead of hard clip-path edges, this uses:
-   1. Smooth opacity crossfade between Before & After photos
-   2. CSS filter morphing (brightness, contrast, saturate) for organic feel
-   3. Soft feathered radial-gradient mask spotlight on cursor hover
-   4. Dramatic glow burst at 100% transformation unlock
+   Features:
+   1. Dynamic Background Image Scroll Observer (Crossfades 7 img/ backgrounds)
+   2. Smooth Opacity Transformation Slider (Before & After Physique reveal)
+   3. Soft Feathered Cursor Spotlight on hover
+   4. Gold Glow Burst at 100% transformation unlock
+   5. Interactive 3D Card tilt, Modal, and GSAP Counters
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -35,7 +36,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentSliderVal = 0;
 
-  // ── Custom Cursor Follower ─────────────────────────────────────────
+  // ── 0. Dynamic Scroll Background Image Switcher ───────────────────
+  const bgSlides = qa('.bg-slide');
+
+  function switchBgSection(sectionId) {
+    if (!bgSlides.length) return;
+    bgSlides.forEach(slide => {
+      if (slide.dataset.section === sectionId) {
+        slide.classList.add('active');
+      } else {
+        slide.classList.remove('active');
+      }
+    });
+  }
+
+  // Section observer setup
+  const sectionsToObserve = [
+    { id: 'home', selector: '#home' },
+    { id: 'transformation', selector: '#transformation' },
+    { id: 'facilities', selector: '#facilities' },
+    { id: 'trainers', selector: '#trainers' },
+    { id: 'perks', selector: '#perks' },
+    { id: 'marquee', selector: '.marquee' },
+    { id: 'footer', selector: 'footer' }
+  ];
+
+  if ('IntersectionObserver' in window) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-30% 0px -40% 0px',
+      threshold: 0.1
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.getAttribute('data-bg-section') || entry.target.id;
+          if (sectionId) {
+            switchBgSection(sectionId);
+          }
+        }
+      });
+    }, observerOptions);
+
+    sectionsToObserve.forEach(item => {
+      const el = q(item.selector);
+      if (el) {
+        el.setAttribute('data-bg-section', item.id);
+        sectionObserver.observe(el);
+      }
+    });
+  } else {
+    // Fallback scroll listener
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY + window.innerHeight / 2;
+      sectionsToObserve.forEach(item => {
+        const el = q(item.selector);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            switchBgSection(item.id);
+          }
+        }
+      });
+    });
+  }
+
+  // ── 1. Custom Cursor Follower ─────────────────────────────────────────
   function animateCursor() {
     pos.x += (mouse.x - pos.x) * 0.17;
     pos.y += (mouse.y - pos.y) * 0.17;
@@ -55,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Smooth Crossfade Transformation (Slider 0% → 100%) ────────────
+  // ── 2. Smooth Crossfade Transformation (Slider 0% → 100%) ────────────
   function updateTransformation(val) {
     currentSliderVal = val;
     const t = val / 100; // Normalized 0 → 1
@@ -79,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const aSaturate   = 0.6  + (t * 0.55);    // 0.6  → 1.15
       const aContrast   = 0.9  + (t * 0.25);    // 0.9  → 1.15
       afterImg.style.filter = `brightness(${aBrightness}) contrast(${aContrast}) saturate(${aSaturate})`;
-      // Subtle scale to give "growth" feel
       const scale = 1 + (t * 0.02); // 1.0 → 1.02
       afterImg.style.transform = `scale(${scale})`;
     }
@@ -111,18 +178,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // 7. Status text & glow burst at 100%
     if (val >= 100) {
       if (meterStatus) {
-        meterStatus.innerHTML = '<span style="color: var(--lime); text-shadow: 0 0 12px var(--lime); font-weight: 800;">⚡ FULL TRANSFORMATION UNLOCKED — THE BEAST IS OUT!</span>';
+        meterStatus.innerHTML = '<span style="color: var(--gold); text-shadow: 0 0 16px var(--gold); font-weight: 800;">⚡ FULL TRANSFORMATION UNLOCKED — THE BEAST IS UNLEASHED!</span>';
       }
       if (glowBurst) {
         glowBurst.classList.add('active');
       }
       if (labelRight) {
-        labelRight.style.boxShadow = '0 0 20px rgba(57, 255, 20, 0.6)';
+        labelRight.style.boxShadow = '0 0 22px rgba(255, 183, 3, 0.7)';
       }
     } else {
       if (meterStatus) {
         if (val > 60) {
-          meterStatus.innerHTML = `<span style="color: #c8ffc1;">Almost there... keep pulling for full reveal</span>`;
+          meterStatus.innerHTML = `<span style="color: #ffd166;">Almost there... keep pulling for full reveal</span>`;
         } else if (val > 20) {
           meterStatus.innerHTML = `<span>The transformation is blending in... drag further →</span>`;
         } else {
@@ -145,14 +212,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Soft Feathered Cursor Spotlight (hover preview) ────────────────
+  // ── 3. Soft Feathered Cursor Spotlight (hover preview) ────────────────
   if (reveal && !touch) {
     reveal.addEventListener('mousemove', e => {
       const r = reveal.getBoundingClientRect();
       const x = e.clientX - r.left;
       const y = e.clientY - r.top;
 
-      // Show spotlight mask with soft feathered radial gradient
       if (spotlightMask) {
         const maskImg = spotlightMask.querySelector('img');
         if (maskImg) {
@@ -162,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
         spotlightMask.style.opacity = currentSliderVal >= 95 ? '0' : '1';
       }
 
-      // Position target ring
       if (target) {
         target.style.left    = x + 'px';
         target.style.top     = y + 'px';
@@ -179,9 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Touch fallback: same slider logic works for mobile
-
-  // ── 3D Tilt Effect on Facility Cards ───────────────────────────────
+  // ── 4. 3D Tilt Effect on Facility Cards ───────────────────────────────
   qa('.facility').forEach(card => {
     card.addEventListener('mousemove', e => {
       if (touch) return;
@@ -193,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('mouseleave', () => (card.style.transform = ''));
   });
 
-  // ── Modal Handlers ─────────────────────────────────────────────────
+  // ── 5. Modal Handlers ─────────────────────────────────────────────────
   const modal = q('#joinModal');
   const openModal = () => {
     if (!modal) return;
@@ -231,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (newsletter) {
     newsletter.addEventListener('submit', e => {
       e.preventDefault();
-      e.target.innerHTML = '<span style="color:var(--lime);font-size:12px;font-weight:800;padding:12px 0">YOU\'RE ON THE LIST. ⚡</span>';
+      e.target.innerHTML = '<span style="color:var(--gold);font-size:12px;font-weight:800;padding:12px 0;text-shadow: 0 0 12px var(--gold)">YOU\'RE ON THE LIST. ⚡</span>';
     });
   }
 
@@ -243,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── GSAP ScrollTrigger Stats & Meters ──────────────────────────────
+  // ── 6. GSAP ScrollTrigger Stats & Meters ──────────────────────────────
   function runStats() {
     if (!window.gsap) return;
     gsap.registerPlugin(ScrollTrigger);

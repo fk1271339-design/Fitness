@@ -20,6 +20,18 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Dynamic Scroll Background Container -->
+  <div class="bg-scroll-container" id="bgScrollContainer">
+    <div class="bg-slide active" data-section="home" style="background-image: url('img/Luxury_gym_interior_with_equipment_20260917193955.jpeg');"></div>
+    <div class="bg-slide" data-section="transformation" style="background-image: url('img/People_training_in_luxury_gym_20260917194156.jpeg');"></div>
+    <div class="bg-slide" data-section="facilities" style="background-image: url('img/Athletes_using_strength_machines_20260917194134.jpeg');"></div>
+    <div class="bg-slide" data-section="trainers" style="background-image: url('img/People_exercising_in_gym_20260917194141.jpeg');"></div>
+    <div class="bg-slide" data-section="perks" style="background-image: url('img/Gym_juice_bar_and_lounge_20260917194109.jpeg');"></div>
+    <div class="bg-slide" data-section="marquee" style="background-image: url('img/Gym_sound_system_and_DJ_20260917194053.jpeg');"></div>
+    <div class="bg-slide" data-section="footer" style="background-image: url('img/Luxury_gym_sauna_and_spa_20260917193951.jpeg');"></div>
+    <div class="bg-overlay"></div>
+  </div>
+
   <!-- Custom Glowing Cursor -->
   <div class="cursor"></div>
   <div class="cursor-dot"></div>
@@ -87,7 +99,7 @@
           <!-- INTERACTIVE TRANSFORMATION METER CONTROLLER -->
           <div class="meter-control-box" id="meterBox">
             <div class="meter-control-header">
-              <span><i class="fa-solid fa-bolt" style="color: var(--lime);"></i> &nbsp;PULL TO TRANSFORM</span>
+              <span><i class="fa-solid fa-bolt" style="color: var(--gold);"></i> &nbsp;PULL TO TRANSFORM</span>
               <span class="meter-val-badge" id="meterVal">0%</span>
             </div>
             <input id="revealSlider" type="range" min="0" max="100" value="0" class="transformation-slider" aria-label="Transformation meter — drag to reveal">
@@ -227,7 +239,7 @@
           </div>
         </div>
         <div class="newsletter">
-          <h3>THE WEEKLY <span style="color:var(--lime)">EDGE.</span></h3>
+          <h3>THE WEEKLY <span style="color:var(--gold)">EDGE.</span></h3>
           <p>Training intel, recovery hacks, and zero fluff — delivered weekly.</p>
           <form class="email-row" id="newsletter">
             <input type="email" aria-label="Email address" required placeholder="Your email address">
