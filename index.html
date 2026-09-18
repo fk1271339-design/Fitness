@@ -700,22 +700,54 @@
       position: relative;
       border-right: 1px solid var(--border-dark);
       background-color: var(--bg-graphite);
+      overflow: hidden;
+    }
+
+    .manifesto-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.38;
+      filter: grayscale(20%) brightness(0.7);
+      z-index: 1;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+    }
+
+    .manifesto-panel:hover .manifesto-bg-img {
+      transform: scale(1.04);
+      opacity: 0.52;
+    }
+
+    .manifesto-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(9, 10, 8, 0.94) 0%, rgba(9, 10, 8, 0.72) 55%, rgba(9, 10, 8, 0.88) 100%);
+      z-index: 2;
     }
 
     .manifesto-panel-3 {
       background-color: var(--bg-moss);
     }
 
+    .manifesto-panel-content {
+      position: relative;
+      z-index: 3;
+      max-width: 850px;
+    }
+
     .manifesto-big-num {
       font-family: var(--font-editorial);
       font-size: clamp(5rem, 14vw, 18rem);
       font-weight: 400;
-      color: rgba(242, 240, 232, 0.035);
+      color: rgba(242, 240, 232, 0.04);
       position: absolute;
       top: 10%;
       right: 5%;
       line-height: 0.8;
       pointer-events: none;
+      z-index: 3;
     }
 
     .manifesto-panel-title {
@@ -1621,45 +1653,61 @@
     <div class="manifesto-wrapper" id="manifestoWrapper">
       <!-- PANEL 01 -->
       <div class="manifesto-panel">
+        <img src="img/manifesto_01.jpg" alt="You Can't Outsource Discipline" class="manifesto-bg-img">
+        <div class="manifesto-overlay"></div>
         <div class="manifesto-big-num">01</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ 01 / 04 // METABOLIC BASELINE 01.42.08 ]</div>
-        <h2 class="manifesto-panel-title">YOU CAN’T OUTSOURCE <span class="text-acid">DISCIPLINE.</span></h2>
-        <p class="manifesto-panel-desc">
-          There are no secret formulas. No supplements that replace effort. We measure baseline metrics and force input from day one.
-        </p>
+        <div class="manifesto-panel-content">
+          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ 01 / 04 // METABOLIC BASELINE 01.42.08 ]</div>
+          <h2 class="manifesto-panel-title">YOU CAN’T OUTSOURCE <span class="text-acid">DISCIPLINE.</span></h2>
+          <p class="manifesto-panel-desc">
+            There are no secret formulas. No supplements that replace effort. We measure baseline metrics and force input from day one.
+          </p>
+        </div>
         <div class="manifesto-energy-line"><div class="manifesto-energy-fill" style="width: 25%;"></div></div>
       </div>
 
       <!-- PANEL 02 -->
       <div class="manifesto-panel">
+        <img src="img/manifesto_02.jpg" alt="Training is a Language" class="manifesto-bg-img">
+        <div class="manifesto-overlay"></div>
         <div class="manifesto-big-num">02</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ 02 / 04 // FORCE OUTPUT 99.4% NEURAL SPEED ]</div>
-        <h2 class="manifesto-panel-title">TRAINING IS A <span class="text-acid">LANGUAGE.</span></h2>
-        <p class="manifesto-panel-desc">
-          Movement patterns reveal stress, compensation, and mechanical output. We refine your physical vocabulary for absolute strength.
-        </p>
+        <div class="manifesto-panel-content">
+          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ 02 / 04 // FORCE OUTPUT 99.4% NEURAL SPEED ]</div>
+          <h2 class="manifesto-panel-title">TRAINING IS A <span class="text-acid">LANGUAGE.</span></h2>
+          <p class="manifesto-panel-desc">
+            Movement patterns reveal stress, compensation, and mechanical output. We refine your physical vocabulary for absolute strength.
+          </p>
+        </div>
         <div class="manifesto-energy-line"><div class="manifesto-energy-fill" style="width: 50%;"></div></div>
       </div>
 
       <!-- PANEL 03 -->
       <div class="manifesto-panel manifesto-panel-3">
+        <img src="img/manifesto_03.jpg" alt="Recovery is Part of the Work" class="manifesto-bg-img">
+        <div class="manifesto-overlay"></div>
         <div class="manifesto-big-num">03</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ 03 / 04 // CELLULAR RESTORATION THERMAL ]</div>
-        <h2 class="manifesto-panel-title">RECOVERY IS PART OF THE <span class="text-acid">WORK.</span></h2>
-        <p class="manifesto-panel-desc">
-          High neural tension requires deep cellular restoration. Infrared saunas, hyperbaric oxygen, and custom thermal plunge protocols.
-        </p>
+        <div class="manifesto-panel-content">
+          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ 03 / 04 // CELLULAR RESTORATION THERMAL ]</div>
+          <h2 class="manifesto-panel-title">RECOVERY IS PART OF THE <span class="text-acid">WORK.</span></h2>
+          <p class="manifesto-panel-desc">
+            High neural tension requires deep cellular restoration. Infrared saunas, hyperbaric oxygen, and custom thermal plunge protocols.
+          </p>
+        </div>
         <div class="manifesto-energy-line"><div class="manifesto-energy-fill" style="width: 75%;"></div></div>
       </div>
 
       <!-- PANEL 04 -->
       <div class="manifesto-panel">
+        <img src="img/manifesto_04.jpg" alt="Consistency Becomes Identity" class="manifesto-bg-img">
+        <div class="manifesto-overlay"></div>
         <div class="manifesto-big-num">04</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ 04 / 04 // PERMANENT STANDARD IDENTITY ]</div>
-        <h2 class="manifesto-panel-title">CONSISTENCY BECOMES <span class="text-acid">IDENTITY.</span></h2>
-        <p class="manifesto-panel-desc">
-          What you do repeatedly in private becomes your undeniable presence in public. Standard established.
-        </p>
+        <div class="manifesto-panel-content">
+          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ 04 / 04 // PERMANENT STANDARD IDENTITY ]</div>
+          <h2 class="manifesto-panel-title">CONSISTENCY BECOMES <span class="text-acid">IDENTITY.</span></h2>
+          <p class="manifesto-panel-desc">
+            What you do repeatedly in private becomes your undeniable presence in public. Standard established.
+          </p>
+        </div>
         <div class="manifesto-energy-line"><div class="manifesto-energy-fill" style="width: 100%;"></div></div>
       </div>
     </div>
