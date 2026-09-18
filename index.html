@@ -9,7 +9,7 @@
   <!-- Google Fonts: Bodoni Moda, Outfit, DM Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=DM+Sans:wght@300;400;500;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,30 +20,31 @@
 
   <style>
     /* ==========================================
-       ART DIRECTION: THE HOUSE OF WORK
+       ART DIRECTION: THE HOUSE OF WORK (SENIOR ART-DIRECTOR PASS)
        ========================================== */
     :root {
       --bg-black: #090A08;
-      --bg-graphite: #161814;
-      --bg-charcoal: #20231D;
-      --bg-moss: #33402D;
+      --bg-graphite: #141612;
+      --bg-charcoal: #1E211A;
+      --bg-moss: #2E3A28;
 
       --text-bone: #F2F0E8;
       --text-stone: #9A9D91;
-      --text-muted: #6B6D65;
+      --text-muted: #64665C;
 
       --accent-acid: #B5FF3D;
-      --accent-acid-glow: rgba(181, 255, 61, 0.25);
+      --accent-acid-glow: rgba(181, 255, 61, 0.22);
       --accent-warm: #E5D8B8;
 
-      --border-dark: rgba(154, 157, 145, 0.15);
-      --border-acid: rgba(181, 255, 61, 0.4);
+      --border-dark: rgba(154, 157, 145, 0.14);
+      --border-acid: rgba(181, 255, 61, 0.35);
 
       --font-editorial: 'Bodoni Moda', Georgia, serif;
       --font-heading: 'Outfit', sans-serif;
       --font-body: 'DM Sans', sans-serif;
 
       --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: all 0.2s ease-out;
     }
 
     *, *::before, *::after {
@@ -63,12 +64,12 @@
     body {
       background-color: var(--bg-black);
       color: var(--text-bone);
-      line-height: 1.5;
+      line-height: 1.6;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* Film Grain Texture */
+    /* Uniform Subtle Grain Overlay */
     .film-grain {
       position: fixed;
       inset: 0;
@@ -76,11 +77,37 @@
       height: 100vh;
       pointer-events: none;
       z-index: 9999;
-      opacity: 0.04;
+      opacity: 0.038;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* Typography Classes */
+    /* Custom Floating Hover Cursor Tooltip */
+    #customCursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 0.4rem 0.85rem;
+      background-color: var(--accent-acid);
+      color: #090A08;
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 10001;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.8);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    #customCursor.visible {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Typography System */
     .font-editorial { font-family: var(--font-editorial); }
     .font-heading { font-family: var(--font-heading); }
     .text-acid { color: var(--accent-acid); }
@@ -94,12 +121,12 @@
       color: var(--text-stone);
     }
 
-    /* BUTTONS */
+    /* BUTTONS SYSTEM */
     .btn-acid {
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 1.1rem 2.25rem;
+      padding: 1.15rem 2.25rem;
       background-color: #090A08;
       color: var(--text-bone);
       font-family: var(--font-heading);
@@ -109,7 +136,6 @@
       text-transform: uppercase;
       text-decoration: none;
       border: 1px solid var(--border-dark);
-      border-radius: 0;
       cursor: pointer;
       transition: var(--transition-smooth);
       position: relative;
@@ -126,7 +152,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 1.1rem 2.25rem;
+      padding: 1.15rem 2.25rem;
       background: transparent;
       color: var(--text-bone);
       font-family: var(--font-heading);
@@ -143,6 +169,7 @@
     .btn-secondary-line:hover {
       border-color: var(--text-bone);
       color: var(--accent-acid);
+      background-color: rgba(255, 255, 255, 0.02);
     }
 
     .container {
@@ -150,6 +177,12 @@
       max-width: 1380px;
       margin: 0 auto;
       padding: 0 2.5rem;
+    }
+
+    .graphite-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-dark), transparent);
     }
 
     /* ==========================================
@@ -207,6 +240,12 @@
       border-radius: 50%;
       box-shadow: 0 0 12px var(--accent-acid);
       display: inline-block;
+      animation: pulseDot 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.6; }
     }
 
     .preloader-track {
@@ -238,14 +277,18 @@
       width: 100%;
       z-index: 1000;
       padding: 1.75rem 0;
-      background: rgba(22, 24, 20, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(20, 22, 18, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-dark);
       transition: var(--transition-smooth);
     }
 
-    /* Top scroll progress indicator line */
+    .navbar.scrolled {
+      padding: 1.1rem 0;
+      background: rgba(9, 10, 8, 0.92);
+    }
+
     .nav-scroll-indicator {
       position: absolute;
       top: 0;
@@ -254,6 +297,7 @@
       background-color: var(--accent-acid);
       width: 0%;
       z-index: 1001;
+      box-shadow: 0 0 8px var(--accent-acid);
     }
 
     .nav-inner {
@@ -313,10 +357,12 @@
       transition: var(--transition-smooth);
     }
 
+    .nav-link.active,
     .nav-link:hover {
       color: var(--text-bone);
     }
 
+    .nav-link.active::after,
     .nav-link:hover::after {
       width: 100%;
     }
@@ -394,24 +440,24 @@
        ========================================== */
     .hero {
       min-height: 100vh;
-      padding-top: 9rem;
+      padding-top: 9.5rem;
       padding-bottom: 6rem;
       display: flex;
       align-items: center;
       position: relative;
-      background: radial-gradient(circle at 80% 20%, rgba(51, 64, 45, 0.15) 0%, transparent 65%), #090A08;
+      background: radial-gradient(circle at 75% 25%, rgba(46, 58, 40, 0.18) 0%, transparent 65%), #090A08;
     }
 
     .hero-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 4rem;
+      gap: 4.5rem;
       align-items: center;
     }
 
     .hero-headline {
       font-family: var(--font-heading);
-      font-size: clamp(3.25rem, 7vw, 6rem);
+      font-size: clamp(3.25rem, 6.8vw, 5.8rem);
       font-weight: 900;
       line-height: 0.95;
       letter-spacing: -0.02em;
@@ -425,7 +471,7 @@
       font-weight: 300;
       max-width: 520px;
       line-height: 1.7;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
     .hero-actions {
@@ -435,15 +481,38 @@
       flex-wrap: wrap;
     }
 
+    .hero-trust-tag {
+      font-family: var(--font-body);
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
     /* GALLERY SPOTLIGHT INSTALLATION VISUAL */
     .hero-installation {
       position: relative;
       width: 100%;
-      height: 540px;
+      height: 550px;
       background-color: var(--bg-graphite);
       border: 1px solid var(--border-dark);
       overflow: hidden;
       user-select: none;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Dark Vignette Overlay */
+    .hero-installation::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 50%, transparent 50%, rgba(9, 10, 8, 0.75) 100%);
+      pointer-events: none;
+      z-index: 5;
     }
 
     .hero-bg-num {
@@ -452,10 +521,11 @@
       left: 50%;
       transform: translate(-50%, -50%);
       font-family: var(--font-heading);
-      font-size: 18rem;
+      font-size: 20rem;
       font-weight: 900;
-      color: rgba(255, 255, 255, 0.03);
+      color: rgba(255, 255, 255, 0.025);
       pointer-events: none;
+      z-index: 0;
     }
 
     .transformation-img {
@@ -467,7 +537,7 @@
     }
 
     .img-before {
-      filter: grayscale(40%) brightness(0.7);
+      filter: grayscale(45%) brightness(0.65);
       z-index: 1;
     }
 
@@ -483,7 +553,7 @@
       left: 50%;
       width: 2px;
       background-color: var(--accent-acid);
-      z-index: 3;
+      z-index: 4;
       transform: translateX(-50%);
       box-shadow: 0 0 15px var(--accent-acid-glow);
     }
@@ -493,8 +563,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       background: #090A08;
       border: 1px solid var(--accent-acid);
       color: var(--accent-acid);
@@ -502,27 +572,29 @@
       align-items: center;
       justify-content: center;
       font-size: 0.75rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     }
 
     .gallery-tag {
       position: absolute;
-      bottom: 1.5rem;
-      padding: 0.35rem 0.85rem;
-      background: rgba(9, 10, 8, 0.85);
+      bottom: 1.75rem;
+      padding: 0.4rem 0.95rem;
+      background: rgba(9, 10, 8, 0.88);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--border-dark);
       font-family: var(--font-body);
       font-size: 0.65rem;
       letter-spacing: 0.2em;
       color: var(--text-stone);
-      z-index: 4;
+      z-index: 6;
     }
 
-    .gallery-tag-left { left: 1.5rem; }
-    .gallery-tag-right { right: 1.5rem; color: var(--accent-acid); }
+    .gallery-tag-left { left: 1.75rem; }
+    .gallery-tag-right { right: 1.75rem; color: var(--accent-acid); border-color: var(--border-acid); }
 
     .hero-meta-strip {
-      margin-top: 5rem;
-      padding-top: 2rem;
+      margin-top: 5.5rem;
+      padding-top: 2.25rem;
       border-top: 1px solid var(--border-dark);
       display: flex;
       justify-content: space-between;
@@ -544,14 +616,14 @@
 
     .manifesto-wrapper {
       display: flex;
-      width: 400vw; /* 4 massive panels */
+      width: 400vw;
       height: 100vh;
     }
 
     .manifesto-panel {
       width: 100vw;
       height: 100vh;
-      padding: 6rem;
+      padding: 6rem 7rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -568,7 +640,7 @@
       font-family: var(--font-editorial);
       font-size: clamp(8rem, 18vw, 22rem);
       font-weight: 400;
-      color: rgba(242, 240, 232, 0.04);
+      color: rgba(242, 240, 232, 0.035);
       position: absolute;
       top: 10%;
       right: 5%;
@@ -589,15 +661,16 @@
     .manifesto-panel-desc {
       font-size: 1.2rem;
       color: var(--text-stone);
-      max-width: 500px;
+      max-width: 520px;
       font-weight: 300;
+      line-height: 1.7;
     }
 
     .manifesto-energy-line {
       position: absolute;
-      bottom: 4rem;
-      left: 6rem;
-      right: 6rem;
+      bottom: 4.5rem;
+      left: 7rem;
+      right: 7rem;
       height: 2px;
       background-color: var(--border-dark);
     }
@@ -637,8 +710,24 @@
       transition: var(--transition-smooth);
     }
 
+    /* Cursor Follow Light Reflection */
+    .bento-zone::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(181, 255, 61, 0.07), transparent 40%);
+      pointer-events: none;
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .bento-zone:hover::before {
+      opacity: 1;
+    }
+
     .bento-zone:hover {
-      border-color: var(--accent-acid);
+      border-color: var(--border-acid);
       transform: translateY(-4px);
     }
 
@@ -655,7 +744,7 @@
       height: 100%;
       object-fit: cover;
       opacity: 0.45;
-      filter: grayscale(30%);
+      filter: grayscale(35%);
       transition: transform 0.8s ease, opacity 0.8s ease;
     }
 
@@ -664,9 +753,27 @@
       opacity: 0.65;
     }
 
+    .bento-header-tags {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 4;
+    }
+
+    .bento-access-tag {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--accent-acid);
+      border: 1px solid var(--border-acid);
+      padding: 0.25rem 0.65rem;
+      background: rgba(9, 10, 8, 0.8);
+    }
+
     .bento-content {
       position: relative;
-      z-index: 2;
+      z-index: 4;
     }
 
     .bento-code {
@@ -692,6 +799,25 @@
       max-width: 420px;
     }
 
+    .bento-link {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--text-stone);
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition-smooth);
+    }
+
+    .bento-zone:hover .bento-link {
+      color: var(--accent-acid);
+      transform: translateX(4px);
+    }
+
     /* ==========================================
        06. COACH SECTION — TITAN VALE
        ========================================== */
@@ -699,12 +825,25 @@
       padding: 10rem 0;
       background-color: var(--bg-graphite);
       border-top: 1px solid var(--border-dark);
+      position: relative;
+    }
+
+    .coach-side-caption {
+      position: absolute;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
     }
 
     .coach-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5.5rem;
       align-items: center;
     }
 
@@ -720,7 +859,7 @@
       height: 600px;
       object-fit: cover;
       display: block;
-      filter: grayscale(20%) contrast(110%);
+      filter: grayscale(25%) contrast(115%);
     }
 
     .athletic-tape-label {
@@ -740,13 +879,13 @@
 
     .coach-quote-box {
       border-left: 2px solid var(--accent-acid);
-      padding-left: 2rem;
+      padding-left: 2.25rem;
       margin: 2.5rem 0;
     }
 
     .coach-quote-text {
       font-family: var(--font-editorial);
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       font-style: italic;
       color: var(--text-bone);
       line-height: 1.4;
@@ -783,11 +922,38 @@
       position: relative;
     }
 
+    .archive-filter-bar {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 2rem;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid var(--border-dark);
+      color: var(--text-stone);
+      padding: 0.65rem 1.5rem;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      border-color: var(--accent-acid);
+      color: var(--accent-acid);
+      background-color: rgba(181, 255, 61, 0.05);
+    }
+
     .proof-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
-      margin-top: 5rem;
     }
 
     .proof-card {
@@ -837,6 +1003,19 @@
       background-color: var(--accent-acid);
     }
 
+    /* Hover Insight Drawer */
+    .proof-hover-insight {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border-dark);
+      font-size: 0.85rem;
+      color: var(--accent-acid);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.8;
+    }
+
     /* ==========================================
        08. MEMBERSHIP — YOU JOIN A STANDARD
        ========================================== */
@@ -850,7 +1029,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2.5rem;
-      margin-top: 5rem;
+      margin-top: 4rem;
     }
 
     .membership-panel {
@@ -866,7 +1045,9 @@
 
     .membership-panel.standard {
       border-color: var(--accent-acid);
-      box-shadow: 0 0 30px rgba(181, 255, 61, 0.1);
+      background-color: #0E100C;
+      box-shadow: 0 0 40px rgba(181, 255, 61, 0.08);
+      transform: scale(1.02);
     }
 
     .panel-badge {
@@ -921,7 +1102,7 @@
     .data-panel {
       background-color: var(--bg-black);
       border: 1px solid var(--border-dark);
-      padding: 5rem;
+      padding: 5.5rem 5rem;
       position: relative;
     }
 
@@ -952,12 +1133,12 @@
       gap: 3rem;
       text-align: center;
       border-top: 1px solid var(--border-dark);
-      padding-top: 3rem;
+      padding-top: 3.5rem;
     }
 
     .data-val {
       font-family: var(--font-editorial);
-      font-size: 3.5rem;
+      font-size: 3.75rem;
       color: var(--text-bone);
       line-height: 1;
     }
@@ -999,7 +1180,7 @@
       font-size: clamp(2rem, 4vw, 3rem);
       font-style: italic;
       color: var(--text-bone);
-      line-height: 1.3;
+      line-height: 1.35;
       margin-bottom: 3rem;
     }
 
@@ -1015,7 +1196,7 @@
       text-align: center;
       padding: 6rem 2.5rem;
       overflow: hidden;
-      background: radial-gradient(circle at 50% 50%, rgba(51, 64, 45, 0.25) 0%, #090A08 75%);
+      background: radial-gradient(circle at 50% 50%, rgba(46, 58, 40, 0.25) 0%, #090A08 75%);
     }
 
     .final-title {
@@ -1099,10 +1280,10 @@
       box-shadow: 0 0 15px var(--accent-acid-glow);
     }
 
-    /* FOOTER */
+    /* FOOTER STATUS */
     .site-footer {
       border-top: 1px solid var(--border-dark);
-      padding: 4rem 0;
+      padding: 4.5rem 0;
       background-color: #060705;
       font-size: 0.85rem;
       color: var(--text-stone);
@@ -1110,13 +1291,15 @@
 
     /* RESPONSIVE MEDIA QUERIES */
     @media (max-width: 1024px) {
-      .hero-grid { grid-template-columns: 1fr; }
+      .hero-grid { grid-template-columns: 1fr; gap: 3.5rem; }
       .manifesto-wrapper { width: 100%; height: auto; flex-direction: column; }
       .manifesto-panel { width: 100%; height: auto; padding: 5rem 2rem; }
       .architectural-bento { grid-template-columns: 1fr; grid-auto-rows: auto; }
       .zone-1, .zone-2, .zone-3, .zone-4, .zone-5 { grid-column: span 1; height: 320px; }
       .coach-grid, .proof-grid, .membership-grid { grid-template-columns: 1fr; }
-      .data-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .membership-panel.standard { transform: none; }
+      .data-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+      .data-panel { padding: 3.5rem 2rem; }
       .nav-links { display: none; }
       .mobile-toggle { display: block; }
     }
@@ -1124,7 +1307,10 @@
 </head>
 <body>
 
-  <!-- FILM GRAIN TEXTURE OVERLAY -->
+  <!-- FLOATING CUSTOM HOVER CURSOR INDICATOR -->
+  <div id="customCursor">EXPLORE</div>
+
+  <!-- UNIFORM FILM GRAIN OVERLAY -->
   <div class="film-grain"></div>
 
   <!-- 01. PRELOADER -->
@@ -1159,7 +1345,7 @@
       </ul>
 
       <div style="display: flex; align-items: center; gap: 1.5rem;">
-        <button class="btn-acid js-open-modal" style="padding: 0.85rem 1.75rem; font-size: 0.75rem;">
+        <button class="btn-acid js-open-modal btn-magnetic" data-cursor="APPLY" style="padding: 0.85rem 1.75rem; font-size: 0.75rem;">
           APPLY TO TRAIN &rarr;
         </button>
         <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Toggle Menu">
@@ -1208,14 +1394,17 @@
             No shortcuts. No performance theatre. Only structured work, intelligent coaching, and a body that proves what you committed to.
           </p>
           <div class="hero-actions">
-            <button class="btn-acid js-open-modal">APPLY TO TRAIN</button>
+            <button class="btn-acid js-open-modal btn-magnetic" data-cursor="APPLY">APPLY TO TRAIN</button>
             <a href="#method" class="btn-secondary-line">WATCH THE METHOD &darr;</a>
+          </div>
+          <div class="hero-trust-tag">
+            <i class="fa-solid fa-shield-halved" style="color: var(--accent-acid);"></i> PRIVATE MEMBERSHIP / LIMITED MONTHLY ADMISSIONS
           </div>
         </div>
 
         <!-- GALLERY SPOTLIGHT INSTALLATION VISUAL -->
         <div>
-          <div class="hero-installation" id="heroInstallation">
+          <div class="hero-installation" id="heroInstallation" data-cursor="SLIDE">
             <div class="hero-bg-num">180</div>
             <!-- AFTER IMAGE -->
             <img src="img/hero_after.png" alt="Protocol Complete" class="transformation-img img-after" id="imgAfter">
@@ -1226,8 +1415,8 @@
               <div class="spotlight-knob"><i class="fa-solid fa-arrows-left-right"></i></div>
             </div>
 
-            <div class="gallery-tag gallery-tag-left">BASELINE / DAY 01</div>
-            <div class="gallery-tag gallery-tag-right">PROTOCOL COMPLETE / DAY 180</div>
+            <div class="gallery-tag gallery-tag-left">PROTOCOL / DAY 01 BASELINE AUDIT</div>
+            <div class="gallery-tag gallery-tag-right">PROTOCOL / DAY 180 MASTERY COMPLETE</div>
           </div>
           <div style="text-align: right; margin-top: 0.75rem;" class="meta-code">
             “THE BODY IS THE RECEIPT.”
@@ -1261,7 +1450,7 @@
       <!-- PANEL 01 -->
       <div class="manifesto-panel">
         <div class="manifesto-big-num">01</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ MANIFESTO PANEL 01 ]</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ COORDINATE 01 // METABOLIC BASELINE 01.42.08 ]</div>
         <h2 class="manifesto-panel-title">YOU CAN’T OUTSOURCE <span class="text-acid">DISCIPLINE.</span></h2>
         <p class="manifesto-panel-desc">
           There are no secret formulas. No supplements that replace effort. We measure baseline metrics and force input from day one.
@@ -1272,7 +1461,7 @@
       <!-- PANEL 02 -->
       <div class="manifesto-panel">
         <div class="manifesto-big-num">02</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ MANIFESTO PANEL 02 ]</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ COORDINATE 02 // FORCE OUTPUT 99.4% NEURAL SPEED ]</div>
         <h2 class="manifesto-panel-title">TRAINING IS A <span class="text-acid">LANGUAGE.</span></h2>
         <p class="manifesto-panel-desc">
           Movement patterns reveal stress, compensation, and mechanical output. We refine your physical vocabulary for absolute strength.
@@ -1283,7 +1472,7 @@
       <!-- PANEL 03 -->
       <div class="manifesto-panel manifesto-panel-3">
         <div class="manifesto-big-num">03</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ MANIFESTO PANEL 03 ]</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ COORDINATE 03 // CELLULAR RESTORATION INFRARED + THERMAL ]</div>
         <h2 class="manifesto-panel-title">RECOVERY IS PART OF THE <span class="text-acid">WORK.</span></h2>
         <p class="manifesto-panel-desc">
           High neural tension requires deep cellular restoration. Infrared saunas, hyperbaric oxygen, and custom thermal plunge protocols.
@@ -1294,7 +1483,7 @@
       <!-- PANEL 04 -->
       <div class="manifesto-panel">
         <div class="manifesto-big-num">04</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ MANIFESTO PANEL 04 ]</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ COORDINATE 04 // PERMANENT STANDARD IDENTITY INTEGRATED ]</div>
         <h2 class="manifesto-panel-title">CONSISTENCY BECOMES <span class="text-acid">IDENTITY.</span></h2>
         <p class="manifesto-panel-desc">
           What you do repeatedly in private becomes your undeniable presence in public. Standard established.
@@ -1314,52 +1503,70 @@
 
       <div class="architectural-bento">
         <!-- ZONE 1: IRON HALL -->
-        <div class="bento-zone zone-1">
+        <div class="bento-zone zone-1" data-cursor="EXPLORE">
           <img src="img/bento_strength.png" alt="Iron Hall" class="bento-img">
-          <div class="bento-code">01 / THE IRON HALL</div>
+          <div class="bento-header-tags">
+            <div class="bento-code">01 / THE IRON HALL</div>
+            <div class="bento-access-tag">MEMBER ACCESS</div>
+          </div>
           <div class="bento-content">
             <h3 class="bento-title">The Iron Hall</h3>
             <p class="bento-desc">Free weights, power platforms, and calibrated competition racks. The space to become dangerous.</p>
+            <a href="#membership" class="bento-link">EXPLORE SPACE &rarr;</a>
           </div>
         </div>
 
         <!-- ZONE 2: CONDITIONING FLOOR -->
-        <div class="bento-zone zone-2">
+        <div class="bento-zone zone-2" data-cursor="EXPLORE">
           <img src="img/People_training_in_luxury_gym_20260917194156.jpeg" alt="Conditioning Floor" class="bento-img">
-          <div class="bento-code">02 / CONDITIONING</div>
+          <div class="bento-header-tags">
+            <div class="bento-code">02 / CONDITIONING</div>
+          </div>
           <div class="bento-content">
             <h3 class="bento-title">The Conditioning Floor</h3>
             <p class="bento-desc">Engineered metabolic intensity without the noise.</p>
+            <a href="#membership" class="bento-link">EXPLORE SPACE &rarr;</a>
           </div>
         </div>
 
         <!-- ZONE 3: PRIVATE COACHING -->
-        <div class="bento-zone zone-3">
+        <div class="bento-zone zone-3" data-cursor="EXPLORE">
           <img src="img/bento_recovery.png" alt="Private Suite" class="bento-img">
-          <div class="bento-code">03 / PRIVATE SUITES</div>
+          <div class="bento-header-tags">
+            <div class="bento-code">03 / PRIVATE SUITES</div>
+            <div class="bento-access-tag">MEMBER ACCESS</div>
+          </div>
           <div class="bento-content">
             <h3 class="bento-title">Private Coaching Rooms</h3>
             <p class="bento-desc">Quiet focus. Precise feedback. No audience required.</p>
+            <a href="#membership" class="bento-link">EXPLORE SPACE &rarr;</a>
           </div>
         </div>
 
         <!-- ZONE 4: RECOVERY STUDIO -->
-        <div class="bento-zone zone-4">
+        <div class="bento-zone zone-4" data-cursor="EXPLORE">
           <img src="img/People_exercising_in_gym_20260917194141.jpeg" alt="Recovery Studio" class="bento-img">
-          <div class="bento-code">04 / RECOVERY</div>
+          <div class="bento-header-tags">
+            <div class="bento-code">04 / RECOVERY</div>
+          </div>
           <div class="bento-content">
             <h3 class="bento-title">The Recovery Studio</h3>
             <p class="bento-desc">Mobility, restoration, and readiness treated as primary performance tools.</p>
+            <a href="#membership" class="bento-link">EXPLORE SPACE &rarr;</a>
           </div>
         </div>
 
         <!-- ZONE 5: NUTRITION DESK -->
-        <div class="bento-zone zone-5">
+        <div class="bento-zone zone-5" data-cursor="EXPLORE">
           <img src="img/Gym_juice_bar_and_lounge_20260917194109.jpeg" alt="Nutrition Desk" class="bento-img">
-          <div class="bento-code">05 / NUTRITION</div>
+          <div class="bento-header-tags">
+            <div class="bento-code">05 / NUTRITION</div>
+            <div class="bento-access-tag">MEMBER ACCESS</div>
+          </div>
           <div class="bento-content">
             <h3 class="bento-title">Nutrition & Bio Desk</h3>
             <p class="bento-desc">Food strategy built around the executive life you actually live.</p>
+            <a href="#membership" class="bento-link">EXPLORE SPACE &rarr;</a>
           </div>
         </div>
       </div>
@@ -1368,6 +1575,7 @@
 
   <!-- 06. COACH SECTION — TITAN VALE -->
   <section class="coach-section" id="coaching">
+    <div class="coach-side-caption">THE PERSON WHO RAISES THE BAR</div>
     <div class="container">
       <div class="coach-grid">
         <div class="coach-portrait-box">
@@ -1376,7 +1584,7 @@
         </div>
 
         <div>
-          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ THE PERSON WHO RAISES THE BAR ]</div>
+          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ EXECUTIVE PERFORMANCE DIRECTOR ]</div>
           <h2 style="font-family: var(--font-heading); font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase;">
             TITAN <span class="text-acid">VALE.</span>
           </h2>
@@ -1393,7 +1601,7 @@
             <li class="field-note-item"><i class="fa-solid fa-angle-right"></i> HABIT SYSTEMS</li>
           </ul>
 
-          <button class="btn-acid js-open-modal">BOOK A PRIVATE CONSULTATION</button>
+          <button class="btn-acid js-open-modal btn-magnetic" data-cursor="BOOK">BOOK A PRIVATE CONSULTATION</button>
         </div>
       </div>
     </div>
@@ -1407,9 +1615,17 @@
         PROOF OF <span class="text-acid">WORK.</span>
       </h2>
 
-      <div class="proof-grid">
+      <!-- ARCHIVE FRONTEND FILTER TABS -->
+      <div class="archive-filter-bar">
+        <button class="filter-btn active" data-filter="all">ALL CASES</button>
+        <button class="filter-btn" data-filter="recomp">RECOMPOSITION</button>
+        <button class="filter-btn" data-filter="strength">STRENGTH</button>
+        <button class="filter-btn" data-filter="performance">PERFORMANCE</button>
+      </div>
+
+      <div class="proof-grid" id="proofGrid">
         <!-- CASE 1 -->
-        <div class="proof-card">
+        <div class="proof-card" data-category="recomp" data-cursor="VIEW CASE STUDY">
           <div class="proof-header">
             <div>
               <div class="proof-name">AARAV V.</div>
@@ -1420,10 +1636,11 @@
           <div class="meta-code">PROTOCOL ADHERENCE: 94%</div>
           <div class="proof-data-bar"><div class="proof-data-fill" style="width: 94%;"></div></div>
           <p style="font-size: 0.9rem; color: var(--text-stone);">Muscle density increased by 14%. Metabolic output doubled.</p>
+          <div class="proof-hover-insight"><i class="fa-solid fa-bolt"></i> Key Insight: Hypertrophy density protocol with 0% missed sessions.</div>
         </div>
 
         <!-- CASE 2 -->
-        <div class="proof-card">
+        <div class="proof-card" data-category="strength" data-cursor="VIEW CASE STUDY">
           <div class="proof-header">
             <div>
               <div class="proof-name">RIYA S.</div>
@@ -1434,10 +1651,11 @@
           <div class="meta-code">DEADLIFT MAX INCREASE</div>
           <div class="proof-data-bar"><div class="proof-data-fill" style="width: 98%;"></div></div>
           <p style="font-size: 0.9rem; color: var(--text-stone);">Neural output peak achieved with zero joint compromise.</p>
+          <div class="proof-hover-insight"><i class="fa-solid fa-bolt"></i> Key Insight: Progressive density overload with weekly force scans.</div>
         </div>
 
         <!-- CASE 3 -->
-        <div class="proof-card">
+        <div class="proof-card" data-category="performance" data-cursor="VIEW CASE STUDY">
           <div class="proof-header">
             <div>
               <div class="proof-name">KABIR M.</div>
@@ -1448,10 +1666,11 @@
           <div class="meta-code">5KM PACING IMPROVEMENT</div>
           <div class="proof-data-bar"><div class="proof-data-fill" style="width: 91%;"></div></div>
           <p style="font-size: 0.9rem; color: var(--text-stone);">V02 max expanded through targeted threshold intervals.</p>
+          <div class="proof-hover-insight"><i class="fa-solid fa-bolt"></i> Key Insight: Lactate threshold conditioning & oxygen suite recovery.</div>
         </div>
 
         <!-- CASE 4 -->
-        <div class="proof-card">
+        <div class="proof-card" data-category="recomp" data-cursor="VIEW CASE STUDY">
           <div class="proof-header">
             <div>
               <div class="proof-name">ELENA R.</div>
@@ -1462,6 +1681,7 @@
           <div class="meta-code">BODY FAT REDUCTION</div>
           <div class="proof-data-bar"><div class="proof-data-fill" style="width: 96%;"></div></div>
           <p style="font-size: 0.9rem; color: var(--text-stone);">Complete structural shift aligned with high corporate stress.</p>
+          <div class="proof-hover-insight"><i class="fa-solid fa-bolt"></i> Key Insight: Cortisol management & personalized nutritional meal prep.</div>
         </div>
       </div>
     </div>
@@ -1470,12 +1690,15 @@
   <!-- 08. MEMBERSHIP — YOU JOIN A STANDARD -->
   <section class="membership-section" id="membership">
     <div class="container">
-      <div style="text-align: center; max-width: 800px; margin: 0 auto 5rem auto;">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 4rem auto;">
         <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ ADMISSIONS CHARTER ]</div>
         <h2 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase; line-height: 1.05;">
           YOU DON’T JOIN A GYM. <br>
           YOU JOIN A <span class="text-acid">STANDARD.</span>
         </h2>
+        <div class="meta-code" style="margin-top: 1rem; color: var(--text-stone);">
+          “Membership applications are reviewed individually.”
+        </div>
       </div>
 
       <div class="membership-grid">
@@ -1510,7 +1733,7 @@
               <li class="charter-item"><i class="fa-solid fa-check"></i> Thermal Plunge Protocols</li>
             </ul>
           </div>
-          <button class="btn-acid js-open-modal" style="width: 100%; justify-content: center;">REQUEST MEMBERSHIP</button>
+          <button class="btn-acid js-open-modal btn-magnetic" data-cursor="APPLY" style="width: 100%; justify-content: center;">REQUEST MEMBERSHIP</button>
         </div>
 
         <!-- PRIVATE -->
@@ -1602,7 +1825,7 @@
       <p style="font-size: 1.25rem; color: var(--text-stone); margin-bottom: 3.5rem;">
         It is a decision repeated daily.
       </p>
-      <button class="btn-acid js-open-modal" style="padding: 1.35rem 3.5rem; font-size: 1rem;">APPLY TO TRAIN</button>
+      <button class="btn-acid js-open-modal btn-magnetic" data-cursor="APPLY" style="padding: 1.35rem 3.5rem; font-size: 1rem;">APPLY TO TRAIN</button>
       <div class="meta-code" style="margin-top: 2rem;">Private consultation. No pressure. Just an honest plan.</div>
     </div>
   </section>
@@ -1663,16 +1886,57 @@
         <div style="font-family: var(--font-heading); font-weight: 900; color: var(--text-bone); letter-spacing: 0.15em;">EVOLVE PERFORMANCE HOUSE</div>
         <div>DISCIPLINE, ELEVATED. &copy; 2026 EVOLVE FITNESS. ALL RIGHTS RESERVED.</div>
       </div>
-      <div class="meta-code">450 PARK AVENUE, EXECUTIVE SUITE, NEW YORK, NY</div>
+      <div style="display: flex; align-items: center; gap: 2rem;">
+        <div class="meta-code"><span class="live-dot-green" style="width: 6px; height: 6px;"></span> CLUB STATUS: OPEN / 24 HOURS</div>
+        <div class="meta-code">450 PARK AVENUE, NEW YORK</div>
+      </div>
     </div>
   </footer>
 
   <!-- ==========================================
-     JAVASCRIPT LOGIC & GSAP MOTION
+     JAVASCRIPT LOGIC & REFINED GSAP MOTION
      ========================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. PRELOADER ANIMATION
+      // 1. FLOATING CUSTOM HOVER CURSOR INDICATOR
+      const cursor = document.getElementById('customCursor');
+      const cursorElements = document.querySelectorAll('[data-cursor]');
+
+      window.addEventListener('mousemove', (e) => {
+        if (cursor) {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+        }
+      });
+
+      cursorElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          const label = el.getAttribute('data-cursor');
+          if (cursor && label) {
+            cursor.innerText = label;
+            cursor.classList.add('visible');
+          }
+        });
+        el.addEventListener('mouseleave', () => {
+          if (cursor) cursor.classList.remove('visible');
+        });
+      });
+
+      // 2. MAGNETIC BUTTON EFFECT
+      const magneticBtns = document.querySelectorAll('.btn-magnetic');
+      magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transform = 'translate(0px, 0px)';
+        });
+      });
+
+      // 3. PRELOADER ANIMATION
       const preloaderFill = document.getElementById('preloaderFill');
       const preloader = document.getElementById('preloader');
       let progress = 0;
@@ -1693,14 +1957,22 @@
         }
       }, 25);
 
-      // 2. NAV SCROLL PROGRESS INDICATOR & MOBILE TAKEOVER
+      // 4. NAV SCROLL PROGRESS & NAVBAR SCROLLED CLASS
+      const navbar = document.getElementById('navbar');
       const scrollIndicator = document.getElementById('scrollIndicator');
       window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+
         const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
         const pct = (window.scrollY / totalHeight) * 100;
         if (scrollIndicator) scrollIndicator.style.width = pct + '%';
       });
 
+      // MOBILE MENU
       const mobileToggleBtn = document.getElementById('mobileToggleBtn');
       const mobileCloseBtn = document.getElementById('mobileCloseBtn');
       const mobileTakeover = document.getElementById('mobileTakeover');
@@ -1714,13 +1986,12 @@
       }
       mobLinks.forEach(l => l.addEventListener('click', () => mobileTakeover.classList.remove('active')));
 
-      // 3. HERO GALLERY SPOTLIGHT REVEAL SLIDER
+      // 5. HERO SPOTLIGHT REVEAL SLIDER
       const heroInst = document.getElementById('heroInstallation');
       const imgAfter = document.getElementById('imgAfter');
       const divider = document.getElementById('spotlightDivider');
 
       if (heroInst && imgAfter && divider) {
-        let isDragging = false;
         const updateSpotlight = (x) => {
           const rect = heroInst.getBoundingClientRect();
           let pct = ((x - rect.left) / rect.width) * 100;
@@ -1735,7 +2006,41 @@
         heroInst.addEventListener('touchmove', (e) => updateSpotlight(e.touches[0].clientX));
       }
 
-      // 4. TESTIMONIALS SLIDER
+      // 6. BENTO ZONE CURSOR REFLECTION LIGHT
+      const bentoZones = document.querySelectorAll('.bento-zone');
+      bentoZones.forEach(zone => {
+        zone.addEventListener('mousemove', (e) => {
+          const rect = zone.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          zone.style.setProperty('--mouse-x', `${x}px`);
+          zone.style.setProperty('--mouse-y', `${y}px`);
+        });
+      });
+
+      // 7. ARCHIVE CASE STUDIES FRONTEND FILTERING
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const proofCards = document.querySelectorAll('.proof-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const category = btn.getAttribute('data-filter');
+          proofCards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            if (category === 'all' || cardCat === category) {
+              card.style.display = 'block';
+              gsap.fromTo(card, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4 });
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // 8. TESTIMONIALS SLIDER
       const testimonials = [
         {
           quote: "“I stopped negotiating with myself. That changed more than my body.”",
@@ -1770,9 +2075,9 @@
             tText.style.opacity = '1';
           }, 300);
         }
-      }, 5000);
+      }, 5500);
 
-      // 5. CONSULTATION MODAL LOGIC
+      // 9. CONSULTATION MODAL
       const modal = document.getElementById('consultationModal');
       const openModalBtns = document.querySelectorAll('.js-open-modal');
       const closeModalBtn = document.getElementById('modalCloseBtn');
@@ -1817,9 +2122,15 @@
         });
       }
 
-      // 6. GSAP ANIMATIONS
+      // 10. REFINED GSAP ANIMATIONS
       function initGSAP() {
         if (typeof gsap === 'undefined') return;
+
+        // Respect prefers-reduced-motion
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          return;
+        }
+
         gsap.registerPlugin(ScrollTrigger);
 
         // SVG Chart Line Draw Animation
@@ -1834,7 +2145,7 @@
           });
         }
 
-        // Horizontal Manifesto Scroll (Desktop)
+        // Horizontal Manifesto Scroll (Desktop Only)
         if (window.innerWidth > 1024) {
           const panels = gsap.utils.toArray('.manifesto-panel');
           gsap.to(panels, {
