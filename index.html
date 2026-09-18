@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>EVOLVE FITNESS | Flagship Performance House</title>
   <meta name="description" content="A culture-defining private performance house for people who treat physical transformation as a serious craft. No performance theatre. Only work.">
 
@@ -20,7 +20,7 @@
 
   <style>
     /* ==========================================
-       ART DIRECTION: THE HOUSE OF WORK (SENIOR ART-DIRECTOR PASS)
+       ART DIRECTION: THE HOUSE OF WORK (MOBILE EXPERIENCE PASS)
        ========================================== */
     :root {
       --bg-black: #090A08;
@@ -51,6 +51,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html {
@@ -59,6 +60,7 @@
       color: var(--text-bone);
       font-family: var(--font-body);
       overflow-x: hidden;
+      width: 100%;
     }
 
     body {
@@ -67,6 +69,17 @@
       line-height: 1.6;
       overflow-x: hidden;
       position: relative;
+      width: 100%;
+    }
+
+    /* Safe Area Inset Support */
+    @supports (padding: env(safe-area-inset-top)) {
+      .navbar {
+        padding-top: max(1.2rem, env(safe-area-inset-top));
+      }
+      .modal-window {
+        padding-bottom: max(2.5rem, env(safe-area-inset-bottom));
+      }
     }
 
     /* Uniform Subtle Grain Overlay */
@@ -81,7 +94,7 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* Custom Floating Hover Cursor Tooltip */
+    /* Desktop Custom Floating Hover Cursor Tooltip (Hidden on touch devices) */
     #customCursor {
       position: fixed;
       top: 0;
@@ -102,9 +115,15 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     }
 
-    #customCursor.visible {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
+    @media (hover: hover) and (pointer: fine) {
+      #customCursor.visible {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    @media (hover: none) {
+      #customCursor { display: none !important; }
     }
 
     /* Typography System */
@@ -115,8 +134,8 @@
 
     .meta-code {
       font-family: var(--font-body);
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
+      font-size: clamp(0.65rem, 2vw, 0.72rem);
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--text-stone);
     }
@@ -126,11 +145,12 @@
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 1.15rem 2.25rem;
+      min-height: 48px;
+      padding: 0.95rem 2rem;
       background-color: #090A08;
       color: var(--text-bone);
       font-family: var(--font-heading);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -139,6 +159,13 @@
       cursor: pointer;
       transition: var(--transition-smooth);
       position: relative;
+      touch-action: manipulation;
+    }
+
+    .btn-acid:active {
+      transform: scale(0.98);
+      background-color: var(--accent-acid);
+      color: #090A08;
     }
 
     .btn-acid:hover {
@@ -152,11 +179,12 @@
       display: inline-flex;
       align-items: center;
       gap: 0.75rem;
-      padding: 1.15rem 2.25rem;
+      min-height: 48px;
+      padding: 0.95rem 2rem;
       background: transparent;
       color: var(--text-bone);
       font-family: var(--font-heading);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -164,6 +192,11 @@
       border: 1px solid var(--border-dark);
       cursor: pointer;
       transition: var(--transition-smooth);
+      touch-action: manipulation;
+    }
+
+    .btn-secondary-line:active {
+      transform: scale(0.98);
     }
 
     .btn-secondary-line:hover {
@@ -176,13 +209,13 @@
       width: 100%;
       max-width: 1380px;
       margin: 0 auto;
-      padding: 0 2.5rem;
+      padding: 0 2rem;
     }
 
-    .graphite-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-dark), transparent);
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1.25rem;
+      }
     }
 
     /* ==========================================
@@ -204,7 +237,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 3rem;
+      padding: 2rem;
       transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
     }
 
@@ -220,22 +253,24 @@
       align-items: center;
       justify-content: center;
       pointer-events: none;
+      padding: 1.5rem;
+      text-align: center;
     }
 
     .preloader-wordmark {
       font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-size: clamp(2rem, 7.5vw, 4.5rem);
       font-weight: 900;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.25em;
       color: var(--text-bone);
       display: flex;
       align-items: center;
-      gap: 1.25rem;
+      gap: 0.85rem;
     }
 
     .live-dot-green {
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       background-color: var(--accent-acid);
       border-radius: 50%;
       box-shadow: 0 0 12px var(--accent-acid);
@@ -249,10 +284,10 @@
     }
 
     .preloader-track {
-      width: 280px;
+      width: 220px;
       height: 2px;
       background: var(--bg-graphite);
-      margin: 2rem 0;
+      margin: 1.75rem 0;
       position: relative;
       overflow: hidden;
     }
@@ -276,8 +311,8 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      padding: 1.75rem 0;
-      background: rgba(20, 22, 18, 0.75);
+      padding: 1.25rem 0;
+      background: rgba(20, 22, 18, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-dark);
@@ -285,8 +320,8 @@
     }
 
     .navbar.scrolled {
-      padding: 1.1rem 0;
-      background: rgba(9, 10, 8, 0.92);
+      padding: 0.9rem 0;
+      background: rgba(9, 10, 8, 0.94);
     }
 
     .nav-scroll-indicator {
@@ -313,14 +348,14 @@
 
     .nav-brand-title {
       font-family: var(--font-heading);
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 800;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
     }
 
     .nav-brand-sub {
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
       color: var(--text-stone);
       display: block;
       margin-top: -3px;
@@ -372,13 +407,15 @@
       background: none;
       border: 1px solid var(--border-dark);
       color: var(--text-bone);
-      width: 44px;
-      height: 44px;
-      font-size: 1.2rem;
+      width: 46px;
+      height: 46px;
+      font-size: 1.15rem;
       cursor: pointer;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Mobile Takeover Menu */
+    /* Mobile Takeover Menu Overlay */
     .mobile-takeover {
       position: fixed;
       inset: 0;
@@ -387,7 +424,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 3rem 2.5rem;
+      padding: max(2rem, env(safe-area-inset-top)) 2rem max(2.5rem, env(safe-area-inset-bottom)) 2rem;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.4s ease;
@@ -404,7 +441,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       font-family: var(--font-heading);
-      font-size: 25vw;
+      font-size: 32vw;
       font-weight: 900;
       color: rgba(255, 255, 255, 0.02);
       pointer-events: none;
@@ -415,20 +452,21 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
-      margin-top: 4rem;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
     .mobile-link {
       font-family: var(--font-editorial);
-      font-size: 3rem;
+      font-size: clamp(2.2rem, 7vw, 3rem);
       color: var(--text-bone);
       text-decoration: none;
       border-bottom: 1px solid var(--border-dark);
-      padding-bottom: 1rem;
+      padding-bottom: 0.75rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      min-height: 48px;
     }
 
     .mobile-link:hover {
@@ -439,9 +477,9 @@
        03. HERO — THE BODY IS THE RECEIPT
        ========================================== */
     .hero {
-      min-height: 100vh;
-      padding-top: 9.5rem;
-      padding-bottom: 6rem;
+      min-height: 100dvh;
+      padding-top: 8.5rem;
+      padding-bottom: 5rem;
       display: flex;
       align-items: center;
       position: relative;
@@ -457,33 +495,34 @@
 
     .hero-headline {
       font-family: var(--font-heading);
-      font-size: clamp(3.25rem, 6.8vw, 5.8rem);
+      font-size: clamp(2.75rem, 6.8vw, 5.8rem);
       font-weight: 900;
-      line-height: 0.95;
+      line-height: 0.96;
       letter-spacing: -0.02em;
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
+      word-break: break-word;
     }
 
     .hero-subcopy {
-      font-size: 1.15rem;
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
       color: var(--text-stone);
       font-weight: 300;
       max-width: 520px;
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
+      line-height: 1.65;
+      margin-bottom: 2.25rem;
     }
 
     .hero-actions {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: 1.25rem;
       flex-wrap: wrap;
     }
 
     .hero-trust-tag {
       font-family: var(--font-body);
-      font-size: 0.68rem;
+      font-size: clamp(0.62rem, 1.8vw, 0.68rem);
       letter-spacing: 0.22em;
       color: var(--text-muted);
       text-transform: uppercase;
@@ -497,15 +536,15 @@
     .hero-installation {
       position: relative;
       width: 100%;
-      height: 550px;
+      height: clamp(340px, 55vw, 550px);
       background-color: var(--bg-graphite);
       border: 1px solid var(--border-dark);
       overflow: hidden;
       user-select: none;
       box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+      touch-action: pan-y;
     }
 
-    /* Dark Vignette Overlay */
     .hero-installation::after {
       content: '';
       position: absolute;
@@ -521,7 +560,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       font-family: var(--font-heading);
-      font-size: 20rem;
+      font-size: clamp(10rem, 30vw, 20rem);
       font-weight: 900;
       color: rgba(255, 255, 255, 0.025);
       pointer-events: none;
@@ -563,8 +602,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       background: #090A08;
       border: 1px solid var(--accent-acid);
       color: var(--accent-acid);
@@ -573,38 +612,69 @@
       justify-content: center;
       font-size: 0.75rem;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      border-radius: 50%;
     }
 
     .gallery-tag {
       position: absolute;
-      bottom: 1.75rem;
-      padding: 0.4rem 0.95rem;
+      bottom: 1.25rem;
+      padding: 0.35rem 0.75rem;
       background: rgba(9, 10, 8, 0.88);
       backdrop-filter: blur(10px);
       border: 1px solid var(--border-dark);
       font-family: var(--font-body);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-size: clamp(0.58rem, 1.8vw, 0.65rem);
+      letter-spacing: 0.18em;
       color: var(--text-stone);
       z-index: 6;
     }
 
-    .gallery-tag-left { left: 1.75rem; }
-    .gallery-tag-right { right: 1.75rem; color: var(--accent-acid); border-color: var(--border-acid); }
+    .gallery-tag-left { left: 1rem; }
+    .gallery-tag-right { right: 1rem; color: var(--accent-acid); border-color: var(--border-acid); }
+
+    /* Touch Range Slider Control (Mobile) */
+    .mobile-touch-slider-container {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .hero-touch-range {
+      width: 100%;
+      height: 6px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--bg-graphite);
+      border: 1px solid var(--border-dark);
+      outline: none;
+      border-radius: 4px;
+    }
+
+    .hero-touch-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      background: var(--accent-acid);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 12px var(--accent-acid);
+    }
 
     .hero-meta-strip {
-      margin-top: 5.5rem;
-      padding-top: 2.25rem;
+      margin-top: 4.5rem;
+      padding-top: 2rem;
       border-top: 1px solid var(--border-dark);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 2rem;
+      gap: 1.75rem;
     }
 
     /* ==========================================
-       04. THE MANIFESTO — HORIZONTAL SCROLL
+       04. THE MANIFESTO — HORIZONTAL SCROLL / STACKED MOBILE
        ========================================== */
     .manifesto-section {
       position: relative;
@@ -638,7 +708,7 @@
 
     .manifesto-big-num {
       font-family: var(--font-editorial);
-      font-size: clamp(8rem, 18vw, 22rem);
+      font-size: clamp(6rem, 16vw, 22rem);
       font-weight: 400;
       color: rgba(242, 240, 232, 0.035);
       position: absolute;
@@ -650,25 +720,25 @@
 
     .manifesto-panel-title {
       font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 5.5vw, 5rem);
+      font-size: clamp(2.2rem, 5.5vw, 5rem);
       font-weight: 900;
       line-height: 1.05;
       text-transform: uppercase;
       max-width: 900px;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .manifesto-panel-desc {
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
       color: var(--text-stone);
       max-width: 520px;
       font-weight: 300;
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
     .manifesto-energy-line {
       position: absolute;
-      bottom: 4.5rem;
+      bottom: 4rem;
       left: 7rem;
       right: 7rem;
       height: 2px;
@@ -686,7 +756,7 @@
        05. THE CLUB — ARCHITECTURAL BENTO
        ========================================== */
     .club-section {
-      padding: 10rem 0;
+      padding: 8rem 0;
       position: relative;
     }
 
@@ -694,8 +764,8 @@
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       grid-auto-rows: 320px;
-      gap: 2rem;
-      margin-top: 5rem;
+      gap: 1.75rem;
+      margin-top: 4rem;
     }
 
     .bento-zone {
@@ -703,14 +773,13 @@
       border: 1px solid var(--border-dark);
       position: relative;
       overflow: hidden;
-      padding: 2.5rem;
+      padding: 2.25rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       transition: var(--transition-smooth);
     }
 
-    /* Cursor Follow Light Reflection */
     .bento-zone::before {
       content: '';
       position: absolute;
@@ -763,11 +832,11 @@
 
     .bento-access-tag {
       font-family: var(--font-body);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
       color: var(--accent-acid);
       border: 1px solid var(--border-acid);
-      padding: 0.25rem 0.65rem;
+      padding: 0.2rem 0.6rem;
       background: rgba(9, 10, 8, 0.8);
     }
 
@@ -778,22 +847,22 @@
 
     .bento-code {
       font-family: var(--font-body);
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
       color: var(--accent-acid);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
     }
 
     .bento-title {
       font-family: var(--font-heading);
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
       font-weight: 800;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .bento-desc {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--text-stone);
       font-weight: 300;
       max-width: 420px;
@@ -822,7 +891,7 @@
        06. COACH SECTION — TITAN VALE
        ========================================== */
     .coach-section {
-      padding: 10rem 0;
+      padding: 8rem 0;
       background-color: var(--bg-graphite);
       border-top: 1px solid var(--border-dark);
       position: relative;
@@ -843,7 +912,7 @@
     .coach-grid {
       display: grid;
       grid-template-columns: 1fr 1.1fr;
-      gap: 5.5rem;
+      gap: 4.5rem;
       align-items: center;
     }
 
@@ -851,41 +920,48 @@
       position: relative;
       border: 1px solid var(--border-dark);
       background-color: #090A08;
-      padding: 1.5rem;
+      padding: 1.25rem;
     }
 
     .coach-img {
       width: 100%;
-      height: 600px;
+      height: clamp(380px, 50vw, 600px);
       object-fit: cover;
       display: block;
       filter: grayscale(25%) contrast(115%);
+      animation: coachBreathe 6s infinite ease-in-out;
+    }
+
+    @keyframes coachBreathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
     }
 
     .athletic-tape-label {
       position: absolute;
-      top: 3rem;
-      left: -1.5rem;
+      top: 2rem;
+      left: -1rem;
       background-color: var(--accent-acid);
       color: #090A08;
       font-family: var(--font-heading);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.2em;
-      padding: 0.5rem 1.5rem;
+      letter-spacing: 0.18em;
+      padding: 0.4rem 1.25rem;
       transform: rotate(-3deg);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      z-index: 5;
     }
 
     .coach-quote-box {
       border-left: 2px solid var(--accent-acid);
-      padding-left: 2.25rem;
-      margin: 2.5rem 0;
+      padding-left: 1.75rem;
+      margin: 2rem 0;
     }
 
     .coach-quote-text {
       font-family: var(--font-editorial);
-      font-size: 1.9rem;
+      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
       font-style: italic;
       color: var(--text-bone);
       line-height: 1.4;
@@ -896,51 +972,59 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.25rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
     .field-note-item {
       font-family: var(--font-heading);
-      font-size: 0.85rem;
+      font-size: clamp(0.75rem, 2vw, 0.85rem);
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-stone);
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
 
     .field-note-item i {
       color: var(--accent-acid);
+      font-size: 0.8rem;
     }
 
     /* ==========================================
        07. PROOF OF WORK — TRANSFORMATION ARCHIVE
        ========================================== */
     .proof-section {
-      padding: 10rem 0;
+      padding: 8rem 0;
       position: relative;
     }
 
     .archive-filter-bar {
       display: flex;
-      gap: 1.25rem;
-      margin-top: 2rem;
-      margin-bottom: 3.5rem;
-      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.75rem;
+      margin-bottom: 3rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
+
+    .archive-filter-bar::-webkit-scrollbar { display: none; }
 
     .filter-btn {
       background: transparent;
       border: 1px solid var(--border-dark);
       color: var(--text-stone);
-      padding: 0.65rem 1.5rem;
+      padding: 0.6rem 1.25rem;
       font-family: var(--font-heading);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       cursor: pointer;
+      white-space: nowrap;
       transition: var(--transition-smooth);
+      min-height: 44px;
     }
 
     .filter-btn.active,
@@ -953,18 +1037,19 @@
     .proof-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      gap: 2.5rem;
     }
 
     .proof-card {
       background-color: var(--bg-charcoal);
       border: 1px solid var(--border-dark);
-      padding: 3rem;
+      padding: 2.5rem 2rem;
       position: relative;
       transition: var(--transition-smooth);
     }
 
-    .proof-card:hover {
+    .proof-card:hover,
+    .proof-card:active {
       border-color: var(--border-acid);
     }
 
@@ -973,19 +1058,19 @@
       justify-content: space-between;
       align-items: baseline;
       border-bottom: 1px solid var(--border-dark);
-      padding-bottom: 1.5rem;
-      margin-bottom: 2rem;
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.75rem;
     }
 
     .proof-name {
       font-family: var(--font-heading);
-      font-size: 1.75rem;
+      font-size: clamp(1.4rem, 3.5vw, 1.75rem);
       font-weight: 800;
     }
 
     .proof-stat {
       font-family: var(--font-heading);
-      font-size: 1.5rem;
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
       color: var(--accent-acid);
       font-weight: 700;
     }
@@ -994,7 +1079,7 @@
       width: 100%;
       height: 4px;
       background: var(--bg-graphite);
-      margin: 1.5rem 0;
+      margin: 1.25rem 0;
       position: relative;
     }
 
@@ -1003,24 +1088,22 @@
       background-color: var(--accent-acid);
     }
 
-    /* Hover Insight Drawer */
     .proof-hover-insight {
-      margin-top: 1.5rem;
-      padding-top: 1rem;
+      margin-top: 1.25rem;
+      padding-top: 0.85rem;
       border-top: 1px dashed var(--border-dark);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--accent-acid);
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      opacity: 0.8;
     }
 
     /* ==========================================
        08. MEMBERSHIP — YOU JOIN A STANDARD
        ========================================== */
     .membership-section {
-      padding: 10rem 0;
+      padding: 8rem 0;
       background-color: var(--bg-graphite);
       border-top: 1px solid var(--border-dark);
     }
@@ -1028,14 +1111,14 @@
     .membership-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
-      margin-top: 4rem;
+      gap: 2.25rem;
+      margin-top: 3.5rem;
     }
 
     .membership-panel {
       background-color: var(--bg-black);
       border: 1px solid var(--border-dark);
-      padding: 4rem 3rem;
+      padding: 3.5rem 2.25rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1057,59 +1140,60 @@
       background-color: var(--accent-acid);
       color: #090A08;
       font-family: var(--font-heading);
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       font-weight: 800;
-      letter-spacing: 0.2em;
-      padding: 0.4rem 1rem;
+      letter-spacing: 0.18em;
+      padding: 0.35rem 0.85rem;
     }
 
     .membership-price {
       font-family: var(--font-editorial);
-      font-size: 3.5rem;
+      font-size: clamp(2.75rem, 6vw, 3.5rem);
       color: var(--accent-acid);
       line-height: 1;
-      margin: 1.5rem 0;
+      margin: 1.25rem 0;
     }
 
     .charter-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
-      margin: 2.5rem 0;
+      gap: 1.1rem;
+      margin: 2rem 0;
     }
 
     .charter-item {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-stone);
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.75rem;
     }
 
     .charter-item i {
       color: var(--accent-acid);
+      font-size: 0.8rem;
     }
 
     /* ==========================================
        09. THE DATA — PERFORMANCE ASSESSMENT
        ========================================== */
     .data-section {
-      padding: 10rem 0;
+      padding: 8rem 0;
       position: relative;
     }
 
     .data-panel {
       background-color: var(--bg-black);
       border: 1px solid var(--border-dark);
-      padding: 5.5rem 5rem;
+      padding: 4.5rem 3.5rem;
       position: relative;
     }
 
     .chart-container {
       width: 100%;
-      height: 220px;
-      margin: 4rem 0;
+      height: 180px;
+      margin: 3rem 0;
     }
 
     .chart-svg {
@@ -1130,46 +1214,46 @@
     .data-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 3rem;
+      gap: 2.5rem;
       text-align: center;
       border-top: 1px solid var(--border-dark);
-      padding-top: 3.5rem;
+      padding-top: 3rem;
     }
 
     .data-val {
       font-family: var(--font-editorial);
-      font-size: 3.75rem;
+      font-size: clamp(2.5rem, 6vw, 3.75rem);
       color: var(--text-bone);
       line-height: 1;
     }
 
     .data-lbl {
       font-family: var(--font-body);
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-stone);
-      margin-top: 0.75rem;
+      margin-top: 0.65rem;
     }
 
     /* ==========================================
        10. TESTIMONIALS — THE SHIFT
        ========================================== */
     .testimonials-section {
-      padding: 10rem 0;
+      padding: 8rem 0;
       background-color: var(--bg-graphite);
       border-top: 1px solid var(--border-dark);
     }
 
     .testimonial-box {
-      max-width: 960px;
+      max-width: 900px;
       margin: 0 auto;
       text-align: center;
     }
 
     .giant-quote-mark {
       font-family: var(--font-editorial);
-      font-size: 8rem;
+      font-size: clamp(5rem, 12vw, 8rem);
       color: var(--accent-acid);
       line-height: 0.8;
       opacity: 0.3;
@@ -1177,35 +1261,35 @@
 
     .testimonial-text {
       font-family: var(--font-editorial);
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.6rem, 4vw, 2.75rem);
       font-style: italic;
       color: var(--text-bone);
       line-height: 1.35;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
 
     /* ==========================================
        11. FINAL CTA — MAKE THE DECISION
        ========================================== */
     .final-cta {
-      min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       text-align: center;
-      padding: 6rem 2.5rem;
+      padding: 5rem 1.5rem;
       overflow: hidden;
       background: radial-gradient(circle at 50% 50%, rgba(46, 58, 40, 0.25) 0%, #090A08 75%);
     }
 
     .final-title {
       font-family: var(--font-heading);
-      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-size: clamp(2.8rem, 8vw, 6.5rem);
       font-weight: 900;
-      line-height: 0.95;
+      line-height: 0.96;
       text-transform: uppercase;
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
     }
 
     /* ==========================================
@@ -1220,7 +1304,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2.5rem;
+      padding: 1.5rem;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.4s ease;
@@ -1234,17 +1318,19 @@
     .modal-window {
       background-color: var(--bg-graphite);
       border: 1px solid var(--border-acid);
-      padding: 4.5rem 3.5rem;
+      padding: 3.5rem 2.5rem;
       width: 100%;
-      max-width: 620px;
+      max-width: 600px;
       position: relative;
       box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9);
+      max-height: 90dvh;
+      overflow-y: auto;
     }
 
     .modal-close {
       position: absolute;
-      top: 2rem;
-      right: 2rem;
+      top: 1.5rem;
+      right: 1.5rem;
       background: none;
       border: 1px solid var(--border-dark);
       color: var(--text-stone);
@@ -1264,12 +1350,13 @@
 
     .input-field {
       width: 100%;
-      padding: 1.1rem 1.25rem;
+      min-height: 48px;
+      padding: 0.9rem 1.15rem;
       background: #090A08;
       border: 1px solid var(--border-dark);
       color: var(--text-bone);
       font-family: var(--font-body);
-      font-size: 1rem;
+      font-size: 16px; /* Prevents auto-zoom on iOS */
       outline: none;
       margin-top: 0.5rem;
       transition: var(--transition-smooth);
@@ -1283,31 +1370,74 @@
     /* FOOTER STATUS */
     .site-footer {
       border-top: 1px solid var(--border-dark);
-      padding: 4.5rem 0;
+      padding: 4rem 0;
       background-color: #060705;
       font-size: 0.85rem;
       color: var(--text-stone);
     }
 
-    /* RESPONSIVE MEDIA QUERIES */
+    /* ==========================================
+       DEDICATED MOBILE & TABLET RESPONSIVE BREAKPOINTS
+       ========================================== */
     @media (max-width: 1024px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 3.5rem; }
-      .manifesto-wrapper { width: 100%; height: auto; flex-direction: column; }
-      .manifesto-panel { width: 100%; height: auto; padding: 5rem 2rem; }
+      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      
+      /* MANIFESTO CONVERSION TO STACKED VERTICAL STORY PANELS ON MOBILE */
+      .manifesto-wrapper { 
+        width: 100% !important; 
+        height: auto !important; 
+        flex-direction: column !important;
+        transform: none !important;
+      }
+      .manifesto-panel { 
+        width: 100% !important; 
+        height: auto !important; 
+        min-height: 75vh;
+        padding: 5rem 2rem 4rem 2rem !important; 
+        border-right: none;
+        border-bottom: 1px solid var(--border-dark);
+      }
+      .manifesto-energy-line {
+        left: 2rem;
+        right: 2rem;
+        bottom: 2.5rem;
+      }
+
       .architectural-bento { grid-template-columns: 1fr; grid-auto-rows: auto; }
-      .zone-1, .zone-2, .zone-3, .zone-4, .zone-5 { grid-column: span 1; height: 320px; }
-      .coach-grid, .proof-grid, .membership-grid { grid-template-columns: 1fr; }
+      .zone-1, .zone-2, .zone-3, .zone-4, .zone-5 { grid-column: span 1; height: 340px; }
+      .coach-side-caption { display: none; }
+      .coach-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .proof-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .membership-grid { grid-template-columns: 1fr; gap: 2rem; }
       .membership-panel.standard { transform: none; }
-      .data-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
-      .data-panel { padding: 3.5rem 2rem; }
+      .data-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .data-panel { padding: 3rem 1.5rem; }
+      
       .nav-links { display: none; }
-      .mobile-toggle { display: block; }
+      .mobile-toggle { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+      .hero-actions .btn-acid,
+      .hero-actions .btn-secondary-line {
+        width: 100%;
+        justify-content: center;
+      }
+      .field-notes-list { grid-template-columns: 1fr; }
+      .data-grid { grid-template-columns: 1fr; gap: 1.75rem; text-align: left; }
+      .data-panel { padding: 2.5rem 1.25rem; }
+      .modal-window { padding: 2.75rem 1.5rem 2rem 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- FLOATING CUSTOM HOVER CURSOR INDICATOR -->
+  <!-- FLOATING CUSTOM HOVER CURSOR INDICATOR (DESKTOP) -->
   <div id="customCursor">EXPLORE</div>
 
   <!-- UNIFORM FILM GRAIN OVERLAY -->
@@ -1344,8 +1474,8 @@
         <li><a href="#membership" class="nav-link">MEMBERSHIP</a></li>
       </ul>
 
-      <div style="display: flex; align-items: center; gap: 1.5rem;">
-        <button class="btn-acid js-open-modal btn-magnetic" data-cursor="APPLY" style="padding: 0.85rem 1.75rem; font-size: 0.75rem;">
+      <div style="display: flex; align-items: center; gap: 1.25rem;">
+        <button class="btn-acid js-open-modal btn-magnetic" data-cursor="APPLY" style="padding: 0.75rem 1.5rem; font-size: 0.72rem; min-height: 44px;">
           APPLY TO TRAIN &rarr;
         </button>
         <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Toggle Menu">
@@ -1361,8 +1491,9 @@
     <div style="display: flex; justify-content: space-between; align-items: center; z-index: 2;">
       <a href="#" class="nav-brand">
         <span class="nav-brand-title">EVOLVE</span>
+        <span class="nav-brand-sub">PERFORMANCE HOUSE</span>
       </a>
-      <button class="modal-close" id="mobileCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+      <button class="modal-close" id="mobileCloseBtn" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
     </div>
 
     <ul class="mobile-links" style="z-index: 2;">
@@ -1374,6 +1505,7 @@
 
     <div style="z-index: 2;">
       <button class="btn-acid js-open-modal" style="width: 100%; justify-content: center;">APPLY TO TRAIN &rarr;</button>
+      <div class="meta-code" style="text-align: center; margin-top: 1rem;">CLUB STATUS: OPEN / 24 HOURS</div>
     </div>
   </div>
 
@@ -1382,7 +1514,7 @@
     <div class="container">
       <div class="hero-grid">
         <div>
-          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">
+          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.25rem;">
             [ CULTURE DEFINING PERFORMANCE HOUSE ]
           </div>
           <h1 class="hero-headline">
@@ -1415,10 +1547,20 @@
               <div class="spotlight-knob"><i class="fa-solid fa-arrows-left-right"></i></div>
             </div>
 
-            <div class="gallery-tag gallery-tag-left">PROTOCOL / DAY 01 BASELINE AUDIT</div>
-            <div class="gallery-tag gallery-tag-right">PROTOCOL / DAY 180 MASTERY COMPLETE</div>
+            <div class="gallery-tag gallery-tag-left">DAY 01 BASELINE</div>
+            <div class="gallery-tag gallery-tag-right">DAY 180 EVOLVED</div>
           </div>
-          <div style="text-align: right; margin-top: 0.75rem;" class="meta-code">
+
+          <!-- TOUCH RANGE SLIDER FOR MOBILE DRAGGING -->
+          <div class="mobile-touch-slider-container">
+            <div class="meta-code" style="display: flex; justify-content: space-between;">
+              <span>TOUCH SLIDER TO REVEAL</span>
+              <span id="sliderPctLabel" style="color: var(--accent-acid);">50%</span>
+            </div>
+            <input type="range" id="heroRangeSlider" min="0" max="100" value="50" class="hero-touch-range" aria-label="Transformation reveal slider">
+          </div>
+
+          <div style="text-align: right; margin-top: 0.5rem;" class="meta-code">
             “THE BODY IS THE RECEIPT.”
           </div>
         </div>
@@ -1426,7 +1568,7 @@
 
       <div class="hero-meta-strip">
         <div class="meta-code">&darr; SCROLL TO ENTER THE HOUSE</div>
-        <div style="display: flex; gap: 3rem;">
+        <div style="display: flex; gap: 2.5rem; flex-wrap: wrap;">
           <div>
             <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--accent-acid);">1,452</span>
             <span class="meta-code" style="display: block;">ACTIVE MEMBERS</span>
@@ -1444,13 +1586,13 @@
     </div>
   </section>
 
-  <!-- 04. THE MANIFESTO — HORIZONTAL SCROLL EXPERIENCE -->
+  <!-- 04. THE MANIFESTO — HORIZONTAL SCROLL / STACKED MOBILE -->
   <section class="manifesto-section" id="method">
     <div class="manifesto-wrapper" id="manifestoWrapper">
       <!-- PANEL 01 -->
       <div class="manifesto-panel">
         <div class="manifesto-big-num">01</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ COORDINATE 01 // METABOLIC BASELINE 01.42.08 ]</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.25rem;">[ 01 / 04 // METABOLIC BASELINE 01.42.08 ]</div>
         <h2 class="manifesto-panel-title">YOU CAN’T OUTSOURCE <span class="text-acid">DISCIPLINE.</span></h2>
         <p class="manifesto-panel-desc">
           There are no secret formulas. No supplements that replace effort. We measure baseline metrics and force input from day one.
@@ -1461,7 +1603,7 @@
       <!-- PANEL 02 -->
       <div class="manifesto-panel">
         <div class="manifesto-big-num">02</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ COORDINATE 02 // FORCE OUTPUT 99.4% NEURAL SPEED ]</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.25rem;">[ 02 / 04 // FORCE OUTPUT 99.4% NEURAL SPEED ]</div>
         <h2 class="manifesto-panel-title">TRAINING IS A <span class="text-acid">LANGUAGE.</span></h2>
         <p class="manifesto-panel-desc">
           Movement patterns reveal stress, compensation, and mechanical output. We refine your physical vocabulary for absolute strength.
@@ -1472,7 +1614,7 @@
       <!-- PANEL 03 -->
       <div class="manifesto-panel manifesto-panel-3">
         <div class="manifesto-big-num">03</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ COORDINATE 03 // CELLULAR RESTORATION INFRARED + THERMAL ]</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.25rem;">[ 03 / 04 // CELLULAR RESTORATION THERMAL ]</div>
         <h2 class="manifesto-panel-title">RECOVERY IS PART OF THE <span class="text-acid">WORK.</span></h2>
         <p class="manifesto-panel-desc">
           High neural tension requires deep cellular restoration. Infrared saunas, hyperbaric oxygen, and custom thermal plunge protocols.
@@ -1483,7 +1625,7 @@
       <!-- PANEL 04 -->
       <div class="manifesto-panel">
         <div class="manifesto-big-num">04</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ COORDINATE 04 // PERMANENT STANDARD IDENTITY INTEGRATED ]</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.25rem;">[ 04 / 04 // PERMANENT STANDARD IDENTITY ]</div>
         <h2 class="manifesto-panel-title">CONSISTENCY BECOMES <span class="text-acid">IDENTITY.</span></h2>
         <p class="manifesto-panel-desc">
           What you do repeatedly in private becomes your undeniable presence in public. Standard established.
@@ -1496,8 +1638,8 @@
   <!-- 05. THE CLUB — ARCHITECTURAL BENTO -->
   <section class="club-section" id="club">
     <div class="container">
-      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ CONVERTED CONCRETE GALLERY ]</div>
-      <h2 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; text-transform: uppercase;">
+      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.75rem;">[ CONVERTED CONCRETE GALLERY ]</div>
+      <h2 style="font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900; text-transform: uppercase;">
         THE SANCTUARY OF <span class="text-acid">PERFORMANCE.</span>
       </h2>
 
@@ -1584,8 +1726,8 @@
         </div>
 
         <div>
-          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ EXECUTIVE PERFORMANCE DIRECTOR ]</div>
-          <h2 style="font-family: var(--font-heading); font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase;">
+          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.75rem;">[ EXECUTIVE PERFORMANCE DIRECTOR ]</div>
+          <h2 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase;">
             TITAN <span class="text-acid">VALE.</span>
           </h2>
 
@@ -1593,7 +1735,7 @@
             <p class="coach-quote-text">“Motivation is temporary. Standards are architecture.”</p>
           </div>
 
-          <div class="meta-code" style="margin-bottom: 1.5rem;">FIELD NOTES / CORE PROTOCOLS</div>
+          <div class="meta-code" style="margin-bottom: 1.25rem;">FIELD NOTES / CORE PROTOCOLS</div>
           <ul class="field-notes-list">
             <li class="field-note-item"><i class="fa-solid fa-angle-right"></i> STRENGTH DEVELOPMENT</li>
             <li class="field-note-item"><i class="fa-solid fa-angle-right"></i> BODY RECOMPOSITION</li>
@@ -1601,7 +1743,7 @@
             <li class="field-note-item"><i class="fa-solid fa-angle-right"></i> HABIT SYSTEMS</li>
           </ul>
 
-          <button class="btn-acid js-open-modal btn-magnetic" data-cursor="BOOK">BOOK A PRIVATE CONSULTATION</button>
+          <button class="btn-acid js-open-modal btn-magnetic" data-cursor="BOOK" style="width: 100%; justify-content: center;">BOOK A PRIVATE CONSULTATION</button>
         </div>
       </div>
     </div>
@@ -1610,8 +1752,8 @@
   <!-- 07. PROOF OF WORK — TRANSFORMATION ARCHIVE -->
   <section class="proof-section">
     <div class="container">
-      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ CASE STUDY ARCHIVE ]</div>
-      <h2 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase;">
+      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.75rem;">[ CASE STUDY ARCHIVE ]</div>
+      <h2 style="font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase;">
         PROOF OF <span class="text-acid">WORK.</span>
       </h2>
 
@@ -1690,13 +1832,13 @@
   <!-- 08. MEMBERSHIP — YOU JOIN A STANDARD -->
   <section class="membership-section" id="membership">
     <div class="container">
-      <div style="text-align: center; max-width: 800px; margin: 0 auto 4rem auto;">
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ ADMISSIONS CHARTER ]</div>
-        <h2 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase; line-height: 1.05;">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 3rem auto;">
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.75rem;">[ ADMISSIONS CHARTER ]</div>
+        <h2 style="font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase; line-height: 1.05;">
           YOU DON’T JOIN A GYM. <br>
           YOU JOIN A <span class="text-acid">STANDARD.</span>
         </h2>
-        <div class="meta-code" style="margin-top: 1rem; color: var(--text-stone);">
+        <div class="meta-code" style="margin-top: 0.75rem; color: var(--text-stone);">
           “Membership applications are reviewed individually.”
         </div>
       </div>
@@ -1706,9 +1848,9 @@
         <div class="membership-panel">
           <div>
             <div class="meta-code">TIER 01</div>
-            <h3 style="font-family: var(--font-heading); font-size: 2.25rem; font-weight: 800;">FOUNDATION</h3>
-            <p style="color: var(--text-stone); font-size: 0.9rem;">For self-led consistency and high performance baseline.</p>
-            <div class="membership-price">$299 <span style="font-size: 0.9rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
+            <h3 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800;">FOUNDATION</h3>
+            <p style="color: var(--text-stone); font-size: 0.88rem;">For self-led consistency and high performance baseline.</p>
+            <div class="membership-price">$299 <span style="font-size: 0.85rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
             <ul class="charter-list">
               <li class="charter-item"><i class="fa-solid fa-check"></i> 24/7 Full Club Access</li>
               <li class="charter-item"><i class="fa-solid fa-check"></i> Biomechanical Audit</li>
@@ -1723,9 +1865,9 @@
           <div class="panel-badge">THE STANDARD</div>
           <div>
             <div class="meta-code" style="color: var(--accent-acid);">TIER 02</div>
-            <h3 style="font-family: var(--font-heading); font-size: 2.25rem; font-weight: 800;">EVOLVE</h3>
-            <p style="color: var(--text-stone); font-size: 0.9rem;">For people ready to make permanent, measurable change.</p>
-            <div class="membership-price">$499 <span style="font-size: 0.9rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
+            <h3 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800;">EVOLVE</h3>
+            <p style="color: var(--text-stone); font-size: 0.88rem;">For people ready to make permanent, measurable change.</p>
+            <div class="membership-price">$499 <span style="font-size: 0.85rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
             <ul class="charter-list">
               <li class="charter-item"><i class="fa-solid fa-check"></i> 24/7 Unlimited Access</li>
               <li class="charter-item"><i class="fa-solid fa-check"></i> 4 Monthly 1-on-1 Sessions</li>
@@ -1740,9 +1882,9 @@
         <div class="membership-panel">
           <div>
             <div class="meta-code">TIER 03</div>
-            <h3 style="font-family: var(--font-heading); font-size: 2.25rem; font-weight: 800;">PRIVATE</h3>
-            <p style="color: var(--text-stone); font-size: 0.9rem;">Bespoke dedicated transformation for executive leaders.</p>
-            <div class="membership-price">$899 <span style="font-size: 0.9rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
+            <h3 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800;">PRIVATE</h3>
+            <p style="color: var(--text-stone); font-size: 0.88rem;">Bespoke dedicated transformation for executive leaders.</p>
+            <div class="membership-price">$899 <span style="font-size: 0.85rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
             <ul class="charter-list">
               <li class="charter-item"><i class="fa-solid fa-check"></i> Head Coach Titan Direct Access</li>
               <li class="charter-item"><i class="fa-solid fa-check"></i> Unlimited 1-on-1 Coaching</li>
@@ -1753,7 +1895,7 @@
         </div>
       </div>
 
-      <div style="text-align: center; margin-top: 3.5rem;" class="meta-code">
+      <div style="text-align: center; margin-top: 3rem;" class="meta-code">
         * LIMITED ADMISSIONS ACCEPTED EACH MONTH TO PRESERVE SERENE SPACE.
       </div>
     </div>
@@ -1764,7 +1906,7 @@
     <div class="container">
       <div class="data-panel">
         <div class="meta-code" style="color: var(--accent-acid);">[ BIOMETRIC ANALYTICS ]</div>
-        <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; text-transform: uppercase; margin-top: 0.5rem;">
+        <h2 style="font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 3.5rem); font-weight: 900; text-transform: uppercase; margin-top: 0.5rem;">
           WHAT GETS MEASURED <span class="text-acid">GETS RESPECTED.</span>
         </h2>
 
@@ -1806,10 +1948,10 @@
         <p class="testimonial-text" id="testiText">
           “I stopped negotiating with myself. That changed more than my body.”
         </p>
-        <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 800; color: var(--accent-acid);" id="testiAuthor">
+        <div style="font-family: var(--font-heading); font-size: clamp(0.95rem, 2.5vw, 1.1rem); font-weight: 800; color: var(--accent-acid);" id="testiAuthor">
           RIYA S. / STRENGTH PROTOCOL / 16 WEEKS
         </div>
-        <div class="meta-code" style="margin-top: 2rem;" id="testiCounter">01 / 03</div>
+        <div class="meta-code" style="margin-top: 1.75rem;" id="testiCounter">01 / 03</div>
       </div>
     </div>
   </section>
@@ -1817,16 +1959,16 @@
   <!-- 11. FINAL CTA — MAKE THE DECISION -->
   <section class="final-cta">
     <div class="container">
-      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ MAKE THE DECISION ]</div>
+      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.25rem;">[ MAKE THE DECISION ]</div>
       <h2 class="final-title">
         THE NEXT VERSION OF YOU <br>
         IS NOT A <span class="text-acid">THEORY.</span>
       </h2>
-      <p style="font-size: 1.25rem; color: var(--text-stone); margin-bottom: 3.5rem;">
+      <p style="font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--text-stone); margin-bottom: 2.75rem;">
         It is a decision repeated daily.
       </p>
-      <button class="btn-acid js-open-modal btn-magnetic" data-cursor="APPLY" style="padding: 1.35rem 3.5rem; font-size: 1rem;">APPLY TO TRAIN</button>
-      <div class="meta-code" style="margin-top: 2rem;">Private consultation. No pressure. Just an honest plan.</div>
+      <button class="btn-acid js-open-modal btn-magnetic" data-cursor="APPLY" style="padding: 1.15rem 3rem; font-size: 0.95rem;">APPLY TO TRAIN</button>
+      <div class="meta-code" style="margin-top: 1.75rem;">Private consultation. No pressure. Just an honest plan.</div>
     </div>
   </section>
 
@@ -1836,31 +1978,31 @@
       <button class="modal-close" id="modalCloseBtn" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
 
       <div id="modalFormBody">
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.5rem;">[ PRIVATE ADMISSIONS ]</div>
-        <h2 style="font-family: var(--font-heading); font-size: 2.25rem; font-weight: 900; text-transform: uppercase;" id="modalTitle">
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.4rem;">[ PRIVATE ADMISSIONS ]</div>
+        <h2 style="font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.25rem); font-weight: 900; text-transform: uppercase;" id="modalTitle">
           START WITH THE TRUTH.
         </h2>
-        <p style="color: var(--text-stone); font-size: 0.95rem; margin-bottom: 2.5rem;">
+        <p style="color: var(--text-stone); font-size: 0.9rem; margin-bottom: 2rem;">
           Tell us where you are. We’ll help map the work ahead.
         </p>
 
         <form id="consultForm">
-          <div style="margin-bottom: 1.5rem;">
+          <div style="margin-bottom: 1.25rem;">
             <label class="meta-code" for="fullName">Full Name</label>
             <input type="text" id="fullName" class="input-field" required placeholder="e.g. Alexander Wright">
           </div>
 
-          <div style="margin-bottom: 1.5rem;">
+          <div style="margin-bottom: 1.25rem;">
             <label class="meta-code" for="emailAddr">Email Address</label>
             <input type="email" id="emailAddr" class="input-field" required placeholder="alexander@example.com">
           </div>
 
-          <div style="margin-bottom: 1.5rem;">
+          <div style="margin-bottom: 1.25rem;">
             <label class="meta-code" for="primaryGoal">Primary Goal</label>
             <input type="text" id="primaryGoal" class="input-field" required placeholder="e.g. Recomposition & Strength">
           </div>
 
-          <div style="margin-bottom: 2rem;">
+          <div style="margin-bottom: 1.75rem;">
             <label class="meta-code" for="trainingExp">Current Training Experience</label>
             <input type="text" id="trainingExp" class="input-field" required placeholder="e.g. 5 Years inconsistent / Advanced">
           </div>
@@ -1870,23 +2012,23 @@
       </div>
 
       <!-- SUCCESS STATE -->
-      <div id="modalSuccessBody" style="display: none; text-align: center; padding: 2rem 0;">
-        <i class="fa-solid fa-check" style="font-size: 3rem; color: var(--accent-acid); margin-bottom: 1.5rem;"></i>
-        <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; text-transform: uppercase;">APPLICATION RECEIVED.</h2>
-        <p style="color: var(--text-stone); margin-top: 1rem;">We’ll be in touch within 24 hours.</p>
-        <button class="btn-secondary-line" id="successCloseBtn" style="margin-top: 2rem;">CLOSE</button>
+      <div id="modalSuccessBody" style="display: none; text-align: center; padding: 1.5rem 0;">
+        <i class="fa-solid fa-check" style="font-size: 2.75rem; color: var(--accent-acid); margin-bottom: 1.25rem;"></i>
+        <h2 style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 900; text-transform: uppercase;">APPLICATION RECEIVED.</h2>
+        <p style="color: var(--text-stone); margin-top: 0.75rem;">We’ll be in touch within 24 hours.</p>
+        <button class="btn-secondary-line" id="successCloseBtn" style="margin-top: 1.75rem; width: 100%; justify-content: center;">CLOSE</button>
       </div>
     </div>
   </div>
 
   <!-- SITE FOOTER -->
   <footer class="site-footer">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
       <div>
         <div style="font-family: var(--font-heading); font-weight: 900; color: var(--text-bone); letter-spacing: 0.15em;">EVOLVE PERFORMANCE HOUSE</div>
-        <div>DISCIPLINE, ELEVATED. &copy; 2026 EVOLVE FITNESS. ALL RIGHTS RESERVED.</div>
+        <div style="font-size: 0.78rem;">DISCIPLINE, ELEVATED. &copy; 2026 EVOLVE FITNESS. ALL RIGHTS RESERVED.</div>
       </div>
-      <div style="display: flex; align-items: center; gap: 2rem;">
+      <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
         <div class="meta-code"><span class="live-dot-green" style="width: 6px; height: 6px;"></span> CLUB STATUS: OPEN / 24 HOURS</div>
         <div class="meta-code">450 PARK AVENUE, NEW YORK</div>
       </div>
@@ -1894,38 +2036,41 @@
   </footer>
 
   <!-- ==========================================
-     JAVASCRIPT LOGIC & REFINED GSAP MOTION
+     JAVASCRIPT LOGIC & PERFORMANT MOBILE MOTION
      ========================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. FLOATING CUSTOM HOVER CURSOR INDICATOR
+      // 1. FLOATING CUSTOM HOVER CURSOR INDICATOR (DESKTOP FINE POINTERS ONLY)
       const cursor = document.getElementById('customCursor');
       const cursorElements = document.querySelectorAll('[data-cursor]');
 
-      window.addEventListener('mousemove', (e) => {
-        if (cursor) {
-          cursor.style.left = e.clientX + 'px';
-          cursor.style.top = e.clientY + 'px';
-        }
-      });
-
-      cursorElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-          const label = el.getAttribute('data-cursor');
-          if (cursor && label) {
-            cursor.innerText = label;
-            cursor.classList.add('visible');
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        window.addEventListener('mousemove', (e) => {
+          if (cursor) {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
           }
         });
-        el.addEventListener('mouseleave', () => {
-          if (cursor) cursor.classList.remove('visible');
-        });
-      });
 
-      // 2. MAGNETIC BUTTON EFFECT
+        cursorElements.forEach(el => {
+          el.addEventListener('mouseenter', () => {
+            const label = el.getAttribute('data-cursor');
+            if (cursor && label) {
+              cursor.innerText = label;
+              cursor.classList.add('visible');
+            }
+          });
+          el.addEventListener('mouseleave', () => {
+            if (cursor) cursor.classList.remove('visible');
+          });
+        });
+      }
+
+      // 2. MAGNETIC / TOUCH BUTTON PRESS FEEDBACK
       const magneticBtns = document.querySelectorAll('.btn-magnetic');
       magneticBtns.forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
+          if (!window.matchMedia('(hover: hover)').matches) return;
           const rect = btn.getBoundingClientRect();
           const x = e.clientX - rect.left - rect.width / 2;
           const y = e.clientY - rect.top - rect.height / 2;
@@ -1961,7 +2106,7 @@
       const navbar = document.getElementById('navbar');
       const scrollIndicator = document.getElementById('scrollIndicator');
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 40) {
+        if (window.scrollY > 30) {
           navbar.classList.add('scrolled');
         } else {
           navbar.classList.remove('scrolled');
@@ -1970,9 +2115,9 @@
         const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
         const pct = (window.scrollY / totalHeight) * 100;
         if (scrollIndicator) scrollIndicator.style.width = pct + '%';
-      });
+      }, { passive: true });
 
-      // MOBILE MENU
+      // MOBILE MENU TAKEOVER
       const mobileToggleBtn = document.getElementById('mobileToggleBtn');
       const mobileCloseBtn = document.getElementById('mobileCloseBtn');
       const mobileTakeover = document.getElementById('mobileTakeover');
@@ -1986,24 +2131,41 @@
       }
       mobLinks.forEach(l => l.addEventListener('click', () => mobileTakeover.classList.remove('active')));
 
-      // 5. HERO SPOTLIGHT REVEAL SLIDER
+      // 5. HERO SPOTLIGHT REVEAL SLIDER + MOBILE TOUCH RANGE INPUT
       const heroInst = document.getElementById('heroInstallation');
       const imgAfter = document.getElementById('imgAfter');
       const divider = document.getElementById('spotlightDivider');
+      const heroRangeSlider = document.getElementById('heroRangeSlider');
+      const sliderPctLabel = document.getElementById('sliderPctLabel');
+
+      const updateSpotlightPercent = (pct) => {
+        if (pct < 0) pct = 0;
+        if (pct > 100) pct = 100;
+
+        if (imgAfter) imgAfter.style.clipPath = `polygon(0 0, ${pct}% 0, ${pct}% 100%, 0 100%)`;
+        if (divider) divider.style.left = `${pct}%`;
+        if (heroRangeSlider) heroRangeSlider.value = pct;
+        if (sliderPctLabel) sliderPctLabel.innerText = Math.round(pct) + '%';
+      };
 
       if (heroInst && imgAfter && divider) {
-        const updateSpotlight = (x) => {
+        heroInst.addEventListener('mousemove', (e) => {
           const rect = heroInst.getBoundingClientRect();
-          let pct = ((x - rect.left) / rect.width) * 100;
-          if (pct < 0) pct = 0;
-          if (pct > 100) pct = 100;
+          const pct = ((e.clientX - rect.left) / rect.width) * 100;
+          updateSpotlightPercent(pct);
+        });
 
-          imgAfter.style.clipPath = `polygon(0 0, ${pct}% 0, ${pct}% 100%, 0 100%)`;
-          divider.style.left = `${pct}%`;
-        };
+        heroInst.addEventListener('touchmove', (e) => {
+          const rect = heroInst.getBoundingClientRect();
+          const pct = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
+          updateSpotlightPercent(pct);
+        }, { passive: true });
+      }
 
-        heroInst.addEventListener('mousemove', (e) => updateSpotlight(e.clientX));
-        heroInst.addEventListener('touchmove', (e) => updateSpotlight(e.touches[0].clientX));
+      if (heroRangeSlider) {
+        heroRangeSlider.addEventListener('input', (e) => {
+          updateSpotlightPercent(e.target.value);
+        });
       }
 
       // 6. BENTO ZONE CURSOR REFLECTION LIGHT
@@ -2032,7 +2194,7 @@
             const cardCat = card.getAttribute('data-category');
             if (category === 'all' || cardCat === category) {
               card.style.display = 'block';
-              gsap.fromTo(card, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4 });
+              gsap.fromTo(card, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35 });
             } else {
               card.style.display = 'none';
             }
@@ -2122,11 +2284,10 @@
         });
       }
 
-      // 10. REFINED GSAP ANIMATIONS
+      // 10. REFINED GSAP MOTION
       function initGSAP() {
         if (typeof gsap === 'undefined') return;
 
-        // Respect prefers-reduced-motion
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           return;
         }
@@ -2138,14 +2299,14 @@
         if (chartLine) {
           ScrollTrigger.create({
             trigger: '.data-section',
-            start: 'top 75%',
+            start: 'top 80%',
             onEnter: () => {
               chartLine.style.strokeDashoffset = '0';
             }
           });
         }
 
-        // Horizontal Manifesto Scroll (Desktop Only)
+        // Horizontal Manifesto Scroll (Desktop Only, > 1024px)
         if (window.innerWidth > 1024) {
           const panels = gsap.utils.toArray('.manifesto-panel');
           gsap.to(panels, {
