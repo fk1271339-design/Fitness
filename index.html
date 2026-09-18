@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EVOLVE FITNESS | Classic Luxury Athletic Club</title>
-  <meta name="description" content="An exclusive members-only private performance club. High-precision coaching, sanctuary recovery, and uncompromised athletic standards.">
+  <title>EVOLVE FITNESS | Flagship Performance House</title>
+  <meta name="description" content="A culture-defining private performance house for people who treat physical transformation as a serious craft. No performance theatre. Only work.">
 
-  <!-- Google Fonts: Cormorant Garamond, Inter, Outfit -->
+  <!-- Google Fonts: Bodoni Moda, Outfit, DM Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=DM+Sans:wght@300;400;500;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -20,36 +20,30 @@
 
   <style>
     /* ==========================================
-       DESIGN SYSTEM & CLASSIC LUXURY THEME
+       ART DIRECTION: THE HOUSE OF WORK
        ========================================== */
     :root {
-      --bg-dark: #0B0C0B;
-      --bg-secondary: #121611;
-      --bg-card: rgba(18, 22, 17, 0.75);
-      --bg-card-hover: rgba(26, 32, 25, 0.9);
-      --bg-glass: rgba(11, 12, 11, 0.85);
+      --bg-black: #090A08;
+      --bg-graphite: #161814;
+      --bg-charcoal: #20231D;
+      --bg-moss: #33402D;
 
-      --accent-gold: #C7A76C;
-      --accent-gold-light: #E2CF9F;
-      --accent-gold-dark: #8F723E;
-      --accent-gold-glow: rgba(199, 167, 108, 0.18);
-      --accent-green: #2B4A34;
-      --accent-green-light: #3E6347;
+      --text-bone: #F2F0E8;
+      --text-stone: #9A9D91;
+      --text-muted: #6B6D65;
 
-      --text-ivory: #F4F0E8;
-      --text-muted: #A5A39B;
-      --text-subtle: #686660;
+      --accent-acid: #B5FF3D;
+      --accent-acid-glow: rgba(181, 255, 61, 0.25);
+      --accent-warm: #E5D8B8;
 
-      --border-gold: rgba(199, 167, 108, 0.22);
-      --border-gold-solid: #C7A76C;
-      --border-subtle: rgba(244, 240, 232, 0.08);
+      --border-dark: rgba(154, 157, 145, 0.15);
+      --border-acid: rgba(181, 255, 61, 0.4);
 
-      --font-serif: 'Cormorant Garamond', Georgia, serif;
-      --font-sans-heading: 'Outfit', sans-serif;
-      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-editorial: 'Bodoni Moda', Georgia, serif;
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
 
       --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      --transition-fast: all 0.25s ease-out;
     }
 
     *, *::before, *::after {
@@ -60,316 +54,247 @@
 
     html {
       scroll-behavior: smooth;
-      background-color: var(--bg-dark);
-      color: var(--text-ivory);
+      background-color: var(--bg-black);
+      color: var(--text-bone);
       font-family: var(--font-body);
       overflow-x: hidden;
     }
 
     body {
-      background-color: var(--bg-dark);
-      color: var(--text-ivory);
-      line-height: 1.6;
+      background-color: var(--bg-black);
+      color: var(--text-bone);
+      line-height: 1.5;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* Subtle Paper Grain & Ambient Noise Overlay */
-    .grain-overlay {
+    /* Film Grain Texture */
+    .film-grain {
       position: fixed;
-      top: 0;
-      left: 0;
+      inset: 0;
       width: 100vw;
       height: 100vh;
       pointer-events: none;
-      z-index: 999;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      z-index: 9999;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* Dark Marble Ambient Gradient */
-    .bg-marble-glow {
-      background: radial-gradient(circle at 50% 20%, rgba(43, 74, 52, 0.12) 0%, transparent 60%),
-                  radial-gradient(circle at 80% 80%, rgba(199, 167, 108, 0.05) 0%, transparent 50%),
-                  #0B0C0B;
-    }
+    /* Typography Classes */
+    .font-editorial { font-family: var(--font-editorial); }
+    .font-heading { font-family: var(--font-heading); }
+    .text-acid { color: var(--accent-acid); }
+    .text-stone { color: var(--text-stone); }
 
-    /* TYPOGRAPHY UTILITIES */
-    .font-serif { font-family: var(--font-serif); }
-    .font-sans-heading { font-family: var(--font-sans-heading); }
-    .text-gold { color: var(--accent-gold); }
-    .text-ivory { color: var(--text-ivory); }
-    .text-muted { color: var(--text-muted); }
-
-    .gold-accent-text {
-      color: var(--accent-gold);
-      font-style: italic;
-      font-family: var(--font-serif);
-    }
-
-    .section-eyebrow {
-      font-family: var(--font-sans-heading);
-      font-size: 0.75rem;
+    .meta-code {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--accent-gold);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-    }
-
-    .section-eyebrow::before {
-      content: '';
-      display: inline-block;
-      width: 1.5rem;
-      height: 1px;
-      background: var(--accent-gold);
-    }
-
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.25rem, 5vw, 4rem);
-      font-weight: 500;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      color: var(--text-ivory);
-      margin-bottom: 1.5rem;
-    }
-
-    .section-desc {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      font-weight: 300;
-      line-height: 1.7;
+      color: var(--text-stone);
     }
 
     /* BUTTONS */
-    .btn-primary {
+    .btn-acid {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 0.75rem;
       padding: 1.1rem 2.25rem;
-      background-color: var(--accent-gold);
-      color: #0B0C0B;
-      font-family: var(--font-sans-heading);
+      background-color: #090A08;
+      color: var(--text-bone);
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--border-dark);
+      border-radius: 0;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .btn-acid:hover {
+      background-color: var(--accent-acid);
+      color: #090A08;
+      border-color: var(--accent-acid);
+      box-shadow: 0 0 25px var(--accent-acid-glow);
+    }
+
+    .btn-secondary-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.1rem 2.25rem;
+      background: transparent;
+      color: var(--text-bone);
+      font-family: var(--font-heading);
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       text-decoration: none;
-      border: 1px solid var(--accent-gold);
-      border-radius: 2px;
-      cursor: pointer;
-      transition: var(--transition-smooth);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .btn-primary::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-      transition: 0.6s ease;
-      z-index: -1;
-    }
-
-    .btn-primary:hover::after {
-      left: 100%;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--accent-gold-light);
-      border-color: var(--accent-gold-light);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(199, 167, 108, 0.25);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      padding: 1.1rem 2.25rem;
-      background-color: transparent;
-      color: var(--text-ivory);
-      font-family: var(--font-sans-heading);
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 1px solid var(--border-gold);
-      border-radius: 2px;
+      border: 1px solid var(--border-dark);
       cursor: pointer;
       transition: var(--transition-smooth);
     }
 
-    .btn-secondary:hover {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-      background-color: rgba(199, 167, 108, 0.05);
-      transform: translateY(-2px);
+    .btn-secondary-line:hover {
+      border-color: var(--text-bone);
+      color: var(--accent-acid);
     }
 
-    /* CONTAINER & GRID LAYOUTS */
     .container {
       width: 100%;
-      max-width: 1320px;
+      max-width: 1380px;
       margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .gold-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
-      margin: 0 auto;
+      padding: 0 2.5rem;
     }
 
     /* ==========================================
-       1. PRELOADER
+       01. PRELOADER — ENTER THE HOUSE
        ========================================== */
     #preloader {
       position: fixed;
       inset: 0;
-      background-color: #0B0C0B;
       z-index: 10000;
+      display: flex;
+      pointer-events: all;
+    }
+
+    .preloader-door {
+      width: 50%;
+      height: 100%;
+      background-color: #090A08;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem;
+      transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    .preloader-door-left { border-right: 1px solid var(--border-dark); align-items: flex-end; text-align: right; }
+    .preloader-door-right { align-items: flex-start; text-align: left; }
+
+    .preloader-content {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
-      transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+      pointer-events: none;
     }
 
-    .preloader-brand {
+    .preloader-wordmark {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      letter-spacing: 0.3em;
+      color: var(--text-bone);
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 2.5rem;
+      gap: 1.25rem;
     }
 
-    .preloader-brand-dot {
+    .live-dot-green {
       width: 10px;
       height: 10px;
+      background-color: var(--accent-acid);
       border-radius: 50%;
-      background-color: var(--accent-gold);
-      box-shadow: 0 0 12px var(--accent-gold);
+      box-shadow: 0 0 12px var(--accent-acid);
+      display: inline-block;
     }
 
-    .preloader-title {
-      font-family: var(--font-serif);
-      font-size: clamp(1.8rem, 4vw, 2.75rem);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-ivory);
-      font-weight: 600;
-    }
-
-    .preloader-line-track {
-      width: 240px;
-      height: 1px;
-      background-color: rgba(199, 167, 108, 0.2);
+    .preloader-track {
+      width: 280px;
+      height: 2px;
+      background: var(--bg-graphite);
+      margin: 2rem 0;
       position: relative;
       overflow: hidden;
-      margin-bottom: 1.75rem;
     }
 
-    .preloader-line-fill {
+    .preloader-fill {
       position: absolute;
       top: 0;
       left: 0;
       height: 100%;
       width: 0%;
-      background-color: var(--accent-gold);
+      background-color: var(--accent-acid);
       transition: width 0.05s linear;
     }
 
-    .preloader-text {
-      font-family: var(--font-sans-heading);
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      animation: pulseText 2s infinite ease-in-out;
-    }
-
-    @keyframes pulseText {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 1; }
-    }
-
     /* ==========================================
-       2. NAVIGATION
+       02. NAVIGATION — QUIET AUTHORITY
        ========================================== */
-    .navbar-header {
+    .navbar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 1000;
-      padding: 1.5rem 0;
+      padding: 1.75rem 0;
+      background: rgba(22, 24, 20, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
       transition: var(--transition-smooth);
     }
 
-    .navbar-header.scrolled {
-      padding: 1rem 0;
-      background: rgba(11, 12, 11, 0.9);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-gold);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Top scroll progress indicator line */
+    .nav-scroll-indicator {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background-color: var(--accent-acid);
+      width: 0%;
+      z-index: 1001;
     }
 
-    .nav-container {
+    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+    .nav-brand {
       text-decoration: none;
+      color: var(--text-bone);
     }
 
-    .nav-logo-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: var(--accent-gold);
+    .nav-brand-title {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
     }
 
-    .nav-logo-text {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      color: var(--text-ivory);
+    .nav-brand-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--text-stone);
+      display: block;
+      margin-top: -3px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 2.5rem;
+      gap: 3rem;
       list-style: none;
     }
 
     .nav-link {
-      color: var(--text-muted);
-      font-family: var(--font-sans-heading);
+      color: var(--text-stone);
+      font-family: var(--font-heading);
       font-size: 0.8rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
+      font-weight: 600;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       text-decoration: none;
       position: relative;
@@ -384,140 +309,123 @@
       left: 0;
       width: 0;
       height: 1px;
-      background-color: var(--accent-gold);
+      background-color: var(--accent-acid);
       transition: var(--transition-smooth);
     }
 
     .nav-link:hover {
-      color: var(--text-ivory);
+      color: var(--text-bone);
     }
 
     .nav-link:hover::after {
       width: 100%;
     }
 
-    .mobile-nav-toggle {
+    .mobile-toggle {
       display: none;
       background: none;
-      border: none;
-      color: var(--text-ivory);
-      font-size: 1.5rem;
+      border: 1px solid var(--border-dark);
+      color: var(--text-bone);
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
       cursor: pointer;
     }
 
-    /* Mobile Full Screen Menu */
-    .mobile-menu-overlay {
+    /* Mobile Takeover Menu */
+    .mobile-takeover {
       position: fixed;
       inset: 0;
-      background-color: #0B0C0B;
+      background-color: #090A08;
       z-index: 9999;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 3rem 2rem;
+      padding: 3rem 2.5rem;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.4s ease;
     }
 
-    .mobile-menu-overlay.active {
+    .mobile-takeover.active {
       opacity: 1;
       pointer-events: all;
     }
 
-    .mobile-menu-header {
+    .mobile-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-heading);
+      font-size: 25vw;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.02);
+      pointer-events: none;
+      letter-spacing: 0.1em;
+    }
+
+    .mobile-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .mobile-link {
+      font-family: var(--font-editorial);
+      font-size: 3rem;
+      color: var(--text-bone);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-dark);
+      padding-bottom: 1rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .mobile-menu-close {
-      background: none;
-      border: 1px solid var(--border-gold);
-      color: var(--text-ivory);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      font-size: 1.25rem;
-      cursor: pointer;
-    }
-
-    .mobile-menu-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .mobile-menu-link {
-      font-family: var(--font-serif);
-      font-size: 2.75rem;
-      color: var(--text-ivory);
-      text-decoration: none;
-      display: block;
-      border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 0.75rem;
-    }
-
-    .mobile-menu-link:hover {
-      color: var(--accent-gold);
+    .mobile-link:hover {
+      color: var(--accent-acid);
     }
 
     /* ==========================================
-       3. HERO SECTION
+       03. HERO — THE BODY IS THE RECEIPT
        ========================================== */
-    .hero-section {
+    .hero {
       min-height: 100vh;
       padding-top: 9rem;
-      padding-bottom: 5rem;
-      position: relative;
+      padding-bottom: 6rem;
       display: flex;
       align-items: center;
-      overflow: hidden;
-      background: radial-gradient(circle at 70% 30%, rgba(43, 74, 52, 0.15) 0%, transparent 60%), #0B0C0B;
+      position: relative;
+      background: radial-gradient(circle at 80% 20%, rgba(51, 64, 45, 0.15) 0%, transparent 65%), #090A08;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 4rem;
       align-items: center;
     }
 
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-family: var(--font-sans-heading);
-      font-size: 0.75rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--accent-gold);
-      margin-bottom: 1.5rem;
-      border: 1px solid var(--border-gold);
-      padding: 0.4rem 1rem;
-      border-radius: 40px;
-      background: rgba(199, 167, 108, 0.05);
-    }
-
-    .hero-title {
-      font-family: var(--font-serif);
-      font-size: clamp(3rem, 6.5vw, 5.5rem);
-      font-weight: 500;
-      line-height: 1.05;
+    .hero-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(3.25rem, 7vw, 6rem);
+      font-weight: 900;
+      line-height: 0.95;
       letter-spacing: -0.02em;
+      text-transform: uppercase;
       margin-bottom: 2rem;
-      color: var(--text-ivory);
     }
 
-    .hero-subtext {
+    .hero-subcopy {
       font-size: 1.15rem;
-      color: var(--text-muted);
+      color: var(--text-stone);
       font-weight: 300;
-      margin-bottom: 2.75rem;
-      max-width: 540px;
+      max-width: 520px;
       line-height: 1.7;
+      margin-bottom: 3rem;
     }
 
     .hero-actions {
@@ -527,20 +435,30 @@
       flex-wrap: wrap;
     }
 
-    /* BEFORE / AFTER TRANSFORMATION COMPARISON SLIDER */
-    .hero-comparison-wrapper {
+    /* GALLERY SPOTLIGHT INSTALLATION VISUAL */
+    .hero-installation {
       position: relative;
       width: 100%;
-      height: 520px;
-      border-radius: 4px;
+      height: 540px;
+      background-color: var(--bg-graphite);
+      border: 1px solid var(--border-dark);
       overflow: hidden;
-      border: 1px solid var(--border-gold);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
       user-select: none;
-      cursor: ew-resize;
     }
 
-    .comparison-img {
+    .hero-bg-num {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-heading);
+      font-size: 18rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.03);
+      pointer-events: none;
+    }
+
+    .transformation-img {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -548,1847 +466,1324 @@
       object-fit: cover;
     }
 
-    .comparison-img-after {
+    .img-before {
+      filter: grayscale(40%) brightness(0.7);
+      z-index: 1;
+    }
+
+    .img-after {
       z-index: 2;
       clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
     }
 
-    .comparison-img-before {
-      z-index: 1;
-    }
-
-    .comparison-handle {
+    .spotlight-divider {
       position: absolute;
       top: 0;
       bottom: 0;
       left: 50%;
       width: 2px;
-      background-color: var(--accent-gold);
+      background-color: var(--accent-acid);
       z-index: 3;
       transform: translateX(-50%);
-      box-shadow: 0 0 15px rgba(199, 167, 108, 0.8);
+      box-shadow: 0 0 15px var(--accent-acid-glow);
     }
 
-    .comparison-handle-btn {
+    .spotlight-knob {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background-color: #0B0C0B;
-      border: 1.5px solid var(--accent-gold);
-      color: var(--accent-gold);
+      width: 40px;
+      height: 40px;
+      background: #090A08;
+      border: 1px solid var(--accent-acid);
+      color: var(--accent-acid);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
-      gap: 3px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+      font-size: 0.75rem;
     }
 
-    .comparison-tag {
+    .gallery-tag {
       position: absolute;
       bottom: 1.5rem;
-      padding: 0.4rem 1rem;
-      background: rgba(11, 12, 11, 0.85);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--border-gold);
-      font-family: var(--font-sans-heading);
-      font-size: 0.7rem;
+      padding: 0.35rem 0.85rem;
+      background: rgba(9, 10, 8, 0.85);
+      border: 1px solid var(--border-dark);
+      font-family: var(--font-body);
+      font-size: 0.65rem;
       letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-ivory);
+      color: var(--text-stone);
       z-index: 4;
-      border-radius: 2px;
     }
 
-    .comparison-tag-before { left: 1.5rem; }
-    .comparison-tag-after { right: 1.5rem; color: var(--accent-gold); }
+    .gallery-tag-left { left: 1.5rem; }
+    .gallery-tag-right { right: 1.5rem; color: var(--accent-acid); }
 
-    /* ==========================================
-       4. STATEMENT STRIP
-       ========================================== */
-    .statement-strip {
-      background-color: var(--bg-secondary);
-      border-top: 1px solid var(--border-gold);
-      border-bottom: 1px solid var(--border-gold);
-      padding: 3.5rem 0;
-    }
-
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+    .hero-meta-strip {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
       gap: 2rem;
     }
 
-    .metric-item {
-      text-align: center;
-      position: relative;
-      padding: 0 1rem;
-    }
-
-    .metric-item:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 20%;
-      height: 60%;
-      width: 1px;
-      background: linear-gradient(180deg, transparent, var(--border-gold), transparent);
-    }
-
-    .metric-number {
-      font-family: var(--font-serif);
-      font-size: clamp(2.5rem, 4vw, 3.75rem);
-      font-weight: 600;
-      color: var(--accent-gold);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .metric-label {
-      font-family: var(--font-sans-heading);
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .metric-live-dot {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      background-color: var(--accent-gold);
-      border-radius: 50%;
-      margin-right: 6px;
-      box-shadow: 0 0 10px var(--accent-gold);
-      animation: pulseDot 2s infinite ease-in-out;
-    }
-
-    @keyframes pulseDot {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.4); opacity: 0.6; }
-    }
-
     /* ==========================================
-       5. THE EVOLVE METHOD
+       04. THE MANIFESTO — HORIZONTAL SCROLL
        ========================================== */
-    .method-section {
-      padding: 9rem 0;
+    .manifesto-section {
       position: relative;
-    }
-
-    .method-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 5rem auto;
-    }
-
-    .method-timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 4rem;
-      position: relative;
-    }
-
-    .method-card {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 3rem;
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      padding: 3.5rem 4rem;
-      border-radius: 4px;
-      position: relative;
-      transition: var(--transition-smooth);
+      background-color: var(--bg-graphite);
+      border-top: 1px solid var(--border-dark);
+      border-bottom: 1px solid var(--border-dark);
       overflow: hidden;
     }
 
-    .method-card:hover {
-      border-color: var(--border-gold);
-      background: var(--bg-card-hover);
-      transform: translateY(-4px);
+    .manifesto-wrapper {
+      display: flex;
+      width: 400vw; /* 4 massive panels */
+      height: 100vh;
     }
 
-    .method-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 100%;
-      background-color: var(--accent-gold);
-      opacity: 0.3;
-      transition: var(--transition-smooth);
-    }
-
-    .method-card:hover::before {
-      opacity: 1;
-    }
-
-    .method-num-wrapper {
+    .manifesto-panel {
+      width: 100vw;
+      height: 100vh;
+      padding: 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       position: relative;
+      border-right: 1px solid var(--border-dark);
+      background-color: var(--bg-graphite);
     }
 
-    .method-bg-num {
-      font-family: var(--font-serif);
-      font-size: 5.5rem;
-      font-weight: 700;
-      color: rgba(199, 167, 108, 0.15);
-      line-height: 0.9;
+    .manifesto-panel-3 {
+      background-color: var(--bg-moss);
     }
 
-    .method-icon {
-      font-size: 1.75rem;
-      color: var(--accent-gold);
-      margin-top: 0.5rem;
+    .manifesto-big-num {
+      font-family: var(--font-editorial);
+      font-size: clamp(8rem, 18vw, 22rem);
+      font-weight: 400;
+      color: rgba(242, 240, 232, 0.04);
+      position: absolute;
+      top: 10%;
+      right: 5%;
+      line-height: 0.8;
+      pointer-events: none;
     }
 
-    .method-card-title {
-      font-family: var(--font-serif);
-      font-size: 2.25rem;
-      font-weight: 500;
-      color: var(--text-ivory);
-      margin-bottom: 1rem;
+    .manifesto-panel-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5.5vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: uppercase;
+      max-width: 900px;
+      margin-bottom: 2rem;
     }
 
-    .method-card-desc {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      line-height: 1.8;
+    .manifesto-panel-desc {
+      font-size: 1.2rem;
+      color: var(--text-stone);
+      max-width: 500px;
       font-weight: 300;
     }
 
-    /* ==========================================
-       6. CLUB FACILITIES (ASYMMETRICAL BENTO)
-       ========================================== */
-    .facilities-section {
-      padding: 9rem 0;
-      background-color: var(--bg-secondary);
-      border-top: 1px solid var(--border-subtle);
+    .manifesto-energy-line {
+      position: absolute;
+      bottom: 4rem;
+      left: 6rem;
+      right: 6rem;
+      height: 2px;
+      background-color: var(--border-dark);
     }
 
-    .bento-grid {
+    .manifesto-energy-fill {
+      height: 100%;
+      width: 0%;
+      background-color: var(--accent-acid);
+      box-shadow: 0 0 10px var(--accent-acid);
+    }
+
+    /* ==========================================
+       05. THE CLUB — ARCHITECTURAL BENTO
+       ========================================== */
+    .club-section {
+      padding: 10rem 0;
+      position: relative;
+    }
+
+    .architectural-bento {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: 290px;
-      gap: 1.75rem;
-      margin-top: 4rem;
+      grid-auto-rows: 320px;
+      gap: 2rem;
+      margin-top: 5rem;
     }
 
-    .bento-item {
+    .bento-zone {
+      background-color: var(--bg-charcoal);
+      border: 1px solid var(--border-dark);
       position: relative;
-      border-radius: 4px;
       overflow: hidden;
-      border: 1px solid var(--border-subtle);
-      background-color: var(--bg-dark);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       transition: var(--transition-smooth);
     }
 
-    .bento-item:hover {
-      border-color: var(--border-gold);
+    .bento-zone:hover {
+      border-color: var(--accent-acid);
       transform: translateY(-4px);
     }
 
-    .bento-item-1 { grid-column: span 7; grid-row: span 2; }
-    .bento-item-2 { grid-column: span 5; grid-row: span 1; }
-    .bento-item-3 { grid-column: span 5; grid-row: span 1; }
-    .bento-item-4 { grid-column: span 6; grid-row: span 1; }
-    .bento-item-5 { grid-column: span 6; grid-row: span 1; }
+    .zone-1 { grid-column: span 7; grid-row: span 2; }
+    .zone-2 { grid-column: span 5; grid-row: span 1; }
+    .zone-3 { grid-column: span 5; grid-row: span 1; }
+    .zone-4 { grid-column: span 6; grid-row: span 1; }
+    .zone-5 { grid-column: span 6; grid-row: span 1; }
 
-    .bento-bg-img {
+    .bento-img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.5;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+      opacity: 0.45;
+      filter: grayscale(30%);
+      transition: transform 0.8s ease, opacity 0.8s ease;
     }
 
-    .bento-item:hover .bento-bg-img {
-      transform: scale(1.06);
-      opacity: 0.7;
+    .bento-zone:hover .bento-img {
+      transform: scale(1.05);
+      opacity: 0.65;
     }
 
-    .bento-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(11, 12, 11, 0.2) 0%, rgba(11, 12, 11, 0.9) 85%);
-      padding: 2.25rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .bento-content {
+      position: relative;
       z-index: 2;
     }
 
-    .bento-level-tag {
-      align-self: flex-start;
-      font-family: var(--font-sans-heading);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent-gold);
-      border: 1px solid var(--border-gold);
-      padding: 0.3rem 0.75rem;
-      background: rgba(11, 12, 11, 0.7);
-      backdrop-filter: blur(8px);
-      border-radius: 2px;
-    }
-
-    .bento-content-title {
-      font-family: var(--font-serif);
-      font-size: 1.85rem;
-      font-weight: 500;
-      color: var(--text-ivory);
+    .bento-code {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--accent-acid);
       margin-bottom: 0.5rem;
-
     }
 
-    .bento-content-desc {
+    .bento-title {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .bento-desc {
       font-size: 0.95rem;
-      color: var(--text-muted);
+      color: var(--text-stone);
       font-weight: 300;
+      max-width: 420px;
     }
 
     /* ==========================================
-       7. COACH PROFILE
+       06. COACH SECTION — TITAN VALE
        ========================================== */
     .coach-section {
-      padding: 9rem 0;
-      position: relative;
+      padding: 10rem 0;
+      background-color: var(--bg-graphite);
+      border-top: 1px solid var(--border-dark);
     }
 
     .coach-grid {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 5rem;
       align-items: center;
     }
 
-    .coach-img-frame {
+    .coach-portrait-box {
       position: relative;
-      border: 1px solid var(--border-gold);
-      padding: 1rem;
-      background: rgba(18, 22, 17, 0.4);
-      border-radius: 4px;
+      border: 1px solid var(--border-dark);
+      background-color: #090A08;
+      padding: 1.5rem;
     }
 
     .coach-img {
       width: 100%;
-      height: 560px;
+      height: 600px;
       object-fit: cover;
       display: block;
-      border-radius: 2px;
-      filter: grayscale(15%) contrast(105%);
+      filter: grayscale(20%) contrast(110%);
+    }
+
+    .athletic-tape-label {
+      position: absolute;
+      top: 3rem;
+      left: -1.5rem;
+      background-color: var(--accent-acid);
+      color: #090A08;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      padding: 0.5rem 1.5rem;
+      transform: rotate(-3deg);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     }
 
     .coach-quote-box {
-      border-left: 2px solid var(--accent-gold);
+      border-left: 2px solid var(--accent-acid);
       padding-left: 2rem;
       margin: 2.5rem 0;
     }
 
-    .coach-quote {
-      font-family: var(--font-serif);
-      font-size: 1.6rem;
+    .coach-quote-text {
+      font-family: var(--font-editorial);
+      font-size: 1.8rem;
       font-style: italic;
-      color: var(--text-ivory);
-      line-height: 1.5;
-    }
-
-    .coach-credentials-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-      margin-bottom: 3rem;
-    }
-
-    .coach-credential-item {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      font-family: var(--font-sans-heading);
-      font-size: 0.85rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .coach-credential-item i {
-      color: var(--accent-gold);
-      font-size: 0.75rem;
-    }
-
-    .coach-metrics {
-      display: flex;
-      gap: 3rem;
-      margin-bottom: 3rem;
-    }
-
-    .coach-metric-val {
-      font-family: var(--font-serif);
-      font-size: 2.5rem;
-      color: var(--accent-gold);
-      font-weight: 600;
-      line-height: 1;
-    }
-
-    .coach-metric-lbl {
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-top: 0.35rem;
-    }
-
-    /* ==========================================
-       8. TRANSFORMATION JOURNEY TIMELINE
-       ========================================== */
-    .journey-section {
-      padding: 9rem 0;
-      background-color: var(--bg-secondary);
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .journey-timeline-nav {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 4rem;
-      flex-wrap: wrap;
-    }
-
-    .journey-nav-btn {
-      background: none;
-      border: 1px solid var(--border-subtle);
-      padding: 0.85rem 2rem;
-      color: var(--text-muted);
-      font-family: var(--font-sans-heading);
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      cursor: pointer;
-      border-radius: 2px;
-      transition: var(--transition-smooth);
-    }
-
-    .journey-nav-btn.active,
-    .journey-nav-btn:hover {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-      background: rgba(199, 167, 108, 0.08);
-    }
-
-    .journey-display-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-gold);
-      padding: 4rem;
-      border-radius: 4px;
-      max-width: 960px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 3rem;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    }
-
-    .journey-col-title {
-      font-family: var(--font-sans-heading);
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent-gold);
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .journey-col-desc {
-      color: var(--text-ivory);
-      font-size: 1.05rem;
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    /* ==========================================
-       9. MEMBERSHIP SECTION
-       ========================================== */
-    .pricing-section {
-      padding: 9rem 0;
-      position: relative;
-    }
-
-    .pricing-toggle-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 5rem;
-    }
-
-    .toggle-label {
-      font-family: var(--font-sans-heading);
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .toggle-label.active { color: var(--text-ivory); }
-
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 56px;
-      height: 28px;
-    }
-
-    .switch input { opacity: 0; width: 0; height: 0; }
-
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      inset: 0;
-      background-color: rgba(255, 255, 255, 0.1);
-      border: 1px solid var(--border-gold);
-      transition: .4s;
-      border-radius: 34px;
-    }
-
-    .slider:before {
-      position: absolute;
-      content: "";
-      height: 20px;
-      width: 20px;
-      left: 3px;
-      bottom: 3px;
-      background-color: var(--accent-gold);
-      transition: .4s;
-      border-radius: 50%;
-    }
-
-    input:checked + .slider:before {
-      transform: translateX(28px);
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
-      align-items: stretch;
-    }
-
-    .pricing-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      padding: 3.5rem 3rem;
-      border-radius: 4px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: var(--transition-smooth);
-      position: relative;
-    }
-
-    .pricing-card.featured {
-      border-color: var(--accent-gold);
-      background: rgba(26, 32, 25, 0.95);
-      box-shadow: 0 20px 50px rgba(199, 167, 108, 0.15);
-      transform: scale(1.03);
-    }
-
-    .pricing-badge {
-      position: absolute;
-      top: -14px;
-      right: 2rem;
-      background: var(--accent-gold);
-      color: #0B0C0B;
-      font-family: var(--font-sans-heading);
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.35rem 1rem;
-      border-radius: 2px;
-    }
-
-    .pricing-title {
-      font-family: var(--font-serif);
-      font-size: 2.25rem;
-      font-weight: 500;
-      color: var(--text-ivory);
-      margin-bottom: 0.75rem;
-    }
-
-    .pricing-price-box {
-      margin: 2rem 0;
-      display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-    }
-
-    .pricing-price {
-      font-family: var(--font-serif);
-      font-size: 3.75rem;
-      font-weight: 600;
-      color: var(--accent-gold);
-      line-height: 1;
-    }
-
-    .pricing-period {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .pricing-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      margin-bottom: 3rem;
-    }
-
-    .pricing-feature-item {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    .pricing-feature-item i {
-      color: var(--accent-gold);
-      font-size: 0.85rem;
-    }
-
-    .pricing-scarcity-text {
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 3.5rem;
-      font-style: italic;
-    }
-
-    /* ==========================================
-       10. MEMBER STORIES (CAROUSEL)
-       ========================================== */
-    .stories-section {
-      padding: 9rem 0;
-      background-color: var(--bg-secondary);
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .story-carousel-container {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-      position: relative;
-    }
-
-    .quote-icon {
-      font-family: var(--font-serif);
-      font-size: 6rem;
-      color: var(--accent-gold);
-      line-height: 1;
-      opacity: 0.4;
-      margin-bottom: -2rem;
-    }
-
-    .story-quote-text {
-      font-family: var(--font-serif);
-      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-      font-weight: 400;
-      font-style: italic;
-      color: var(--text-ivory);
+      color: var(--text-bone);
       line-height: 1.4;
-      margin-bottom: 2.5rem;
     }
 
-    .story-author-name {
-      font-family: var(--font-sans-heading);
-      font-size: 1rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent-gold);
-      font-weight: 600;
-
-    }
-
-    .story-author-meta {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 0.35rem;
-    }
-
-    .story-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.5rem;
-      margin-top: 3.5rem;
-    }
-
-    .story-btn {
-      background: none;
-      border: 1px solid var(--border-gold);
-      color: var(--text-ivory);
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition-smooth);
-    }
-
-    .story-btn:hover {
-      background: var(--accent-gold);
-      color: #0B0C0B;
-      border-color: var(--accent-gold);
-    }
-
-    /* ==========================================
-       11. FINAL CTA
-       ========================================== */
-    .final-cta-section {
-      padding: 11rem 0;
-      position: relative;
-      text-align: center;
-      overflow: hidden;
-      background: radial-gradient(circle at 50% 50%, rgba(43, 74, 52, 0.2) 0%, rgba(11, 12, 11, 0.95) 75%), #0B0C0B;
-    }
-
-    .final-cta-title {
-      font-family: var(--font-serif);
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 500;
-      color: var(--text-ivory);
-      margin-bottom: 1.5rem;
-    }
-
-    .final-cta-sub {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      font-weight: 300;
-      margin-bottom: 3.5rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* ==========================================
-       12. CONSULTATION MODAL
-       ========================================== */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(11, 12, 11, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s ease;
-    }
-
-    .modal-backdrop.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .modal-container {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-gold);
-      padding: 4rem;
-      border-radius: 4px;
-      width: 100%;
-      max-width: 600px;
-      position: relative;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
-      transform: translateY(20px);
-      transition: transform 0.4s ease;
-    }
-
-    .modal-backdrop.active .modal-container {
-      transform: translateY(0);
-    }
-
-    .modal-close-btn {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: none;
-      border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition-smooth);
-    }
-
-    .modal-close-btn:hover {
-      border-color: var(--accent-gold);
-      color: var(--accent-gold);
-    }
-
-    .modal-title {
-      font-family: var(--font-serif);
-      font-size: 2.25rem;
-      color: var(--text-ivory);
-      margin-bottom: 0.5rem;
-    }
-
-    .modal-sub {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .form-label {
-      font-family: var(--font-sans-heading);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-ivory);
-    }
-
-    .form-input, .form-select {
-      width: 100%;
-      padding: 1rem 1.25rem;
-      background: rgba(11, 12, 11, 0.7);
-      border: 1px solid var(--border-gold);
-      color: var(--text-ivory);
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      border-radius: 2px;
-      outline: none;
-      transition: var(--transition-smooth);
-    }
-
-    .form-input:focus, .form-select:focus {
-      border-color: var(--accent-gold);
-      box-shadow: 0 0 15px rgba(199, 167, 108, 0.2);
-    }
-
-    .form-select option {
-      background-color: #0B0C0B;
-      color: var(--text-ivory);
-    }
-
-    .modal-success-state {
-      display: none;
-      text-align: center;
-      padding: 2rem 0;
-    }
-
-    .modal-success-icon {
-      font-size: 3.5rem;
-      color: var(--accent-gold);
-      margin-bottom: 1.5rem;
-    }
-
-    /* ==========================================
-       13. FOOTER
-       ========================================== */
-    .site-footer {
-      background-color: #070807;
-      border-top: 1px solid var(--border-gold);
-      padding: 6rem 0 3rem 0;
-    }
-
-    .footer-grid {
+    .field-notes-list {
+      list-style: none;
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 4rem;
-      margin-bottom: 5rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
     }
 
-    .footer-brand-title {
-      font-family: var(--font-serif);
-      font-size: 1.75rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      color: var(--text-ivory);
-      margin-bottom: 1.25rem;
+    .field-note-item {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-stone);
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
 
-    .footer-brand-desc {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      max-width: 320px;
-    }
-
-    .footer-col-header {
-      font-family: var(--font-sans-heading);
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent-gold);
-      margin-bottom: 1.75rem;
-    }
-
-    .footer-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .footer-link {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: var(--transition-smooth);
-    }
-
-    .footer-link:hover {
-      color: var(--accent-gold);
-    }
-
-    .footer-newsletter-box {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .footer-newsletter-input {
-      background: rgba(244, 240, 232, 0.05);
-      border: 1px solid var(--border-gold);
-      padding: 0.75rem 1rem;
-      color: var(--text-ivory);
-      font-size: 0.85rem;
-      width: 100%;
-      border-radius: 2px;
-      outline: none;
-    }
-
-    .footer-newsletter-btn {
-      background: var(--accent-gold);
-      color: #0B0C0B;
-      border: none;
-      padding: 0 1.25rem;
-      cursor: pointer;
-      font-weight: 600;
-      transition: var(--transition-smooth);
-    }
-
-    .footer-newsletter-btn:hover {
-      background: var(--accent-gold-light);
-    }
-
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-top: 2.5rem;
-      border-top: 1px solid var(--border-subtle);
-      font-size: 0.8rem;
-      color: var(--text-subtle);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1.25rem;
-    }
-
-    .social-link {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      transition: var(--transition-smooth);
-    }
-
-    .social-link:hover {
-      color: var(--accent-gold);
-      transform: translateY(-2px);
+    .field-note-item i {
+      color: var(--accent-acid);
     }
 
     /* ==========================================
-       RESPONSIVE DESIGN (MEDIA QUERIES)
+       07. PROOF OF WORK — TRANSFORMATION ARCHIVE
        ========================================== */
-    @media (max-width: 1024px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
-      .metric-item:not(:last-child)::after { display: none; }
-      .bento-grid { grid-template-columns: 1fr; grid-auto-rows: 320px; }
-      .bento-item-1, .bento-item-2, .bento-item-3, .bento-item-4, .bento-item-5 { grid-column: span 1; grid-row: span 1; }
-      .coach-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .pricing-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .pricing-card.featured { transform: none; }
-      .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .proof-section {
+      padding: 10rem 0;
+      position: relative;
     }
 
-    @media (max-width: 768px) {
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 5rem;
+    }
+
+    .proof-card {
+      background-color: var(--bg-charcoal);
+      border: 1px solid var(--border-dark);
+      padding: 3rem;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+
+    .proof-card:hover {
+      border-color: var(--border-acid);
+    }
+
+    .proof-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--border-dark);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .proof-name {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 800;
+    }
+
+    .proof-stat {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--accent-acid);
+      font-weight: 700;
+    }
+
+    .proof-data-bar {
+      width: 100%;
+      height: 4px;
+      background: var(--bg-graphite);
+      margin: 1.5rem 0;
+      position: relative;
+    }
+
+    .proof-data-fill {
+      height: 100%;
+      background-color: var(--accent-acid);
+    }
+
+    /* ==========================================
+       08. MEMBERSHIP — YOU JOIN A STANDARD
+       ========================================== */
+    .membership-section {
+      padding: 10rem 0;
+      background-color: var(--bg-graphite);
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .membership-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-top: 5rem;
+    }
+
+    .membership-panel {
+      background-color: var(--bg-black);
+      border: 1px solid var(--border-dark);
+      padding: 4rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .membership-panel.standard {
+      border-color: var(--accent-acid);
+      box-shadow: 0 0 30px rgba(181, 255, 61, 0.1);
+    }
+
+    .panel-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: var(--accent-acid);
+      color: #090A08;
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      padding: 0.4rem 1rem;
+    }
+
+    .membership-price {
+      font-family: var(--font-editorial);
+      font-size: 3.5rem;
+      color: var(--accent-acid);
+      line-height: 1;
+      margin: 1.5rem 0;
+    }
+
+    .charter-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 2.5rem 0;
+    }
+
+    .charter-item {
+      font-size: 0.95rem;
+      color: var(--text-stone);
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .charter-item i {
+      color: var(--accent-acid);
+    }
+
+    /* ==========================================
+       09. THE DATA — PERFORMANCE ASSESSMENT
+       ========================================== */
+    .data-section {
+      padding: 10rem 0;
+      position: relative;
+    }
+
+    .data-panel {
+      background-color: var(--bg-black);
+      border: 1px solid var(--border-dark);
+      padding: 5rem;
+      position: relative;
+    }
+
+    .chart-container {
+      width: 100%;
+      height: 220px;
+      margin: 4rem 0;
+    }
+
+    .chart-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .chart-line {
+      fill: none;
+      stroke: var(--accent-acid);
+      stroke-width: 3;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      transition: stroke-dashoffset 2.5s ease;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3rem;
+      text-align: center;
+      border-top: 1px solid var(--border-dark);
+      padding-top: 3rem;
+    }
+
+    .data-val {
+      font-family: var(--font-editorial);
+      font-size: 3.5rem;
+      color: var(--text-bone);
+      line-height: 1;
+    }
+
+    .data-lbl {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-stone);
+      margin-top: 0.75rem;
+    }
+
+    /* ==========================================
+       10. TESTIMONIALS — THE SHIFT
+       ========================================== */
+    .testimonials-section {
+      padding: 10rem 0;
+      background-color: var(--bg-graphite);
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .testimonial-box {
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .giant-quote-mark {
+      font-family: var(--font-editorial);
+      font-size: 8rem;
+      color: var(--accent-acid);
+      line-height: 0.8;
+      opacity: 0.3;
+    }
+
+    .testimonial-text {
+      font-family: var(--font-editorial);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-style: italic;
+      color: var(--text-bone);
+      line-height: 1.3;
+      margin-bottom: 3rem;
+    }
+
+    /* ==========================================
+       11. FINAL CTA — MAKE THE DECISION
+       ========================================== */
+    .final-cta {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+      padding: 6rem 2.5rem;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 50%, rgba(51, 64, 45, 0.25) 0%, #090A08 75%);
+    }
+
+    .final-title {
+      font-family: var(--font-heading);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 900;
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    /* ==========================================
+       12. CONSULTATION MODAL
+       ========================================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 10, 8, 0.92);
+      backdrop-filter: blur(20px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-window {
+      background-color: var(--bg-graphite);
+      border: 1px solid var(--border-acid);
+      padding: 4.5rem 3.5rem;
+      width: 100%;
+      max-width: 620px;
+      position: relative;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: none;
+      border: 1px solid var(--border-dark);
+      color: var(--text-stone);
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-close:hover {
+      border-color: var(--accent-acid);
+      color: var(--accent-acid);
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 1.1rem 1.25rem;
+      background: #090A08;
+      border: 1px solid var(--border-dark);
+      color: var(--text-bone);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      outline: none;
+      margin-top: 0.5rem;
+      transition: var(--transition-smooth);
+    }
+
+    .input-field:focus {
+      border-color: var(--accent-acid);
+      box-shadow: 0 0 15px var(--accent-acid-glow);
+    }
+
+    /* FOOTER */
+    .site-footer {
+      border-top: 1px solid var(--border-dark);
+      padding: 4rem 0;
+      background-color: #060705;
+      font-size: 0.85rem;
+      color: var(--text-stone);
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .manifesto-wrapper { width: 100%; height: auto; flex-direction: column; }
+      .manifesto-panel { width: 100%; height: auto; padding: 5rem 2rem; }
+      .architectural-bento { grid-template-columns: 1fr; grid-auto-rows: auto; }
+      .zone-1, .zone-2, .zone-3, .zone-4, .zone-5 { grid-column: span 1; height: 320px; }
+      .coach-grid, .proof-grid, .membership-grid { grid-template-columns: 1fr; }
+      .data-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
       .nav-links { display: none; }
-      .mobile-nav-toggle { display: block; }
-      .hero-comparison-wrapper { height: 380px; }
-      .method-card { grid-template-columns: 1fr; gap: 1rem; padding: 2.5rem 2rem; }
-      .journey-display-card { grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem 2rem; }
-      .modal-container { padding: 2.5rem 1.75rem; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .mobile-toggle { display: block; }
     }
   </style>
 </head>
-<body class="bg-marble-glow">
+<body>
 
-  <!-- PAPER GRAIN TEXTURE OVERLAY -->
-  <div class="grain-overlay"></div>
+  <!-- FILM GRAIN TEXTURE OVERLAY -->
+  <div class="film-grain"></div>
 
-  <!-- 1. PRELOADER -->
+  <!-- 01. PRELOADER -->
   <div id="preloader">
-    <div class="preloader-brand">
-      <div class="preloader-brand-dot"></div>
-      <span class="preloader-title">EVOLVE FITNESS</span>
+    <div class="preloader-door preloader-door-left"></div>
+    <div class="preloader-door preloader-door-right"></div>
+    <div class="preloader-content">
+      <div class="preloader-wordmark">
+        EVOLVE <span class="live-dot-green"></span>
+      </div>
+      <div class="preloader-track">
+        <div class="preloader-fill" id="preloaderFill"></div>
+      </div>
+      <div class="meta-code">PRIVATE PERFORMANCE CLUB / EST. 2016 — SETTING THE STANDARD</div>
     </div>
-    <div class="preloader-line-track">
-      <div class="preloader-line-fill" id="preloaderFill"></div>
-    </div>
-    <span class="preloader-text">PREPARING THE NEXT VERSION OF YOU.</span>
   </div>
 
-  <!-- 2. NAVIGATION -->
-  <header class="navbar-header" id="navbar">
-    <div class="container nav-container">
-      <a href="#" class="nav-logo">
-        <div class="nav-logo-dot"></div>
-        <span class="nav-logo-text">EVOLVE</span>
+  <!-- 02. NAVIGATION -->
+  <header class="navbar" id="navbar">
+    <div class="nav-scroll-indicator" id="scrollIndicator"></div>
+    <div class="container nav-inner">
+      <a href="#" class="nav-brand">
+        <span class="nav-brand-title">EVOLVE</span>
+        <span class="nav-brand-sub">PERFORMANCE HOUSE</span>
       </a>
 
       <ul class="nav-links">
-        <li><a href="#hero" class="nav-link">Home</a></li>
-        <li><a href="#method" class="nav-link">The Method</a></li>
-        <li><a href="#facilities" class="nav-link">The Club</a></li>
-        <li><a href="#coach" class="nav-link">Coaches</a></li>
-        <li><a href="#membership" class="nav-link">Membership</a></li>
+        <li><a href="#method" class="nav-link">METHOD</a></li>
+        <li><a href="#club" class="nav-link">THE CLUB</a></li>
+        <li><a href="#coaching" class="nav-link">COACHING</a></li>
+        <li><a href="#membership" class="nav-link">MEMBERSHIP</a></li>
       </ul>
 
       <div style="display: flex; align-items: center; gap: 1.5rem;">
-        <button class="btn-primary js-open-modal" style="padding: 0.75rem 1.5rem; font-size: 0.75rem;">
-          REQUEST MEMBERSHIP
+        <button class="btn-acid js-open-modal" style="padding: 0.85rem 1.75rem; font-size: 0.75rem;">
+          APPLY TO TRAIN &rarr;
         </button>
-        <button class="mobile-nav-toggle" id="mobileNavOpen" aria-label="Toggle Menu">
+        <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Toggle Menu">
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- MOBILE FULLSCREEN MENU OVERLAY -->
-  <div class="mobile-menu-overlay" id="mobileMenu">
-    <div class="mobile-menu-header">
-      <a href="#" class="nav-logo">
-        <div class="nav-logo-dot"></div>
-        <span class="nav-logo-text">EVOLVE</span>
+  <!-- MOBILE TAKEOVER MENU -->
+  <div class="mobile-takeover" id="mobileTakeover">
+    <div class="mobile-watermark">EVOLVE</div>
+    <div style="display: flex; justify-content: space-between; align-items: center; z-index: 2;">
+      <a href="#" class="nav-brand">
+        <span class="nav-brand-title">EVOLVE</span>
       </a>
-      <button class="mobile-menu-close" id="mobileNavClose"><i class="fa-solid fa-xmark"></i></button>
+      <button class="modal-close" id="mobileCloseBtn"><i class="fa-solid fa-xmark"></i></button>
     </div>
 
-    <ul class="mobile-menu-links">
-      <li><a href="#hero" class="mobile-menu-link js-mobile-link">Home</a></li>
-      <li><a href="#method" class="mobile-menu-link js-mobile-link">The Method</a></li>
-      <li><a href="#facilities" class="mobile-menu-link js-mobile-link">The Club</a></li>
-      <li><a href="#coach" class="mobile-menu-link js-mobile-link">Coaches</a></li>
-      <li><a href="#membership" class="mobile-menu-link js-mobile-link">Membership</a></li>
+    <ul class="mobile-links" style="z-index: 2;">
+      <li><a href="#method" class="mobile-link js-mob-link">METHOD <span>01</span></a></li>
+      <li><a href="#club" class="mobile-link js-mob-link">THE CLUB <span>02</span></a></li>
+      <li><a href="#coaching" class="mobile-link js-mob-link">COACHING <span>03</span></a></li>
+      <li><a href="#membership" class="mobile-link js-mob-link">MEMBERSHIP <span>04</span></a></li>
     </ul>
 
-    <div>
-      <button class="btn-primary js-open-modal" style="width: 100%; margin-bottom: 2rem;">REQUEST MEMBERSHIP</button>
-      <div style="text-align: center; color: var(--text-muted); font-size: 0.8rem;">
-        DISCIPLINE, ELEVATED. © 2026 EVOLVE FITNESS.
-      </div>
+    <div style="z-index: 2;">
+      <button class="btn-acid js-open-modal" style="width: 100%; justify-content: center;">APPLY TO TRAIN &rarr;</button>
     </div>
   </div>
 
-  <!-- 3. HERO SECTION -->
-  <section class="hero-section" id="hero">
+  <!-- 03. HERO -->
+  <section class="hero" id="hero">
     <div class="container">
       <div class="hero-grid">
         <div>
-          <div class="hero-eyebrow">
-            <span>PRIVATE ATHLETIC CLUB</span>
+          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">
+            [ CULTURE DEFINING PERFORMANCE HOUSE ]
           </div>
-          <h1 class="hero-title">
-            BUILD A BODY <br>
-            WORTH <span class="gold-accent-text">REMEMBERING.</span>
+          <h1 class="hero-headline">
+            THE WORK <br>
+            CHANGES <br>
+            <span class="text-acid">EVERYTHING.</span>
           </h1>
-          <p class="hero-subtext">
-            Private coaching, intelligent training, and an uncompromised standard that changes everything. Designed for high performers.
+          <p class="hero-subcopy">
+            No shortcuts. No performance theatre. Only structured work, intelligent coaching, and a body that proves what you committed to.
           </p>
           <div class="hero-actions">
-            <button class="btn-primary js-open-modal">
-              REQUEST MEMBERSHIP
-            </button>
-            <a href="#method" class="btn-secondary">
-              DISCOVER THE METHOD
-            </a>
+            <button class="btn-acid js-open-modal">APPLY TO TRAIN</button>
+            <a href="#method" class="btn-secondary-line">WATCH THE METHOD &darr;</a>
           </div>
         </div>
 
-        <!-- BEFORE / AFTER INTERACTIVE COMPARISON REVEAL SLIDER -->
+        <!-- GALLERY SPOTLIGHT INSTALLATION VISUAL -->
         <div>
-          <div class="hero-comparison-wrapper" id="comparisonSlider">
-            <!-- AFTER IMAGE (Overlay Clip Path) -->
-            <img src="img/hero_after.png" alt="After Transformation" class="comparison-img comparison-img-after" id="comparisonAfterImg">
-            <!-- BEFORE IMAGE (Base) -->
-            <img src="img/hero_before.png" alt="Before Baseline" class="comparison-img comparison-img-before">
+          <div class="hero-installation" id="heroInstallation">
+            <div class="hero-bg-num">180</div>
+            <!-- AFTER IMAGE -->
+            <img src="img/hero_after.png" alt="Protocol Complete" class="transformation-img img-after" id="imgAfter">
+            <!-- BEFORE IMAGE -->
+            <img src="img/hero_before.png" alt="Baseline" class="transformation-img img-before">
 
-            <!-- SLIDER DIVIDER HANDLE -->
-            <div class="comparison-handle" id="comparisonHandle">
-              <div class="comparison-handle-btn">
-                <i class="fa-solid fa-chevron-left"></i>
-                <i class="fa-solid fa-chevron-right"></i>
-              </div>
+            <div class="spotlight-divider" id="spotlightDivider">
+              <div class="spotlight-knob"><i class="fa-solid fa-arrows-left-right"></i></div>
             </div>
 
-            <!-- TAG LABELS -->
-            <div class="comparison-tag comparison-tag-before">DAY 01 — BASELINE</div>
-            <div class="comparison-tag comparison-tag-after">DAY 180 — EVOLVED</div>
+            <div class="gallery-tag gallery-tag-left">BASELINE / DAY 01</div>
+            <div class="gallery-tag gallery-tag-right">PROTOCOL COMPLETE / DAY 180</div>
+          </div>
+          <div style="text-align: right; margin-top: 0.75rem;" class="meta-code">
+            “THE BODY IS THE RECEIPT.”
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-meta-strip">
+        <div class="meta-code">&darr; SCROLL TO ENTER THE HOUSE</div>
+        <div style="display: flex; gap: 3rem;">
+          <div>
+            <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--accent-acid);">1,452</span>
+            <span class="meta-code" style="display: block;">ACTIVE MEMBERS</span>
+          </div>
+          <div>
+            <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--accent-acid);">4,200+</span>
+            <span class="meta-code" style="display: block;">TRANSFORMATIONS</span>
+          </div>
+          <div>
+            <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--accent-acid);">24 HRS</span>
+            <span class="meta-code" style="display: block;">PRIVATE ACCESS</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. STATEMENT STRIP -->
-  <section class="statement-strip">
-    <div class="container">
-      <div class="metrics-grid">
-        <div class="metric-item">
-          <div class="metric-number" data-target="1452">0</div>
-          <div class="metric-label">ACTIVE MEMBERS</div>
-        </div>
-        <div class="metric-item">
-          <div class="metric-number" data-target="4200" data-suffix="+">0</div>
-          <div class="metric-label">TRANSFORMATIONS</div>
-        </div>
-        <div class="metric-item">
-          <div class="metric-number" data-target="98" data-suffix="%">0</div>
-          <div class="metric-label">MEMBER RETENTION</div>
-        </div>
-        <div class="metric-item">
-          <div class="metric-number" style="font-size: 2.2rem; margin-top: 0.5rem;">
-            <span class="metric-live-dot"></span> 24 HOURS
-          </div>
-          <div class="metric-label">PRIVATE ACCESS</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. THE EVOLVE METHOD -->
-  <section class="method-section" id="method">
-    <div class="container">
-      <div class="method-header">
-        <div class="section-eyebrow">THE ARCHITECTURE OF MASTERY</div>
-        <h2 class="section-title">TRAIN WITH <span class="gold-accent-text">INTENTION.</span></h2>
-        <p class="section-desc" style="margin: 0 auto;">
-          Three distinct, highly engineered phases designed to systematically eliminate weaknesses and elevate physical performance.
+  <!-- 04. THE MANIFESTO — HORIZONTAL SCROLL EXPERIENCE -->
+  <section class="manifesto-section" id="method">
+    <div class="manifesto-wrapper" id="manifestoWrapper">
+      <!-- PANEL 01 -->
+      <div class="manifesto-panel">
+        <div class="manifesto-big-num">01</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ MANIFESTO PANEL 01 ]</div>
+        <h2 class="manifesto-panel-title">YOU CAN’T OUTSOURCE <span class="text-acid">DISCIPLINE.</span></h2>
+        <p class="manifesto-panel-desc">
+          There are no secret formulas. No supplements that replace effort. We measure baseline metrics and force input from day one.
         </p>
+        <div class="manifesto-energy-line"><div class="manifesto-energy-fill" style="width: 25%;"></div></div>
       </div>
 
-      <div class="method-timeline">
-        <!-- STAGE 01 -->
-        <div class="method-card">
-          <div class="method-num-wrapper">
-            <div class="method-bg-num">01</div>
-            <div class="method-icon"><i class="fa-solid fa-compass"></i></div>
-          </div>
-          <div>
-            <h3 class="method-card-title">01 — ASSESS & MAP</h3>
-            <p class="method-card-desc">
-              We begin with a comprehensive 3D biomechanical audit, metabolic baselining, and movement screening. We measure force output, joint integrity, and body composition to remove all guesswork from day one.
-            </p>
-          </div>
-        </div>
-
-        <!-- STAGE 02 -->
-        <div class="method-card">
-          <div class="method-num-wrapper">
-            <div class="method-bg-num">02</div>
-            <div class="method-icon"><i class="fa-solid fa-dumbbell"></i></div>
-          </div>
-          <div>
-            <h3 class="method-card-title">02 — BUILD & OVERLOAD</h3>
-            <p class="method-card-desc">
-              Hyper-personalized neural strength and hypertrophic training protocols. Executed with 1-on-1 private coaching, strict biomechanical precision, and progressive density overload.
-            </p>
-          </div>
-        </div>
-
-        <!-- STAGE 03 -->
-        <div class="method-card">
-          <div class="method-num-wrapper">
-            <div class="method-bg-num">03</div>
-            <div class="method-icon"><i class="fa-solid fa-shield-halved"></i></div>
-          </div>
-          <div>
-            <h3 class="method-card-title">03 — SUSTAIN & DOMINATE</h3>
-            <p class="method-card-desc">
-              Biometric tracking, active recovery suites, and tailored nutrition integration. We construct a permanent high-performance standard that adapts seamless to your executive lifestyle.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. CLUB FACILITIES -->
-  <section class="facilities-section" id="facilities">
-    <div class="container">
-      <div style="text-align: center; max-width: 700px; margin: 0 auto;">
-        <div class="section-eyebrow">SANCTUARY OF PERFORMANCE</div>
-        <h2 class="section-title">THE <span class="gold-accent-text">CLUB.</span></h2>
-        <p class="section-desc" style="margin: 0 auto;">
-          An atmosphere crafted with dark marble, warm timber, and state-of-the-art custom equipment. No crowds. No wait times.
+      <!-- PANEL 02 -->
+      <div class="manifesto-panel">
+        <div class="manifesto-big-num">02</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ MANIFESTO PANEL 02 ]</div>
+        <h2 class="manifesto-panel-title">TRAINING IS A <span class="text-acid">LANGUAGE.</span></h2>
+        <p class="manifesto-panel-desc">
+          Movement patterns reveal stress, compensation, and mechanical output. We refine your physical vocabulary for absolute strength.
         </p>
+        <div class="manifesto-energy-line"><div class="manifesto-energy-fill" style="width: 50%;"></div></div>
       </div>
 
-      <!-- ASYMMETRICAL BENTO LAYOUT -->
-      <div class="bento-grid">
-        <!-- ITEM 1: STRENGTH HALL -->
-        <div class="bento-item bento-item-1">
-          <img src="img/bento_strength.png" alt="Strength Hall" class="bento-bg-img">
-          <div class="bento-overlay">
-            <div class="bento-level-tag">LEVEL 01 — MAIN HALL</div>
-            <div>
-              <h3 class="bento-content-title">Strength Hall</h3>
-              <p class="bento-content-desc">Custom Hammer Strength platforms, calibrated competition plates, and specialized power racks.</p>
-            </div>
+      <!-- PANEL 03 -->
+      <div class="manifesto-panel manifesto-panel-3">
+        <div class="manifesto-big-num">03</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ MANIFESTO PANEL 03 ]</div>
+        <h2 class="manifesto-panel-title">RECOVERY IS PART OF THE <span class="text-acid">WORK.</span></h2>
+        <p class="manifesto-panel-desc">
+          High neural tension requires deep cellular restoration. Infrared saunas, hyperbaric oxygen, and custom thermal plunge protocols.
+        </p>
+        <div class="manifesto-energy-line"><div class="manifesto-energy-fill" style="width: 75%;"></div></div>
+      </div>
+
+      <!-- PANEL 04 -->
+      <div class="manifesto-panel">
+        <div class="manifesto-big-num">04</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ MANIFESTO PANEL 04 ]</div>
+        <h2 class="manifesto-panel-title">CONSISTENCY BECOMES <span class="text-acid">IDENTITY.</span></h2>
+        <p class="manifesto-panel-desc">
+          What you do repeatedly in private becomes your undeniable presence in public. Standard established.
+        </p>
+        <div class="manifesto-energy-line"><div class="manifesto-energy-fill" style="width: 100%;"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05. THE CLUB — ARCHITECTURAL BENTO -->
+  <section class="club-section" id="club">
+    <div class="container">
+      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ CONVERTED CONCRETE GALLERY ]</div>
+      <h2 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; text-transform: uppercase;">
+        THE SANCTUARY OF <span class="text-acid">PERFORMANCE.</span>
+      </h2>
+
+      <div class="architectural-bento">
+        <!-- ZONE 1: IRON HALL -->
+        <div class="bento-zone zone-1">
+          <img src="img/bento_strength.png" alt="Iron Hall" class="bento-img">
+          <div class="bento-code">01 / THE IRON HALL</div>
+          <div class="bento-content">
+            <h3 class="bento-title">The Iron Hall</h3>
+            <p class="bento-desc">Free weights, power platforms, and calibrated competition racks. The space to become dangerous.</p>
           </div>
         </div>
 
-        <!-- ITEM 2: PRIVATE TRAINING SUITE -->
-        <div class="bento-item bento-item-2">
-          <img src="img/People_training_in_luxury_gym_20260917194156.jpeg" alt="Private Suite" class="bento-bg-img">
-          <div class="bento-overlay">
-            <div class="bento-level-tag">LEVEL 02 — PRIVATE BAY</div>
-            <div>
-              <h3 class="bento-content-title">Private Training Suite</h3>
-              <p class="bento-content-desc">Secluded performance bays for uninterrupted, zero-distraction 1-on-1 coaching.</p>
-            </div>
+        <!-- ZONE 2: CONDITIONING FLOOR -->
+        <div class="bento-zone zone-2">
+          <img src="img/People_training_in_luxury_gym_20260917194156.jpeg" alt="Conditioning Floor" class="bento-img">
+          <div class="bento-code">02 / CONDITIONING</div>
+          <div class="bento-content">
+            <h3 class="bento-title">The Conditioning Floor</h3>
+            <p class="bento-desc">Engineered metabolic intensity without the noise.</p>
           </div>
         </div>
 
-        <!-- ITEM 3: RECOVERY LOUNGE -->
-        <div class="bento-item bento-item-3">
-          <img src="img/bento_recovery.png" alt="Recovery Lounge" class="bento-bg-img">
-          <div class="bento-overlay">
-            <div class="bento-level-tag">LEVEL 01 — RECOVERY</div>
-            <div>
-              <h3 class="bento-content-title">Recovery Lounge</h3>
-              <p class="bento-content-desc">Infrared saunas, custom cold plunge pools, and hyperbaric oxygen therapy chambers.</p>
-            </div>
+        <!-- ZONE 3: PRIVATE COACHING -->
+        <div class="bento-zone zone-3">
+          <img src="img/bento_recovery.png" alt="Private Suite" class="bento-img">
+          <div class="bento-code">03 / PRIVATE SUITES</div>
+          <div class="bento-content">
+            <h3 class="bento-title">Private Coaching Rooms</h3>
+            <p class="bento-desc">Quiet focus. Precise feedback. No audience required.</p>
           </div>
         </div>
 
-        <!-- ITEM 4: MOBILITY STUDIO -->
-        <div class="bento-item bento-item-4">
-          <img src="img/People_exercising_in_gym_20260917194141.jpeg" alt="Mobility Studio" class="bento-bg-img">
-          <div class="bento-overlay">
-            <div class="bento-level-tag">LEVEL 03 — STUDIO</div>
-            <div>
-              <h3 class="bento-content-title">Mobility Studio</h3>
-              <p class="bento-content-desc">Dedicated sanctuary for joint longevity, somatic conditioning, and functional movement.</p>
-            </div>
+        <!-- ZONE 4: RECOVERY STUDIO -->
+        <div class="bento-zone zone-4">
+          <img src="img/People_exercising_in_gym_20260917194141.jpeg" alt="Recovery Studio" class="bento-img">
+          <div class="bento-code">04 / RECOVERY</div>
+          <div class="bento-content">
+            <h3 class="bento-title">The Recovery Studio</h3>
+            <p class="bento-desc">Mobility, restoration, and readiness treated as primary performance tools.</p>
           </div>
         </div>
 
-        <!-- ITEM 5: NUTRITION CONSULTATION -->
-        <div class="bento-item bento-item-5">
-          <img src="img/Gym_juice_bar_and_lounge_20260917194109.jpeg" alt="Nutrition Bar" class="bento-bg-img">
-          <div class="bento-overlay">
-            <div class="bento-level-tag">LEVEL 02 — EXECUTIVE</div>
-            <div>
-              <h3 class="bento-content-title">Nutrition & Bio-Lounge</h3>
-              <p class="bento-content-desc">Custom bio-individual meal planning, bloodwork reviews, and bespoke post-workout elixirs.</p>
-            </div>
+        <!-- ZONE 5: NUTRITION DESK -->
+        <div class="bento-zone zone-5">
+          <img src="img/Gym_juice_bar_and_lounge_20260917194109.jpeg" alt="Nutrition Desk" class="bento-img">
+          <div class="bento-code">05 / NUTRITION</div>
+          <div class="bento-content">
+            <h3 class="bento-title">Nutrition & Bio Desk</h3>
+            <p class="bento-desc">Food strategy built around the executive life you actually live.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 7. COACH PROFILE -->
-  <section class="coach-section" id="coach">
+  <!-- 06. COACH SECTION — TITAN VALE -->
+  <section class="coach-section" id="coaching">
     <div class="container">
       <div class="coach-grid">
-        <div class="coach-img-frame">
-          <img src="img/coach_titan.png" alt="Titan Vale - Head Coach" class="coach-img">
+        <div class="coach-portrait-box">
+          <div class="athletic-tape-label">HEAD OF PERFORMANCE</div>
+          <img src="img/coach_titan.png" alt="Titan Vale" class="coach-img">
         </div>
 
         <div>
-          <div class="section-eyebrow">EXECUTIVE PERFORMANCE DIRECTORY</div>
-          <h2 class="section-title">TITAN <span class="gold-accent-text">VALE.</span></h2>
-          <div style="font-family: var(--font-sans-heading); letter-spacing: 0.15em; color: var(--accent-gold); font-size: 0.85rem; text-transform: uppercase; margin-top: -1rem;">
-            HEAD PERFORMANCE COACH
-          </div>
+          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ THE PERSON WHO RAISES THE BAR ]</div>
+          <h2 style="font-family: var(--font-heading); font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase;">
+            TITAN <span class="text-acid">VALE.</span>
+          </h2>
 
           <div class="coach-quote-box">
-            <p class="coach-quote">“Results are not a mood. They are a standard.”</p>
+            <p class="coach-quote-text">“Motivation is temporary. Standards are architecture.”</p>
           </div>
 
-          <ul class="coach-credentials-list">
-            <li class="coach-credential-item"><i class="fa-solid fa-award"></i> IFBB PRO CERTIFIED PERFORMANCE COACH</li>
-            <li class="coach-credential-item"><i class="fa-solid fa-calendar-check"></i> 12+ YEARS OF EXECUTIVE ATHLETE EXPERIENCE</li>
-            <li class="coach-credential-item"><i class="fa-solid fa-user-check"></i> 4,200+ PROVEN CLIENT TRANSFORMATIONS</li>
+          <div class="meta-code" style="margin-bottom: 1.5rem;">FIELD NOTES / CORE PROTOCOLS</div>
+          <ul class="field-notes-list">
+            <li class="field-note-item"><i class="fa-solid fa-angle-right"></i> STRENGTH DEVELOPMENT</li>
+            <li class="field-note-item"><i class="fa-solid fa-angle-right"></i> BODY RECOMPOSITION</li>
+            <li class="field-note-item"><i class="fa-solid fa-angle-right"></i> PERFORMANCE NUTRITION</li>
+            <li class="field-note-item"><i class="fa-solid fa-angle-right"></i> HABIT SYSTEMS</li>
           </ul>
 
-          <div class="coach-metrics">
+          <button class="btn-acid js-open-modal">BOOK A PRIVATE CONSULTATION</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07. PROOF OF WORK — TRANSFORMATION ARCHIVE -->
+  <section class="proof-section">
+    <div class="container">
+      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ CASE STUDY ARCHIVE ]</div>
+      <h2 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase;">
+        PROOF OF <span class="text-acid">WORK.</span>
+      </h2>
+
+      <div class="proof-grid">
+        <!-- CASE 1 -->
+        <div class="proof-card">
+          <div class="proof-header">
             <div>
-              <div class="coach-metric-val">98%</div>
-              <div class="coach-metric-lbl">Transformation Completion</div>
+              <div class="proof-name">AARAV V.</div>
+              <div class="meta-code">RECOMPOSITION / 24 WEEKS</div>
             </div>
-            <div style="border-left: 1px solid var(--border-gold); padding-left: 3rem;">
-              <div class="coach-metric-val">4,200+</div>
-              <div class="coach-metric-lbl">Members Coached</div>
-            </div>
+            <div class="proof-stat">-18 KG</div>
           </div>
+          <div class="meta-code">PROTOCOL ADHERENCE: 94%</div>
+          <div class="proof-data-bar"><div class="proof-data-fill" style="width: 94%;"></div></div>
+          <p style="font-size: 0.9rem; color: var(--text-stone);">Muscle density increased by 14%. Metabolic output doubled.</p>
+        </div>
 
-          <button class="btn-primary js-open-modal">MEET YOUR COACH</button>
+        <!-- CASE 2 -->
+        <div class="proof-card">
+          <div class="proof-header">
+            <div>
+              <div class="proof-name">RIYA S.</div>
+              <div class="meta-code">STRENGTH / 16 WEEKS</div>
+            </div>
+            <div class="proof-stat">+70 KG</div>
+          </div>
+          <div class="meta-code">DEADLIFT MAX INCREASE</div>
+          <div class="proof-data-bar"><div class="proof-data-fill" style="width: 98%;"></div></div>
+          <p style="font-size: 0.9rem; color: var(--text-stone);">Neural output peak achieved with zero joint compromise.</p>
+        </div>
+
+        <!-- CASE 3 -->
+        <div class="proof-card">
+          <div class="proof-header">
+            <div>
+              <div class="proof-name">KABIR M.</div>
+              <div class="meta-code">ATHLETIC CAPACITY / 12 WEEKS</div>
+            </div>
+            <div class="proof-stat">-4:20 MIN</div>
+          </div>
+          <div class="meta-code">5KM PACING IMPROVEMENT</div>
+          <div class="proof-data-bar"><div class="proof-data-fill" style="width: 91%;"></div></div>
+          <p style="font-size: 0.9rem; color: var(--text-stone);">V02 max expanded through targeted threshold intervals.</p>
+        </div>
+
+        <!-- CASE 4 -->
+        <div class="proof-card">
+          <div class="proof-header">
+            <div>
+              <div class="proof-name">ELENA R.</div>
+              <div class="meta-code">EXECUTIVE RECOMP / 20 WEEKS</div>
+            </div>
+            <div class="proof-stat">-12% FAT</div>
+          </div>
+          <div class="meta-code">BODY FAT REDUCTION</div>
+          <div class="proof-data-bar"><div class="proof-data-fill" style="width: 96%;"></div></div>
+          <p style="font-size: 0.9rem; color: var(--text-stone);">Complete structural shift aligned with high corporate stress.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 8. TRANSFORMATION JOURNEY -->
-  <section class="journey-section">
+  <!-- 08. MEMBERSHIP — YOU JOIN A STANDARD -->
+  <section class="membership-section" id="membership">
     <div class="container">
-      <div style="text-align: center; max-width: 700px; margin: 0 auto 4rem auto;">
-        <div class="section-eyebrow">THE 180-DAY TRAJECTORY</div>
-        <h2 class="section-title">THE EVOLUTION <span class="gold-accent-text">JOURNEY.</span></h2>
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 5rem auto;">
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ ADMISSIONS CHARTER ]</div>
+        <h2 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase; line-height: 1.05;">
+          YOU DON’T JOIN A GYM. <br>
+          YOU JOIN A <span class="text-acid">STANDARD.</span>
+        </h2>
       </div>
 
-      <div class="journey-timeline-nav">
-        <button class="journey-nav-btn active" data-stage="0">WEEK 01</button>
-        <button class="journey-nav-btn" data-stage="1">MONTH 01</button>
-        <button class="journey-nav-btn" data-stage="2">MONTH 03</button>
-        <button class="journey-nav-btn" data-stage="3">MONTH 06</button>
-      </div>
-
-      <div class="journey-display-card" id="journeyCard">
-        <div>
-          <div class="journey-col-title"><i class="fa-solid fa-dumbbell"></i> PHYSICAL PROGRESS</div>
-          <p class="journey-col-desc" id="journeyPhysical">
-            Full 3D posture scan, movement screening, and initial force testing. Baseline body composition recorded.
-          </p>
-        </div>
-        <div>
-          <div class="journey-col-title"><i class="fa-solid fa-brain"></i> MENTAL SHIFT</div>
-          <p class="journey-col-desc" id="journeyMental">
-            Transitioning from vague goals to non-negotiable daily athletic protocols. Standard setting.
-          </p>
-        </div>
-        <div>
-          <div class="journey-col-title"><i class="fa-solid fa-trophy"></i> MILESTONE</div>
-          <p class="journey-col-desc" id="journeyMilestone">
-            Custom nutrition & neural strength blueprint finalized and issued by Head Coach Titan.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 9. MEMBERSHIP SECTION -->
-  <section class="pricing-section" id="membership">
-    <div class="container">
-      <div style="text-align: center; max-width: 700px; margin: 0 auto 3rem auto;">
-        <div class="section-eyebrow">EXCLUSIVE ACCESS TIER</div>
-        <h2 class="section-title">MEMBERSHIP <span class="gold-accent-text">TIERS.</span></h2>
-        <p class="section-desc" style="margin: 0 auto;">
-          We accept a limited number of new members each month to ensure uncompromised access and coaching quality.
-        </p>
-      </div>
-
-      <!-- TOGGLE SWITCH -->
-      <div class="pricing-toggle-wrapper">
-        <span class="toggle-label active" id="toggleMonthlyLabel">Monthly</span>
-        <label class="switch">
-          <input type="checkbox" id="pricingToggle">
-          <span class="slider"></span>
-        </label>
-        <span class="toggle-label" id="toggleAnnualLabel">Annual <span style="color: var(--accent-gold); font-size: 0.75rem;">(Save 15%)</span></span>
-      </div>
-
-      <!-- PRICING CARDS -->
-      <div class="pricing-grid">
-        <!-- ESSENTIAL -->
-        <div class="pricing-card">
+      <div class="membership-grid">
+        <!-- FOUNDATION -->
+        <div class="membership-panel">
           <div>
-            <h3 class="pricing-title">ESSENTIAL</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">For independent high performers standardizing their training.</p>
-            <div class="pricing-price-box">
-              <span class="pricing-price" data-monthly="299" data-annual="250">$299</span>
-              <span class="pricing-period">/ month</span>
-            </div>
-            <ul class="pricing-features">
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> 24/7 Full Club Access</li>
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> Biomechanical Assessment</li>
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> Recovery Lounge & Sauna Access</li>
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> Bi-weekly Progress Analytics</li>
+            <div class="meta-code">TIER 01</div>
+            <h3 style="font-family: var(--font-heading); font-size: 2.25rem; font-weight: 800;">FOUNDATION</h3>
+            <p style="color: var(--text-stone); font-size: 0.9rem;">For self-led consistency and high performance baseline.</p>
+            <div class="membership-price">$299 <span style="font-size: 0.9rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
+            <ul class="charter-list">
+              <li class="charter-item"><i class="fa-solid fa-check"></i> 24/7 Full Club Access</li>
+              <li class="charter-item"><i class="fa-solid fa-check"></i> Biomechanical Audit</li>
+              <li class="charter-item"><i class="fa-solid fa-check"></i> Recovery Lounge Suite</li>
             </ul>
           </div>
-          <button class="btn-secondary js-open-modal" data-plan="ESSENTIAL" style="width: 100%;">APPLY FOR ACCESS</button>
+          <button class="btn-secondary-line js-open-modal" style="width: 100%; justify-content: center;">REQUEST MEMBERSHIP</button>
         </div>
 
-        <!-- SIGNATURE (FEATURED) -->
-        <div class="pricing-card featured">
-          <div class="pricing-badge">MOST REQUESTED</div>
+        <!-- EVOLVE (STANDARD) -->
+        <div class="membership-panel standard">
+          <div class="panel-badge">THE STANDARD</div>
           <div>
-            <h3 class="pricing-title">SIGNATURE</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">Comprehensive 1-on-1 coaching and complete recovery access.</p>
-            <div class="pricing-price-box">
-              <span class="pricing-price" data-monthly="499" data-annual="420">$499</span>
-              <span class="pricing-period">/ month</span>
-            </div>
-            <ul class="pricing-features">
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> 24/7 Full Club Access</li>
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> 4 Monthly Private 1-on-1 Sessions</li>
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> Full Nutrition & Bio-Blueprint</li>
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> Unlimited Cold Plunge & Recovery</li>
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> Guest Passes (2 / month)</li>
+            <div class="meta-code" style="color: var(--accent-acid);">TIER 02</div>
+            <h3 style="font-family: var(--font-heading); font-size: 2.25rem; font-weight: 800;">EVOLVE</h3>
+            <p style="color: var(--text-stone); font-size: 0.9rem;">For people ready to make permanent, measurable change.</p>
+            <div class="membership-price">$499 <span style="font-size: 0.9rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
+            <ul class="charter-list">
+              <li class="charter-item"><i class="fa-solid fa-check"></i> 24/7 Unlimited Access</li>
+              <li class="charter-item"><i class="fa-solid fa-check"></i> 4 Monthly 1-on-1 Sessions</li>
+              <li class="charter-item"><i class="fa-solid fa-check"></i> Full Nutrition Blueprint</li>
+              <li class="charter-item"><i class="fa-solid fa-check"></i> Thermal Plunge Protocols</li>
             </ul>
           </div>
-          <button class="btn-primary js-open-modal" data-plan="SIGNATURE" style="width: 100%;">APPLY FOR ACCESS</button>
+          <button class="btn-acid js-open-modal" style="width: 100%; justify-content: center;">REQUEST MEMBERSHIP</button>
         </div>
 
         <!-- PRIVATE -->
-        <div class="pricing-card">
+        <div class="membership-panel">
           <div>
-            <h3 class="pricing-title">PRIVATE</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">Bespoke VIP 1-on-1 dedication for executive leaders.</p>
-            <div class="pricing-price-box">
-              <span class="pricing-price" data-monthly="899" data-annual="750">$899</span>
-              <span class="pricing-period">/ month</span>
-            </div>
-            <ul class="pricing-features">
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> Head Coach Titan Direct Access</li>
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> Unlimited 1-on-1 Personal Training</li>
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> Bloodwork & Metabolic Integration</li>
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> Executive Catering Coordination</li>
-              <li class="pricing-feature-item"><i class="fa-solid fa-check"></i> Worldwide Partner Club Privileges</li>
+            <div class="meta-code">TIER 03</div>
+            <h3 style="font-family: var(--font-heading); font-size: 2.25rem; font-weight: 800;">PRIVATE</h3>
+            <p style="color: var(--text-stone); font-size: 0.9rem;">Bespoke dedicated transformation for executive leaders.</p>
+            <div class="membership-price">$899 <span style="font-size: 0.9rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
+            <ul class="charter-list">
+              <li class="charter-item"><i class="fa-solid fa-check"></i> Head Coach Titan Direct Access</li>
+              <li class="charter-item"><i class="fa-solid fa-check"></i> Unlimited 1-on-1 Coaching</li>
+              <li class="charter-item"><i class="fa-solid fa-check"></i> Bloodwork & Bio-Integration</li>
             </ul>
           </div>
-          <button class="btn-secondary js-open-modal" data-plan="PRIVATE" style="width: 100%;">APPLY FOR ACCESS</button>
+          <button class="btn-secondary-line js-open-modal" style="width: 100%; justify-content: center;">REQUEST MEMBERSHIP</button>
         </div>
       </div>
 
-      <p class="pricing-scarcity-text">
-        “We maintain a strict ratio of members to equipment to preserve a serene, zero-wait environment.”
-      </p>
-    </div>
-  </section>
-
-  <!-- 10. MEMBER STORIES -->
-  <section class="stories-section">
-    <div class="container">
-      <div class="story-carousel-container">
-        <div class="quote-icon">“</div>
-        <div id="storyContent">
-          <p class="story-quote-text" id="storyQuote">
-            “I did not come here to lose weight. I came here to become dependable to myself. EVOLVE changed how I lead my company and live my life.”
-          </p>
-          <div class="story-author-name" id="storyAuthor">MARCUS VANCE</div>
-          <div class="story-author-meta" id="storyMeta">FOUNDER & MANAGING DIRECTOR — MEMBER FOR 6 MONTHS</div>
-        </div>
-
-        <div class="story-controls">
-          <button class="story-btn" id="storyPrev" aria-label="Previous Story"><i class="fa-solid fa-arrow-left"></i></button>
-          <button class="story-btn" id="storyNext" aria-label="Next Story"><i class="fa-solid fa-arrow-right"></i></button>
-        </div>
+      <div style="text-align: center; margin-top: 3.5rem;" class="meta-code">
+        * LIMITED ADMISSIONS ACCEPTED EACH MONTH TO PRESERVE SERENE SPACE.
       </div>
     </div>
   </section>
 
-  <!-- 11. FINAL CTA -->
-  <section class="final-cta-section">
+  <!-- 09. THE DATA — PERFORMANCE ASSESSMENT -->
+  <section class="data-section">
     <div class="container">
-      <div class="section-eyebrow" style="justify-content: center; margin-bottom: 1.5rem;">YOUR NEXT CHAPTER</div>
-      <h2 class="final-cta-title">THE STANDARD <br><span class="gold-accent-text">STARTS HERE.</span></h2>
-      <p class="final-cta-sub">
-        One private consultation can redefine your physical output for the next six months and beyond.
+      <div class="data-panel">
+        <div class="meta-code" style="color: var(--accent-acid);">[ BIOMETRIC ANALYTICS ]</div>
+        <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; text-transform: uppercase; margin-top: 0.5rem;">
+          WHAT GETS MEASURED <span class="text-acid">GETS RESPECTED.</span>
+        </h2>
+
+        <!-- ANIMATED SVG PERFORMANCE LINE CHART -->
+        <div class="chart-container">
+          <svg class="chart-svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+            <path class="chart-line" id="chartLine" d="M0,180 Q 250,140 500,90 T 1000,20" />
+            <circle cx="1000" cy="20" r="6" fill="#B5FF3D" />
+          </svg>
+        </div>
+
+        <div class="data-grid">
+          <div>
+            <div class="data-val">98%</div>
+            <div class="data-lbl">PROTOCOL ADHERENCE</div>
+          </div>
+          <div>
+            <div class="data-val">4,200+</div>
+            <div class="data-lbl">TRANSFORMATIONS</div>
+          </div>
+          <div>
+            <div class="data-val">24 HRS</div>
+            <div class="data-lbl">PRIVATE ACCESS</div>
+          </div>
+          <div>
+            <div class="data-val">89%</div>
+            <div class="data-lbl">MILESTONE HIT IN 90 DAYS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. TESTIMONIALS — THE SHIFT -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="testimonial-box">
+        <div class="giant-quote-mark">“</div>
+        <p class="testimonial-text" id="testiText">
+          “I stopped negotiating with myself. That changed more than my body.”
+        </p>
+        <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 800; color: var(--accent-acid);" id="testiAuthor">
+          RIYA S. / STRENGTH PROTOCOL / 16 WEEKS
+        </div>
+        <div class="meta-code" style="margin-top: 2rem;" id="testiCounter">01 / 03</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. FINAL CTA — MAKE THE DECISION -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.5rem;">[ MAKE THE DECISION ]</div>
+      <h2 class="final-title">
+        THE NEXT VERSION OF YOU <br>
+        IS NOT A <span class="text-acid">THEORY.</span>
+      </h2>
+      <p style="font-size: 1.25rem; color: var(--text-stone); margin-bottom: 3.5rem;">
+        It is a decision repeated daily.
       </p>
-      <button class="btn-primary js-open-modal" style="padding: 1.25rem 3rem; font-size: 0.9rem;">
-        REQUEST MEMBERSHIP
-      </button>
+      <button class="btn-acid js-open-modal" style="padding: 1.35rem 3.5rem; font-size: 1rem;">APPLY TO TRAIN</button>
+      <div class="meta-code" style="margin-top: 2rem;">Private consultation. No pressure. Just an honest plan.</div>
     </div>
   </section>
 
   <!-- 12. CONSULTATION MODAL -->
-  <div class="modal-backdrop" id="consultationModal">
-    <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+  <div class="modal-overlay" id="consultationModal">
+    <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
 
-      <div id="modalFormContent">
-        <h2 class="modal-title" id="modalTitle">BEGIN WITH A CONVERSATION.</h2>
-        <p class="modal-sub">Tell us where you are. We will help you map what comes next.</p>
+      <div id="modalFormBody">
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.5rem;">[ PRIVATE ADMISSIONS ]</div>
+        <h2 style="font-family: var(--font-heading); font-size: 2.25rem; font-weight: 900; text-transform: uppercase;" id="modalTitle">
+          START WITH THE TRUTH.
+        </h2>
+        <p style="color: var(--text-stone); font-size: 0.95rem; margin-bottom: 2.5rem;">
+          Tell us where you are. We’ll help map the work ahead.
+        </p>
 
-        <form id="membershipForm">
-          <div class="form-group">
-            <label class="form-label" for="fullName">Full Name</label>
-            <input type="text" id="fullName" class="form-input" required placeholder="e.g. Alexander Wright">
+        <form id="consultForm">
+          <div style="margin-bottom: 1.5rem;">
+            <label class="meta-code" for="fullName">Full Name</label>
+            <input type="text" id="fullName" class="input-field" required placeholder="e.g. Alexander Wright">
           </div>
 
-          <div class="form-group">
-            <label class="form-label" for="emailAddr">Email Address</label>
-            <input type="email" id="emailAddr" class="form-input" required placeholder="alexander@example.com">
+          <div style="margin-bottom: 1.5rem;">
+            <label class="meta-code" for="emailAddr">Email Address</label>
+            <input type="email" id="emailAddr" class="input-field" required placeholder="alexander@example.com">
           </div>
 
-          <div class="form-group">
-            <label class="form-label" for="primaryGoal">Primary Goal</label>
-            <select id="primaryGoal" class="form-select">
-              <option value="recomp">Body Recomposition & Aesthetic Mastery</option>
-              <option value="athleticism">Elite Athletic Performance</option>
-              <option value="longevity">Longevity & Joint Vitality</option>
-              <option value="strength">Pure Strength & Neural Power</option>
-            </select>
+          <div style="margin-bottom: 1.5rem;">
+            <label class="meta-code" for="primaryGoal">Primary Goal</label>
+            <input type="text" id="primaryGoal" class="input-field" required placeholder="e.g. Recomposition & Strength">
           </div>
 
-          <div class="form-group">
-            <label class="form-label" for="trainingStyle">Preferred Tier / Style</label>
-            <select id="trainingStyle" class="form-select">
-              <option value="SIGNATURE">Signature Club Membership</option>
-              <option value="PRIVATE">Private VIP 1-on-1 Coaching</option>
-              <option value="ESSENTIAL">Essential Club Access</option>
-            </select>
+          <div style="margin-bottom: 2rem;">
+            <label class="meta-code" for="trainingExp">Current Training Experience</label>
+            <input type="text" id="trainingExp" class="input-field" required placeholder="e.g. 5 Years inconsistent / Advanced">
           </div>
 
-          <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1.5rem;">
-            SUBMIT APPLICATION
-          </button>
+          <button type="submit" class="btn-acid" style="width: 100%; justify-content: center;">SUBMIT APPLICATION</button>
         </form>
       </div>
 
       <!-- SUCCESS STATE -->
-      <div class="modal-success-state" id="modalSuccess">
-        <div class="modal-success-icon"><i class="fa-solid fa-circle-check"></i></div>
-        <h2 class="modal-title">APPLICATION RECEIVED.</h2>
-        <p class="modal-sub" style="margin-top: 1rem;">
-          Thank you. Our Membership Director will contact you within 24 hours to schedule your private consultation.
-        </p>
-        <button class="btn-secondary" id="modalSuccessClose" style="margin-top: 1.5rem;">CLOSE WINDOW</button>
+      <div id="modalSuccessBody" style="display: none; text-align: center; padding: 2rem 0;">
+        <i class="fa-solid fa-check" style="font-size: 3rem; color: var(--accent-acid); margin-bottom: 1.5rem;"></i>
+        <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; text-transform: uppercase;">APPLICATION RECEIVED.</h2>
+        <p style="color: var(--text-stone); margin-top: 1rem;">We’ll be in touch within 24 hours.</p>
+        <button class="btn-secondary-line" id="successCloseBtn" style="margin-top: 2rem;">CLOSE</button>
       </div>
     </div>
   </div>
 
-  <!-- 13. SITE FOOTER -->
+  <!-- SITE FOOTER -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <a href="#" class="footer-brand-title">
-            <span style="width: 8px; height: 8px; background: var(--accent-gold); border-radius: 50%; display: inline-block;"></span>
-            EVOLVE FITNESS
-          </a>
-          <p class="footer-brand-desc">
-            An exclusive private members athletic club engineered for high performance, strength, and quiet confidence.
-          </p>
-        </div>
-
-        <div>
-          <div class="footer-col-header">NAVIGATION</div>
-          <ul class="footer-links">
-            <li><a href="#hero" class="footer-link">Home</a></li>
-            <li><a href="#method" class="footer-link">The Method</a></li>
-            <li><a href="#facilities" class="footer-link">The Club</a></li>
-            <li><a href="#coach" class="footer-link">Head Coach</a></li>
-            <li><a href="#membership" class="footer-link">Membership</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="footer-col-header">LOCATION & HOURS</div>
-          <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8;">
-            450 Park Avenue, Executive Suite<br>
-            New York, NY 10022<br><br>
-            <span style="color: var(--accent-gold);">Open 24 Hours / 7 Days</span>
-          </div>
-        </div>
-
-        <div>
-          <div class="footer-col-header">THE PRIVATE LEDGER</div>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
-            Subscribe to our private journal on human performance & physiology.
-          </p>
-          <form class="footer-newsletter-box" onsubmit="event.preventDefault(); alert('Subscribed to private ledger.');">
-            <input type="email" placeholder="Your email address" class="footer-newsletter-input" required>
-            <button type="submit" class="footer-newsletter-btn"><i class="fa-solid fa-arrow-right"></i></button>
-          </form>
-        </div>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+      <div>
+        <div style="font-family: var(--font-heading); font-weight: 900; color: var(--text-bone); letter-spacing: 0.15em;">EVOLVE PERFORMANCE HOUSE</div>
+        <div>DISCIPLINE, ELEVATED. &copy; 2026 EVOLVE FITNESS. ALL RIGHTS RESERVED.</div>
       </div>
-
-      <div class="footer-bottom">
-        <div>DISCIPLINE, ELEVATED. © 2026 EVOLVE FITNESS. ALL RIGHTS RESERVED.</div>
-        <div class="social-links">
-          <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="#" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#" class="social-link" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-        </div>
-      </div>
+      <div class="meta-code">450 PARK AVENUE, EXECUTIVE SUITE, NEW YORK, NY</div>
     </div>
   </footer>
 
   <!-- ==========================================
-     JAVASCRIPT INTERACTION & GSAP MOTION
+     JAVASCRIPT LOGIC & GSAP MOTION
      ========================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // 1. PRELOADER ANIMATION
-      const fillBar = document.getElementById('preloaderFill');
+      const preloaderFill = document.getElementById('preloaderFill');
       const preloader = document.getElementById('preloader');
       let progress = 0;
 
-      const interval = setInterval(() => {
-        progress += 4;
-        if (fillBar) fillBar.style.width = progress + '%';
-
+      const pInterval = setInterval(() => {
+        progress += 5;
+        if (preloaderFill) preloaderFill.style.width = progress + '%';
         if (progress >= 100) {
-          clearInterval(interval);
+          clearInterval(pInterval);
           setTimeout(() => {
             if (preloader) {
-              preloader.style.transform = 'translateY(-100%)';
+              preloader.style.opacity = '0';
+              preloader.style.pointerEvents = 'none';
+              setTimeout(() => preloader.remove(), 600);
             }
             initGSAP();
           }, 300);
         }
-      }, 30);
+      }, 25);
 
-      // 2. NAVBAR SCROLL EFFECT & MOBILE MENU
-      const navbar = document.getElementById('navbar');
+      // 2. NAV SCROLL PROGRESS INDICATOR & MOBILE TAKEOVER
+      const scrollIndicator = document.getElementById('scrollIndicator');
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = (window.scrollY / totalHeight) * 100;
+        if (scrollIndicator) scrollIndicator.style.width = pct + '%';
       });
 
-      const mobileNavOpen = document.getElementById('mobileNavOpen');
-      const mobileNavClose = document.getElementById('mobileNavClose');
-      const mobileMenu = document.getElementById('mobileMenu');
-      const mobileLinks = document.querySelectorAll('.js-mobile-link');
+      const mobileToggleBtn = document.getElementById('mobileToggleBtn');
+      const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+      const mobileTakeover = document.getElementById('mobileTakeover');
+      const mobLinks = document.querySelectorAll('.js-mob-link');
 
-      if (mobileNavOpen && mobileMenu) {
-        mobileNavOpen.addEventListener('click', () => mobileMenu.classList.add('active'));
+      if (mobileToggleBtn && mobileTakeover) {
+        mobileToggleBtn.addEventListener('click', () => mobileTakeover.classList.add('active'));
       }
-      if (mobileNavClose && mobileMenu) {
-        mobileNavClose.addEventListener('click', () => mobileMenu.classList.remove('active'));
+      if (mobileCloseBtn && mobileTakeover) {
+        mobileCloseBtn.addEventListener('click', () => mobileTakeover.classList.remove('active'));
       }
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', () => mobileMenu.classList.remove('active'));
-      });
+      mobLinks.forEach(l => l.addEventListener('click', () => mobileTakeover.classList.remove('active')));
 
-      // 3. BEFORE / AFTER COMPARISON SLIDER
-      const slider = document.getElementById('comparisonSlider');
-      const afterImg = document.getElementById('comparisonAfterImg');
-      const handle = document.getElementById('comparisonHandle');
+      // 3. HERO GALLERY SPOTLIGHT REVEAL SLIDER
+      const heroInst = document.getElementById('heroInstallation');
+      const imgAfter = document.getElementById('imgAfter');
+      const divider = document.getElementById('spotlightDivider');
 
-      if (slider && afterImg && handle) {
+      if (heroInst && imgAfter && divider) {
         let isDragging = false;
+        const updateSpotlight = (x) => {
+          const rect = heroInst.getBoundingClientRect();
+          let pct = ((x - rect.left) / rect.width) * 100;
+          if (pct < 0) pct = 0;
+          if (pct > 100) pct = 100;
 
-        const updateSlider = (x) => {
-          const rect = slider.getBoundingClientRect();
-          let percentage = ((x - rect.left) / rect.width) * 100;
-          if (percentage < 0) percentage = 0;
-          if (percentage > 100) percentage = 100;
-
-          afterImg.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
-          handle.style.left = `${percentage}%`;
+          imgAfter.style.clipPath = `polygon(0 0, ${pct}% 0, ${pct}% 100%, 0 100%)`;
+          divider.style.left = `${pct}%`;
         };
 
-        slider.addEventListener('mousedown', (e) => {
-          isDragging = true;
-          updateSlider(e.clientX);
-        });
-
-        window.addEventListener('mousemove', (e) => {
-          if (!isDragging) return;
-          updateSlider(e.clientX);
-        });
-
-        window.addEventListener('mouseup', () => isDragging = false);
-
-        // Touch Support
-        slider.addEventListener('touchstart', (e) => {
-          isDragging = true;
-          updateSlider(e.touches[0].clientX);
-        });
-
-        window.addEventListener('touchmove', (e) => {
-          if (!isDragging) return;
-          updateSlider(e.touches[0].clientX);
-        });
-
-        window.addEventListener('touchend', () => isDragging = false);
+        heroInst.addEventListener('mousemove', (e) => updateSpotlight(e.clientX));
+        heroInst.addEventListener('touchmove', (e) => updateSpotlight(e.touches[0].clientX));
       }
 
-      // 4. TRANSFORMATION TIMELINE SWITCHER
-      const journeyData = [
+      // 4. TESTIMONIALS SLIDER
+      const testimonials = [
         {
-          physical: "Full 3D posture scan, movement screening, and force output baseline recorded.",
-          mental: "Transitioning from vague fitness goals to non-negotiable daily athletic protocols.",
-          milestone: "Custom nutrition & neural strength blueprint finalized and issued by Head Coach Titan."
+          quote: "“I stopped negotiating with myself. That changed more than my body.”",
+          author: "RIYA S. / STRENGTH PROTOCOL / 16 WEEKS",
+          counter: "01 / 03"
         },
         {
-          physical: "Lean tissue accumulation & initial postural re-alignment. Neural speed efficiency improves.",
-          mental: "Unshakable habit automation. Training becomes a grounding anchor, not a chore.",
-          milestone: "+15% strength capacity across compound lifts. Recovery score up 22%."
+          quote: "“No loud music, no influencers, no bullshit. Just serious work and coaches who measure everything.”",
+          author: "MARCUS V. / EXECUTIVE RECOMP / 24 WEEKS",
+          counter: "02 / 03"
         },
         {
-          physical: "Substantial body fat reduction with pronounced muscular definition and metabolic speed.",
-          mental: "High athletic confidence and resilience under high executive workload.",
-          milestone: "V02 Max increases significantly; 50% target recomposition milestone achieved."
-        },
-        {
-          physical: "Complete aesthetic transformation: defined physique, optimal posture, and peak strength.",
-          mental: "Identity integrated as an elite athlete in business and life.",
-          milestone: "Full physical autonomy and a permanent lifelong athletic standard."
+          quote: "“EVOLVE is the only place where my training program evolves as fast as my schedule changes.”",
+          author: "DAVID K. / ATHLETIC PERFORMANCE / 12 WEEKS",
+          counter: "03 / 03"
         }
       ];
 
-      const journeyBtns = document.querySelectorAll('.journey-nav-btn');
-      const physEl = document.getElementById('journeyPhysical');
-      const mentEl = document.getElementById('journeyMental');
-      const mileEl = document.getElementById('journeyMilestone');
+      let tIndex = 0;
+      const tText = document.getElementById('testiText');
+      const tAuthor = document.getElementById('testiAuthor');
+      const tCounter = document.getElementById('testiCounter');
 
-      journeyBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          journeyBtns.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-
-          const index = parseInt(this.getAttribute('data-stage'));
-          if (journeyData[index]) {
-            physEl.innerText = journeyData[index].physical;
-            mentEl.innerText = journeyData[index].mental;
-            mileEl.innerText = journeyData[index].milestone;
-          }
-        });
-      });
-
-      // 5. PRICING MONTHLY / ANNUAL TOGGLE
-      const pricingToggle = document.getElementById('pricingToggle');
-      const priceEls = document.querySelectorAll('.pricing-price');
-      const monthlyLabel = document.getElementById('toggleMonthlyLabel');
-      const annualLabel = document.getElementById('toggleAnnualLabel');
-
-      if (pricingToggle) {
-        pricingToggle.addEventListener('change', () => {
-          const isAnnual = pricingToggle.checked;
-          if (isAnnual) {
-            monthlyLabel.classList.remove('active');
-            annualLabel.classList.add('active');
-          } else {
-            monthlyLabel.classList.add('active');
-            annualLabel.classList.remove('active');
-          }
-
-          priceEls.forEach(el => {
-            const val = isAnnual ? el.getAttribute('data-annual') : el.getAttribute('data-monthly');
-            el.innerText = '$' + val;
-          });
-        });
-      }
-
-      // 6. MEMBER STORIES CAROUSEL
-      const stories = [
-        {
-          quote: "“I did not come here to lose weight. I came here to become dependable to myself. EVOLVE changed how I lead my company and live my life.”",
-          author: "MARCUS VANCE",
-          meta: "FOUNDER & MANAGING DIRECTOR — MEMBER FOR 6 MONTHS"
-        },
-        {
-          quote: "“The precision of Titan and his team is unmatched. It feels like training at an Olympic facility combined with a 5-star private hotel.”",
-          author: "ELENA ROSTOVA",
-          meta: "TECH EXECUTIVE — MEMBER FOR 1 YEAR"
-        },
-        {
-          quote: "“The privacy, zero-wait atmosphere, and data-driven approach replaced my guesswork with undeniable physical results.”",
-          author: "DAVID STERLING",
-          meta: "VENTURE PARTNER — MEMBER FOR 9 MONTHS"
-        }
-      ];
-
-      let currentStoryIndex = 0;
-      const quoteEl = document.getElementById('storyQuote');
-      const authorEl = document.getElementById('storyAuthor');
-      const metaEl = document.getElementById('storyMeta');
-      const prevBtn = document.getElementById('storyPrev');
-      const nextBtn = document.getElementById('storyNext');
-
-      const updateStory = (index) => {
-        if (quoteEl && authorEl && metaEl) {
-          quoteEl.style.opacity = '0';
-          authorEl.style.opacity = '0';
-          metaEl.style.opacity = '0';
-
+      setInterval(() => {
+        tIndex = (tIndex + 1) % testimonials.length;
+        if (tText && tAuthor && tCounter) {
+          tText.style.opacity = '0';
           setTimeout(() => {
-            quoteEl.innerText = stories[index].quote;
-            authorEl.innerText = stories[index].author;
-            metaEl.innerText = stories[index].meta;
-
-            quoteEl.style.opacity = '1';
-            authorEl.style.opacity = '1';
-            metaEl.style.opacity = '1';
-          }, 200);
+            tText.innerText = testimonials[tIndex].quote;
+            tAuthor.innerText = testimonials[tIndex].author;
+            tCounter.innerText = testimonials[tIndex].counter;
+            tText.style.opacity = '1';
+          }, 300);
         }
-      };
+      }, 5000);
 
-      if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', () => {
-          currentStoryIndex = (currentStoryIndex - 1 + stories.length) % stories.length;
-          updateStory(currentStoryIndex);
-        });
-
-        nextBtn.addEventListener('click', () => {
-          currentStoryIndex = (currentStoryIndex + 1) % stories.length;
-          updateStory(currentStoryIndex);
-        });
-      }
-
-      // 7. CONSULTATION MODAL HANDLERS
+      // 5. CONSULTATION MODAL LOGIC
       const modal = document.getElementById('consultationModal');
       const openModalBtns = document.querySelectorAll('.js-open-modal');
       const closeModalBtn = document.getElementById('modalCloseBtn');
-      const modalSuccessClose = document.getElementById('modalSuccessClose');
-      const membershipForm = document.getElementById('membershipForm');
-      const modalFormContent = document.getElementById('modalFormContent');
-      const modalSuccess = document.getElementById('modalSuccess');
-      const trainingStyleSelect = document.getElementById('trainingStyle');
+      const consultForm = document.getElementById('consultForm');
+      const modalFormBody = document.getElementById('modalFormBody');
+      const modalSuccessBody = document.getElementById('modalSuccessBody');
+      const successCloseBtn = document.getElementById('successCloseBtn');
 
       openModalBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.preventDefault();
-          const plan = btn.getAttribute('data-plan');
-          if (plan && trainingStyleSelect) {
-            trainingStyleSelect.value = plan;
-          }
           if (modal) modal.classList.add('active');
         });
       });
@@ -2396,110 +1791,63 @@
       const closeModal = () => {
         if (modal) modal.classList.remove('active');
         setTimeout(() => {
-          if (modalFormContent) modalFormContent.style.display = 'block';
-          if (modalSuccess) modalSuccess.style.display = 'none';
+          if (modalFormBody) modalFormBody.style.display = 'block';
+          if (modalSuccessBody) modalSuccessBody.style.display = 'none';
         }, 400);
       };
 
       if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-      if (modalSuccessClose) modalSuccessClose.addEventListener('click', closeModal);
-
+      if (successCloseBtn) successCloseBtn.addEventListener('click', closeModal);
       if (modal) {
         modal.addEventListener('click', (e) => {
           if (e.target === modal) closeModal();
         });
       }
-
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
           closeModal();
         }
       });
 
-      if (membershipForm) {
-        membershipForm.addEventListener('submit', (e) => {
+      if (consultForm) {
+        consultForm.addEventListener('submit', (e) => {
           e.preventDefault();
-          if (modalFormContent) modalFormContent.style.display = 'none';
-          if (modalSuccess) modalSuccess.style.display = 'block';
+          if (modalFormBody) modalFormBody.style.display = 'none';
+          if (modalSuccessBody) modalSuccessBody.style.display = 'block';
         });
       }
 
-      // 8. GSAP SCROLLTRIGGER ANIMATIONS
+      // 6. GSAP ANIMATIONS
       function initGSAP() {
         if (typeof gsap === 'undefined') return;
-
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hero Fade Up
-        gsap.from('.hero-title, .hero-subtext, .hero-actions', {
-          y: 40,
-          opacity: 0,
-          duration: 1.2,
-          stagger: 0.15,
-          ease: 'power3.out'
-        });
-
-        // Number Counter Animation
-        const metricNumbers = document.querySelectorAll('.metric-number[data-target]');
-        metricNumbers.forEach(num => {
-          const target = parseInt(num.getAttribute('data-target'));
-          const suffix = num.getAttribute('data-suffix') || '';
-
+        // SVG Chart Line Draw Animation
+        const chartLine = document.getElementById('chartLine');
+        if (chartLine) {
           ScrollTrigger.create({
-            trigger: num,
-            start: 'top 85%',
+            trigger: '.data-section',
+            start: 'top 75%',
             onEnter: () => {
-              gsap.to(num, {
-                innerText: target,
-                duration: 2,
-                snap: { innerText: 1 },
-                ease: 'power2.out',
-                onUpdate: function() {
-                  num.innerText = Math.ceil(num.innerText) + suffix;
-                }
-              });
+              chartLine.style.strokeDashoffset = '0';
             }
           });
-        });
+        }
 
-        // Method Cards Scroll Reveal
-        gsap.from('.method-card', {
-          scrollTrigger: {
-            trigger: '.method-timeline',
-            start: 'top 80%'
-          },
-          y: 50,
-          opacity: 0,
-          duration: 1,
-          stagger: 0.25,
-          ease: 'power3.out'
-        });
-
-        // Bento Grid Reveal
-        gsap.from('.bento-item', {
-          scrollTrigger: {
-            trigger: '.bento-grid',
-            start: 'top 80%'
-          },
-          y: 40,
-          opacity: 0,
-          duration: 0.9,
-          stagger: 0.15,
-          ease: 'power3.out'
-        });
-
-        // Coach Profile Fade
-        gsap.from('.coach-img-frame, .coach-quote-box', {
-          scrollTrigger: {
-            trigger: '.coach-section',
-            start: 'top 75%'
-          },
-          y: 40,
-          opacity: 0,
-          duration: 1,
-          stagger: 0.2,
-          ease: 'power3.out'
-        });
+        // Horizontal Manifesto Scroll (Desktop)
+        if (window.innerWidth > 1024) {
+          const panels = gsap.utils.toArray('.manifesto-panel');
+          gsap.to(panels, {
+            xPercent: -100 * (panels.length - 1),
+            ease: 'none',
+            scrollTrigger: {
+              trigger: '.manifesto-section',
+              pin: true,
+              scrub: 1,
+              end: () => '+=' + document.querySelector('.manifesto-section').offsetWidth * 2
+            }
+          });
+        }
       }
     });
   </script>
