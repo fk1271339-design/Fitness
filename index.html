@@ -20,7 +20,7 @@
 
   <style>
     /* ==========================================
-       ART DIRECTION: THE HOUSE OF WORK (MOBILE EXPERIENCE PASS)
+       ART DIRECTION: THE HOUSE OF WORK (COMPACT & 2-COLUMN MINIMIZED PASS)
        ========================================== */
     :root {
       --bg-black: #090A08;
@@ -43,7 +43,7 @@
       --font-heading: 'Outfit', sans-serif;
       --font-body: 'DM Sans', sans-serif;
 
-      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       --transition-fast: all 0.2s ease-out;
     }
 
@@ -66,7 +66,7 @@
     body {
       background-color: var(--bg-black);
       color: var(--text-bone);
-      line-height: 1.6;
+      line-height: 1.5;
       overflow-x: hidden;
       position: relative;
       width: 100%;
@@ -75,10 +75,10 @@
     /* Safe Area Inset Support */
     @supports (padding: env(safe-area-inset-top)) {
       .navbar {
-        padding-top: max(1.2rem, env(safe-area-inset-top));
+        padding-top: max(1rem, env(safe-area-inset-top));
       }
       .modal-window {
-        padding-bottom: max(2.5rem, env(safe-area-inset-bottom));
+        padding-bottom: max(2rem, env(safe-area-inset-bottom));
       }
     }
 
@@ -94,12 +94,12 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* Desktop Custom Floating Hover Cursor Tooltip (Hidden on touch devices) */
+    /* Desktop Custom Floating Hover Cursor Tooltip */
     #customCursor {
       position: fixed;
       top: 0;
       left: 0;
-      padding: 0.4rem 0.85rem;
+      padding: 0.35rem 0.75rem;
       background-color: var(--accent-acid);
       color: #090A08;
       font-family: var(--font-heading);
@@ -134,7 +134,7 @@
 
     .meta-code {
       font-family: var(--font-body);
-      font-size: clamp(0.65rem, 2vw, 0.72rem);
+      font-size: clamp(0.62rem, 1.8vw, 0.7rem);
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--text-stone);
@@ -144,15 +144,15 @@
     .btn-acid {
       display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
-      min-height: 48px;
-      padding: 0.95rem 2rem;
+      gap: 0.65rem;
+      min-height: 44px;
+      padding: 0.85rem 1.75rem;
       background-color: #090A08;
       color: var(--text-bone);
       font-family: var(--font-heading);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       text-decoration: none;
       border: 1px solid var(--border-dark);
@@ -172,21 +172,21 @@
       background-color: var(--accent-acid);
       color: #090A08;
       border-color: var(--accent-acid);
-      box-shadow: 0 0 25px var(--accent-acid-glow);
+      box-shadow: 0 0 20px var(--accent-acid-glow);
     }
 
     .btn-secondary-line {
       display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
-      min-height: 48px;
-      padding: 0.95rem 2rem;
+      gap: 0.65rem;
+      min-height: 44px;
+      padding: 0.85rem 1.75rem;
       background: transparent;
       color: var(--text-bone);
       font-family: var(--font-heading);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       text-decoration: none;
       border: 1px solid var(--border-dark);
@@ -207,19 +207,19 @@
 
     .container {
       width: 100%;
-      max-width: 1380px;
+      max-width: 1320px;
       margin: 0 auto;
       padding: 0 2rem;
     }
 
     @media (max-width: 480px) {
       .container {
-        padding: 0 1.25rem;
+        padding: 0 1rem;
       }
     }
 
     /* ==========================================
-       01. PRELOADER — ENTER THE HOUSE
+       01. PRELOADER
        ========================================== */
     #preloader {
       position: fixed;
@@ -238,7 +238,7 @@
       flex-direction: column;
       justify-content: center;
       padding: 2rem;
-      transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
     }
 
     .preloader-door-left { border-right: 1px solid var(--border-dark); align-items: flex-end; text-align: right; }
@@ -259,7 +259,7 @@
 
     .preloader-wordmark {
       font-family: var(--font-heading);
-      font-size: clamp(2rem, 7.5vw, 4.5rem);
+      font-size: clamp(2rem, 7.5vw, 4rem);
       font-weight: 900;
       letter-spacing: 0.25em;
       color: var(--text-bone);
@@ -284,10 +284,10 @@
     }
 
     .preloader-track {
-      width: 220px;
+      width: 200px;
       height: 2px;
       background: var(--bg-graphite);
-      margin: 1.75rem 0;
+      margin: 1.5rem 0;
       position: relative;
       overflow: hidden;
     }
@@ -303,7 +303,7 @@
     }
 
     /* ==========================================
-       02. NAVIGATION — QUIET AUTHORITY
+       02. NAVIGATION
        ========================================== */
     .navbar {
       position: fixed;
@@ -311,7 +311,7 @@
       left: 0;
       width: 100%;
       z-index: 1000;
-      padding: 1.25rem 0;
+      padding: 1.1rem 0;
       background: rgba(20, 22, 18, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -320,7 +320,7 @@
     }
 
     .navbar.scrolled {
-      padding: 0.9rem 0;
+      padding: 0.8rem 0;
       background: rgba(9, 10, 8, 0.94);
     }
 
@@ -348,13 +348,13 @@
 
     .nav-brand-title {
       font-family: var(--font-heading);
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 800;
       letter-spacing: 0.18em;
     }
 
     .nav-brand-sub {
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       letter-spacing: 0.22em;
       color: var(--text-stone);
       display: block;
@@ -364,20 +364,20 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 3rem;
+      gap: 2.5rem;
       list-style: none;
     }
 
     .nav-link {
       color: var(--text-stone);
       font-family: var(--font-heading);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       text-decoration: none;
       position: relative;
-      padding-bottom: 4px;
+      padding-bottom: 3px;
       transition: var(--transition-smooth);
     }
 
@@ -407,15 +407,15 @@
       background: none;
       border: 1px solid var(--border-dark);
       color: var(--text-bone);
-      width: 46px;
-      height: 46px;
-      font-size: 1.15rem;
+      width: 42px;
+      height: 42px;
+      font-size: 1.1rem;
       cursor: pointer;
       align-items: center;
       justify-content: center;
     }
 
-    /* Mobile Takeover Menu Overlay */
+    /* Mobile Takeover Menu */
     .mobile-takeover {
       position: fixed;
       inset: 0;
@@ -424,10 +424,10 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: max(2rem, env(safe-area-inset-top)) 2rem max(2.5rem, env(safe-area-inset-bottom)) 2rem;
+      padding: max(1.75rem, env(safe-area-inset-top)) 1.75rem max(2rem, env(safe-area-inset-bottom)) 1.75rem;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.35s ease;
     }
 
     .mobile-takeover.active {
@@ -452,21 +452,21 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      margin-top: 2rem;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
     }
 
     .mobile-link {
       font-family: var(--font-editorial);
-      font-size: clamp(2.2rem, 7vw, 3rem);
+      font-size: clamp(2rem, 6.5vw, 2.75rem);
       color: var(--text-bone);
       text-decoration: none;
       border-bottom: 1px solid var(--border-dark);
-      padding-bottom: 0.75rem;
+      padding-bottom: 0.6rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      min-height: 48px;
+      min-height: 44px;
     }
 
     .mobile-link:hover {
@@ -474,12 +474,12 @@
     }
 
     /* ==========================================
-       03. HERO — THE BODY IS THE RECEIPT
+       03. HERO SECTION
        ========================================== */
     .hero {
       min-height: 100dvh;
-      padding-top: 8.5rem;
-      padding-bottom: 5rem;
+      padding-top: 7.5rem;
+      padding-bottom: 4rem;
       display: flex;
       align-items: center;
       position: relative;
@@ -489,59 +489,59 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 4.5rem;
+      gap: 3.5rem;
       align-items: center;
     }
 
     .hero-headline {
       font-family: var(--font-heading);
-      font-size: clamp(2.75rem, 6.8vw, 5.8rem);
+      font-size: clamp(2.5rem, 6.2vw, 5.2rem);
       font-weight: 900;
       line-height: 0.96;
       letter-spacing: -0.02em;
       text-transform: uppercase;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
       word-break: break-word;
     }
 
     .hero-subcopy {
-      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      font-size: clamp(0.95rem, 2.2vw, 1.1rem);
       color: var(--text-stone);
       font-weight: 300;
-      max-width: 520px;
-      line-height: 1.65;
-      margin-bottom: 2.25rem;
+      max-width: 500px;
+      line-height: 1.6;
+      margin-bottom: 2rem;
     }
 
     .hero-actions {
       display: flex;
       align-items: center;
-      gap: 1.25rem;
+      gap: 1rem;
       flex-wrap: wrap;
     }
 
     .hero-trust-tag {
       font-family: var(--font-body);
-      font-size: clamp(0.62rem, 1.8vw, 0.68rem);
-      letter-spacing: 0.22em;
+      font-size: clamp(0.6rem, 1.8vw, 0.65rem);
+      letter-spacing: 0.2em;
       color: var(--text-muted);
       text-transform: uppercase;
-      margin-top: 1.25rem;
+      margin-top: 1rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     /* GALLERY SPOTLIGHT INSTALLATION VISUAL */
     .hero-installation {
       position: relative;
       width: 100%;
-      height: clamp(340px, 55vw, 550px);
+      height: clamp(300px, 48vw, 500px);
       background-color: var(--bg-graphite);
       border: 1px solid var(--border-dark);
       overflow: hidden;
       user-select: none;
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
       touch-action: pan-y;
     }
 
@@ -560,7 +560,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       font-family: var(--font-heading);
-      font-size: clamp(10rem, 30vw, 20rem);
+      font-size: clamp(9rem, 26vw, 18rem);
       font-weight: 900;
       color: rgba(255, 255, 255, 0.025);
       pointer-events: none;
@@ -602,47 +602,47 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       background: #090A08;
       border: 1px solid var(--accent-acid);
       color: var(--accent-acid);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+      font-size: 0.7rem;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
       border-radius: 50%;
     }
 
     .gallery-tag {
       position: absolute;
-      bottom: 1.25rem;
-      padding: 0.35rem 0.75rem;
+      bottom: 1rem;
+      padding: 0.3rem 0.65rem;
       background: rgba(9, 10, 8, 0.88);
       backdrop-filter: blur(10px);
       border: 1px solid var(--border-dark);
       font-family: var(--font-body);
-      font-size: clamp(0.58rem, 1.8vw, 0.65rem);
-      letter-spacing: 0.18em;
+      font-size: clamp(0.55rem, 1.6vw, 0.62rem);
+      letter-spacing: 0.16em;
       color: var(--text-stone);
       z-index: 6;
     }
 
-    .gallery-tag-left { left: 1rem; }
-    .gallery-tag-right { right: 1rem; color: var(--accent-acid); border-color: var(--border-acid); }
+    .gallery-tag-left { left: 0.85rem; }
+    .gallery-tag-right { right: 0.85rem; color: var(--accent-acid); border-color: var(--border-acid); }
 
     /* Touch Range Slider Control (Mobile) */
     .mobile-touch-slider-container {
-      margin-top: 1rem;
+      margin-top: 0.75rem;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.3rem;
     }
 
     .hero-touch-range {
       width: 100%;
-      height: 6px;
+      height: 5px;
       -webkit-appearance: none;
       appearance: none;
       background: var(--bg-graphite);
@@ -654,27 +654,27 @@
     .hero-touch-range::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
       background: var(--accent-acid);
       border-radius: 50%;
       cursor: pointer;
-      box-shadow: 0 0 12px var(--accent-acid);
+      box-shadow: 0 0 10px var(--accent-acid);
     }
 
     .hero-meta-strip {
-      margin-top: 4.5rem;
-      padding-top: 2rem;
+      margin-top: 3.5rem;
+      padding-top: 1.75rem;
       border-top: 1px solid var(--border-dark);
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1.75rem;
+      gap: 1.5rem;
     }
 
     /* ==========================================
-       04. THE MANIFESTO — HORIZONTAL SCROLL / STACKED MOBILE
+       04. THE MANIFESTO — MINIMIZED & COMPACT
        ========================================== */
     .manifesto-section {
       position: relative;
@@ -693,7 +693,7 @@
     .manifesto-panel {
       width: 100vw;
       height: 100vh;
-      padding: 6rem 7rem;
+      padding: 5rem 6rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -708,7 +708,7 @@
 
     .manifesto-big-num {
       font-family: var(--font-editorial);
-      font-size: clamp(6rem, 16vw, 22rem);
+      font-size: clamp(5rem, 14vw, 18rem);
       font-weight: 400;
       color: rgba(242, 240, 232, 0.035);
       position: absolute;
@@ -720,27 +720,27 @@
 
     .manifesto-panel-title {
       font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 5.5vw, 5rem);
+      font-size: clamp(2rem, 5vw, 4.5rem);
       font-weight: 900;
       line-height: 1.05;
       text-transform: uppercase;
-      max-width: 900px;
-      margin-bottom: 1.5rem;
+      max-width: 850px;
+      margin-bottom: 1.25rem;
     }
 
     .manifesto-panel-desc {
-      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
       color: var(--text-stone);
-      max-width: 520px;
+      max-width: 500px;
       font-weight: 300;
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
     .manifesto-energy-line {
       position: absolute;
-      bottom: 4rem;
-      left: 7rem;
-      right: 7rem;
+      bottom: 3.5rem;
+      left: 6rem;
+      right: 6rem;
       height: 2px;
       background-color: var(--border-dark);
     }
@@ -753,19 +753,19 @@
     }
 
     /* ==========================================
-       05. THE CLUB — ARCHITECTURAL BENTO
+       05. THE CLUB — ARCHITECTURAL BENTO (COMPACT 2-COLUMN PASS)
        ========================================== */
     .club-section {
-      padding: 8rem 0;
+      padding: 5rem 0;
       position: relative;
     }
 
     .architectural-bento {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: 320px;
-      gap: 1.75rem;
-      margin-top: 4rem;
+      grid-auto-rows: 280px;
+      gap: 1.25rem;
+      margin-top: 3rem;
     }
 
     .bento-zone {
@@ -773,7 +773,7 @@
       border: 1px solid var(--border-dark);
       position: relative;
       overflow: hidden;
-      padding: 2.25rem;
+      padding: 1.75rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -797,7 +797,7 @@
 
     .bento-zone:hover {
       border-color: var(--border-acid);
-      transform: translateY(-4px);
+      transform: translateY(-3px);
     }
 
     .zone-1 { grid-column: span 7; grid-row: span 2; }
@@ -832,11 +832,11 @@
 
     .bento-access-tag {
       font-family: var(--font-body);
-      font-size: 0.62rem;
-      letter-spacing: 0.18em;
+      font-size: 0.58rem;
+      letter-spacing: 0.16em;
       color: var(--accent-acid);
       border: 1px solid var(--border-acid);
-      padding: 0.2rem 0.6rem;
+      padding: 0.18rem 0.5rem;
       background: rgba(9, 10, 8, 0.8);
     }
 
@@ -847,38 +847,39 @@
 
     .bento-code {
       font-family: var(--font-body);
-      font-size: 0.68rem;
-      letter-spacing: 0.22em;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
       color: var(--accent-acid);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
     }
 
     .bento-title {
       font-family: var(--font-heading);
-      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-size: clamp(1.2rem, 3vw, 1.75rem);
       font-weight: 800;
       text-transform: uppercase;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
     }
 
     .bento-desc {
-      font-size: 0.92rem;
+      font-size: 0.85rem;
       color: var(--text-stone);
       font-weight: 300;
       max-width: 420px;
+      line-height: 1.45;
     }
 
     .bento-link {
       font-family: var(--font-heading);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
       color: var(--text-stone);
       text-transform: uppercase;
       text-decoration: none;
-      margin-top: 1rem;
+      margin-top: 0.75rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
       transition: var(--transition-smooth);
     }
 
@@ -887,11 +888,32 @@
       transform: translateX(4px);
     }
 
+    /* 2 IMAGES / CARDS SIDE-BY-SIDE IN ONE LINE ON MOBILE / TABLET */
+    @media (max-width: 768px) {
+      .architectural-bento {
+        grid-template-columns: repeat(2, 1fr) !important;
+        grid-auto-rows: auto !important;
+        gap: 0.85rem !important;
+      }
+      .zone-1 { grid-column: span 2 !important; height: 220px !important; }
+      .zone-2, .zone-3, .zone-4, .zone-5 { grid-column: span 1 !important; height: 180px !important; }
+      .bento-zone { padding: 1.25rem 1rem !important; }
+      .bento-title { font-size: 1.1rem !important; margin-bottom: 0.2rem !important; }
+      .bento-desc {
+        font-size: 0.75rem !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .bento-link { margin-top: 0.4rem !important; font-size: 0.65rem !important; }
+    }
+
     /* ==========================================
        06. COACH SECTION — TITAN VALE
        ========================================== */
     .coach-section {
-      padding: 8rem 0;
+      padding: 5.5rem 0;
       background-color: var(--bg-graphite);
       border-top: 1px solid var(--border-dark);
       position: relative;
@@ -899,12 +921,12 @@
 
     .coach-side-caption {
       position: absolute;
-      left: 1.5rem;
+      left: 1.25rem;
       top: 50%;
       transform: translateY(-50%) rotate(-90deg);
       font-family: var(--font-body);
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
@@ -912,7 +934,7 @@
     .coach-grid {
       display: grid;
       grid-template-columns: 1fr 1.1fr;
-      gap: 4.5rem;
+      gap: 3.5rem;
       align-items: center;
     }
 
@@ -920,12 +942,12 @@
       position: relative;
       border: 1px solid var(--border-dark);
       background-color: #090A08;
-      padding: 1.25rem;
+      padding: 1rem;
     }
 
     .coach-img {
       width: 100%;
-      height: clamp(380px, 50vw, 600px);
+      height: clamp(340px, 45vw, 540px);
       object-fit: cover;
       display: block;
       filter: grayscale(25%) contrast(115%);
@@ -939,15 +961,15 @@
 
     .athletic-tape-label {
       position: absolute;
-      top: 2rem;
-      left: -1rem;
+      top: 1.5rem;
+      left: -0.85rem;
       background-color: var(--accent-acid);
       color: #090A08;
       font-family: var(--font-heading);
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 800;
-      letter-spacing: 0.18em;
-      padding: 0.4rem 1.25rem;
+      letter-spacing: 0.16em;
+      padding: 0.35rem 1.1rem;
       transform: rotate(-3deg);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
       z-index: 5;
@@ -955,55 +977,55 @@
 
     .coach-quote-box {
       border-left: 2px solid var(--accent-acid);
-      padding-left: 1.75rem;
-      margin: 2rem 0;
+      padding-left: 1.5rem;
+      margin: 1.5rem 0;
     }
 
     .coach-quote-text {
       font-family: var(--font-editorial);
-      font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
       font-style: italic;
       color: var(--text-bone);
-      line-height: 1.4;
+      line-height: 1.35;
     }
 
     .field-notes-list {
       list-style: none;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      margin-bottom: 2.5rem;
+      gap: 1rem;
+      margin-bottom: 2rem;
     }
 
     .field-note-item {
       font-family: var(--font-heading);
-      font-size: clamp(0.75rem, 2vw, 0.85rem);
+      font-size: clamp(0.72rem, 1.8vw, 0.82rem);
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-stone);
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
     }
 
     .field-note-item i {
       color: var(--accent-acid);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
 
     /* ==========================================
-       07. PROOF OF WORK — TRANSFORMATION ARCHIVE
+       07. PROOF OF WORK (COMPACT 2-COLUMN PASS)
        ========================================== */
     .proof-section {
-      padding: 8rem 0;
+      padding: 5.5rem 0;
       position: relative;
     }
 
     .archive-filter-bar {
       display: flex;
-      gap: 0.85rem;
-      margin-top: 1.75rem;
-      margin-bottom: 3rem;
+      gap: 0.65rem;
+      margin-top: 1.5rem;
+      margin-bottom: 2.25rem;
       overflow-x: auto;
       padding-bottom: 0.5rem;
       -webkit-overflow-scrolling: touch;
@@ -1016,15 +1038,15 @@
       background: transparent;
       border: 1px solid var(--border-dark);
       color: var(--text-stone);
-      padding: 0.6rem 1.25rem;
+      padding: 0.5rem 1.1rem;
       font-family: var(--font-heading);
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       cursor: pointer;
       white-space: nowrap;
       transition: var(--transition-smooth);
-      min-height: 44px;
+      min-height: 40px;
     }
 
     .filter-btn.active,
@@ -1037,13 +1059,27 @@
     .proof-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
+      gap: 1.75rem;
+    }
+
+    /* 2 CASE STUDY CARDS IN ONE LINE ON MOBILE */
+    @media (max-width: 768px) {
+      .proof-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.85rem !important;
+      }
+      .proof-card {
+        padding: 1.5rem 1.1rem !important;
+      }
+      .proof-name { font-size: 1.15rem !important; }
+      .proof-stat { font-size: 1.1rem !important; }
+      .proof-hover-insight { font-size: 0.72rem !important; display: none; }
     }
 
     .proof-card {
       background-color: var(--bg-charcoal);
       border: 1px solid var(--border-dark);
-      padding: 2.5rem 2rem;
+      padding: 2rem 1.75rem;
       position: relative;
       transition: var(--transition-smooth);
     }
@@ -1058,19 +1094,19 @@
       justify-content: space-between;
       align-items: baseline;
       border-bottom: 1px solid var(--border-dark);
-      padding-bottom: 1.25rem;
-      margin-bottom: 1.75rem;
+      padding-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
     .proof-name {
       font-family: var(--font-heading);
-      font-size: clamp(1.4rem, 3.5vw, 1.75rem);
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
       font-weight: 800;
     }
 
     .proof-stat {
       font-family: var(--font-heading);
-      font-size: clamp(1.25rem, 3vw, 1.5rem);
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
       color: var(--accent-acid);
       font-weight: 700;
     }
@@ -1079,7 +1115,7 @@
       width: 100%;
       height: 4px;
       background: var(--bg-graphite);
-      margin: 1.25rem 0;
+      margin: 1rem 0;
       position: relative;
     }
 
@@ -1089,21 +1125,21 @@
     }
 
     .proof-hover-insight {
-      margin-top: 1.25rem;
-      padding-top: 0.85rem;
+      margin-top: 1rem;
+      padding-top: 0.75rem;
       border-top: 1px dashed var(--border-dark);
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: var(--accent-acid);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
     /* ==========================================
-       08. MEMBERSHIP — YOU JOIN A STANDARD
+       08. MEMBERSHIP SECTION
        ========================================== */
     .membership-section {
-      padding: 8rem 0;
+      padding: 5.5rem 0;
       background-color: var(--bg-graphite);
       border-top: 1px solid var(--border-dark);
     }
@@ -1111,14 +1147,14 @@
     .membership-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2.25rem;
-      margin-top: 3.5rem;
+      gap: 1.75rem;
+      margin-top: 2.75rem;
     }
 
     .membership-panel {
       background-color: var(--bg-black);
       border: 1px solid var(--border-dark);
-      padding: 3.5rem 2.25rem;
+      padding: 2.75rem 1.75rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1129,7 +1165,7 @@
     .membership-panel.standard {
       border-color: var(--accent-acid);
       background-color: #0E100C;
-      box-shadow: 0 0 40px rgba(181, 255, 61, 0.08);
+      box-shadow: 0 0 30px rgba(181, 255, 61, 0.08);
       transform: scale(1.02);
     }
 
@@ -1140,60 +1176,60 @@
       background-color: var(--accent-acid);
       color: #090A08;
       font-family: var(--font-heading);
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       font-weight: 800;
-      letter-spacing: 0.18em;
-      padding: 0.35rem 0.85rem;
+      letter-spacing: 0.16em;
+      padding: 0.3rem 0.75rem;
     }
 
     .membership-price {
       font-family: var(--font-editorial);
-      font-size: clamp(2.75rem, 6vw, 3.5rem);
+      font-size: clamp(2.5rem, 5vw, 3.25rem);
       color: var(--accent-acid);
       line-height: 1;
-      margin: 1.25rem 0;
+      margin: 1rem 0;
     }
 
     .charter-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 1.1rem;
-      margin: 2rem 0;
+      gap: 0.9rem;
+      margin: 1.5rem 0;
     }
 
     .charter-item {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: var(--text-stone);
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
     }
 
     .charter-item i {
       color: var(--accent-acid);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
 
     /* ==========================================
        09. THE DATA — PERFORMANCE ASSESSMENT
        ========================================== */
     .data-section {
-      padding: 8rem 0;
+      padding: 5.5rem 0;
       position: relative;
     }
 
     .data-panel {
       background-color: var(--bg-black);
       border: 1px solid var(--border-dark);
-      padding: 4.5rem 3.5rem;
+      padding: 3.5rem 2.5rem;
       position: relative;
     }
 
     .chart-container {
       width: 100%;
-      height: 180px;
-      margin: 3rem 0;
+      height: 150px;
+      margin: 2.25rem 0;
     }
 
     .chart-svg {
@@ -1214,46 +1250,46 @@
     .data-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 2.5rem;
+      gap: 2rem;
       text-align: center;
       border-top: 1px solid var(--border-dark);
-      padding-top: 3rem;
+      padding-top: 2.5rem;
     }
 
     .data-val {
       font-family: var(--font-editorial);
-      font-size: clamp(2.5rem, 6vw, 3.75rem);
+      font-size: clamp(2.2rem, 5vw, 3.25rem);
       color: var(--text-bone);
       line-height: 1;
     }
 
     .data-lbl {
       font-family: var(--font-body);
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--text-stone);
-      margin-top: 0.65rem;
+      margin-top: 0.5rem;
     }
 
     /* ==========================================
-       10. TESTIMONIALS — THE SHIFT
+       10. TESTIMONIALS
        ========================================== */
     .testimonials-section {
-      padding: 8rem 0;
+      padding: 5.5rem 0;
       background-color: var(--bg-graphite);
       border-top: 1px solid var(--border-dark);
     }
 
     .testimonial-box {
-      max-width: 900px;
+      max-width: 850px;
       margin: 0 auto;
       text-align: center;
     }
 
     .giant-quote-mark {
       font-family: var(--font-editorial);
-      font-size: clamp(5rem, 12vw, 8rem);
+      font-size: clamp(4.5rem, 10vw, 7rem);
       color: var(--accent-acid);
       line-height: 0.8;
       opacity: 0.3;
@@ -1261,15 +1297,15 @@
 
     .testimonial-text {
       font-family: var(--font-editorial);
-      font-size: clamp(1.6rem, 4vw, 2.75rem);
+      font-size: clamp(1.4rem, 3.5vw, 2.4rem);
       font-style: italic;
       color: var(--text-bone);
       line-height: 1.35;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
     /* ==========================================
-       11. FINAL CTA — MAKE THE DECISION
+       11. FINAL CTA
        ========================================== */
     .final-cta {
       min-height: 100dvh;
@@ -1278,18 +1314,18 @@
       justify-content: center;
       position: relative;
       text-align: center;
-      padding: 5rem 1.5rem;
+      padding: 4rem 1.25rem;
       overflow: hidden;
       background: radial-gradient(circle at 50% 50%, rgba(46, 58, 40, 0.25) 0%, #090A08 75%);
     }
 
     .final-title {
       font-family: var(--font-heading);
-      font-size: clamp(2.8rem, 8vw, 6.5rem);
+      font-size: clamp(2.5rem, 7.5vw, 5.5rem);
       font-weight: 900;
       line-height: 0.96;
       text-transform: uppercase;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
     }
 
     /* ==========================================
@@ -1304,10 +1340,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 1.25rem;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.35s ease;
     }
 
     .modal-overlay.active {
@@ -1318,9 +1354,9 @@
     .modal-window {
       background-color: var(--bg-graphite);
       border: 1px solid var(--border-acid);
-      padding: 3.5rem 2.5rem;
+      padding: 3rem 2rem;
       width: 100%;
-      max-width: 600px;
+      max-width: 560px;
       position: relative;
       box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9);
       max-height: 90dvh;
@@ -1329,13 +1365,13 @@
 
     .modal-close {
       position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
+      top: 1.25rem;
+      right: 1.25rem;
       background: none;
       border: 1px solid var(--border-dark);
       color: var(--text-stone);
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -1350,15 +1386,15 @@
 
     .input-field {
       width: 100%;
-      min-height: 48px;
-      padding: 0.9rem 1.15rem;
+      min-height: 46px;
+      padding: 0.8rem 1rem;
       background: #090A08;
       border: 1px solid var(--border-dark);
       color: var(--text-bone);
       font-family: var(--font-body);
       font-size: 16px; /* Prevents auto-zoom on iOS */
       outline: none;
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
       transition: var(--transition-smooth);
     }
 
@@ -1370,19 +1406,16 @@
     /* FOOTER STATUS */
     .site-footer {
       border-top: 1px solid var(--border-dark);
-      padding: 4rem 0;
+      padding: 3.5rem 0;
       background-color: #060705;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-stone);
     }
 
-    /* ==========================================
-       DEDICATED MOBILE & TABLET RESPONSIVE BREAKPOINTS
-       ========================================== */
+    /* RESPONSIVE BREAKPOINTS */
     @media (max-width: 1024px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       
-      /* MANIFESTO CONVERSION TO STACKED VERTICAL STORY PANELS ON MOBILE */
       .manifesto-wrapper { 
         width: 100% !important; 
         height: auto !important; 
@@ -1392,26 +1425,23 @@
       .manifesto-panel { 
         width: 100% !important; 
         height: auto !important; 
-        min-height: 75vh;
-        padding: 5rem 2rem 4rem 2rem !important; 
+        min-height: 60vh;
+        padding: 4rem 1.5rem 3.5rem 1.5rem !important; 
         border-right: none;
         border-bottom: 1px solid var(--border-dark);
       }
       .manifesto-energy-line {
-        left: 2rem;
-        right: 2rem;
-        bottom: 2.5rem;
+        left: 1.5rem;
+        right: 1.5rem;
+        bottom: 2rem;
       }
 
-      .architectural-bento { grid-template-columns: 1fr; grid-auto-rows: auto; }
-      .zone-1, .zone-2, .zone-3, .zone-4, .zone-5 { grid-column: span 1; height: 340px; }
       .coach-side-caption { display: none; }
-      .coach-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .proof-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .membership-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .coach-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .membership-grid { grid-template-columns: 1fr; gap: 1.5rem; }
       .membership-panel.standard { transform: none; }
-      .data-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-      .data-panel { padding: 3rem 1.5rem; }
+      .data-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+      .data-panel { padding: 2.5rem 1.25rem; }
       
       .nav-links { display: none; }
       .mobile-toggle { display: flex; }
@@ -1429,15 +1459,15 @@
         justify-content: center;
       }
       .field-notes-list { grid-template-columns: 1fr; }
-      .data-grid { grid-template-columns: 1fr; gap: 1.75rem; text-align: left; }
-      .data-panel { padding: 2.5rem 1.25rem; }
-      .modal-window { padding: 2.75rem 1.5rem 2rem 1.5rem; }
+      .data-grid { grid-template-columns: 1fr; gap: 1.5rem; text-align: left; }
+      .data-panel { padding: 2rem 1rem; }
+      .modal-window { padding: 2.5rem 1.25rem 1.75rem 1.25rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- FLOATING CUSTOM HOVER CURSOR INDICATOR (DESKTOP) -->
+  <!-- FLOATING CUSTOM HOVER CURSOR INDICATOR (DESKTOP FINE POINTERS ONLY) -->
   <div id="customCursor">EXPLORE</div>
 
   <!-- UNIFORM FILM GRAIN OVERLAY -->
@@ -1474,8 +1504,8 @@
         <li><a href="#membership" class="nav-link">MEMBERSHIP</a></li>
       </ul>
 
-      <div style="display: flex; align-items: center; gap: 1.25rem;">
-        <button class="btn-acid js-open-modal btn-magnetic" data-cursor="APPLY" style="padding: 0.75rem 1.5rem; font-size: 0.72rem; min-height: 44px;">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="btn-acid js-open-modal btn-magnetic" data-cursor="APPLY" style="padding: 0.65rem 1.25rem; font-size: 0.7rem; min-height: 40px;">
           APPLY TO TRAIN &rarr;
         </button>
         <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Toggle Menu">
@@ -1514,7 +1544,7 @@
     <div class="container">
       <div class="hero-grid">
         <div>
-          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.25rem;">
+          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">
             [ CULTURE DEFINING PERFORMANCE HOUSE ]
           </div>
           <h1 class="hero-headline">
@@ -1560,7 +1590,7 @@
             <input type="range" id="heroRangeSlider" min="0" max="100" value="50" class="hero-touch-range" aria-label="Transformation reveal slider">
           </div>
 
-          <div style="text-align: right; margin-top: 0.5rem;" class="meta-code">
+          <div style="text-align: right; margin-top: 0.4rem;" class="meta-code">
             “THE BODY IS THE RECEIPT.”
           </div>
         </div>
@@ -1568,17 +1598,17 @@
 
       <div class="hero-meta-strip">
         <div class="meta-code">&darr; SCROLL TO ENTER THE HOUSE</div>
-        <div style="display: flex; gap: 2.5rem; flex-wrap: wrap;">
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
           <div>
-            <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--accent-acid);">1,452</span>
+            <span style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--accent-acid);">1,452</span>
             <span class="meta-code" style="display: block;">ACTIVE MEMBERS</span>
           </div>
           <div>
-            <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--accent-acid);">4,200+</span>
+            <span style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--accent-acid);">4,200+</span>
             <span class="meta-code" style="display: block;">TRANSFORMATIONS</span>
           </div>
           <div>
-            <span style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; color: var(--accent-acid);">24 HRS</span>
+            <span style="font-family: var(--font-heading); font-size: 1.15rem; font-weight: 800; color: var(--accent-acid);">24 HRS</span>
             <span class="meta-code" style="display: block;">PRIVATE ACCESS</span>
           </div>
         </div>
@@ -1586,13 +1616,13 @@
     </div>
   </section>
 
-  <!-- 04. THE MANIFESTO — HORIZONTAL SCROLL / STACKED MOBILE -->
+  <!-- 04. THE MANIFESTO -->
   <section class="manifesto-section" id="method">
     <div class="manifesto-wrapper" id="manifestoWrapper">
       <!-- PANEL 01 -->
       <div class="manifesto-panel">
         <div class="manifesto-big-num">01</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.25rem;">[ 01 / 04 // METABOLIC BASELINE 01.42.08 ]</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ 01 / 04 // METABOLIC BASELINE 01.42.08 ]</div>
         <h2 class="manifesto-panel-title">YOU CAN’T OUTSOURCE <span class="text-acid">DISCIPLINE.</span></h2>
         <p class="manifesto-panel-desc">
           There are no secret formulas. No supplements that replace effort. We measure baseline metrics and force input from day one.
@@ -1603,7 +1633,7 @@
       <!-- PANEL 02 -->
       <div class="manifesto-panel">
         <div class="manifesto-big-num">02</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.25rem;">[ 02 / 04 // FORCE OUTPUT 99.4% NEURAL SPEED ]</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ 02 / 04 // FORCE OUTPUT 99.4% NEURAL SPEED ]</div>
         <h2 class="manifesto-panel-title">TRAINING IS A <span class="text-acid">LANGUAGE.</span></h2>
         <p class="manifesto-panel-desc">
           Movement patterns reveal stress, compensation, and mechanical output. We refine your physical vocabulary for absolute strength.
@@ -1614,7 +1644,7 @@
       <!-- PANEL 03 -->
       <div class="manifesto-panel manifesto-panel-3">
         <div class="manifesto-big-num">03</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.25rem;">[ 03 / 04 // CELLULAR RESTORATION THERMAL ]</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ 03 / 04 // CELLULAR RESTORATION THERMAL ]</div>
         <h2 class="manifesto-panel-title">RECOVERY IS PART OF THE <span class="text-acid">WORK.</span></h2>
         <p class="manifesto-panel-desc">
           High neural tension requires deep cellular restoration. Infrared saunas, hyperbaric oxygen, and custom thermal plunge protocols.
@@ -1625,7 +1655,7 @@
       <!-- PANEL 04 -->
       <div class="manifesto-panel">
         <div class="manifesto-big-num">04</div>
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.25rem;">[ 04 / 04 // PERMANENT STANDARD IDENTITY ]</div>
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ 04 / 04 // PERMANENT STANDARD IDENTITY ]</div>
         <h2 class="manifesto-panel-title">CONSISTENCY BECOMES <span class="text-acid">IDENTITY.</span></h2>
         <p class="manifesto-panel-desc">
           What you do repeatedly in private becomes your undeniable presence in public. Standard established.
@@ -1635,11 +1665,11 @@
     </div>
   </section>
 
-  <!-- 05. THE CLUB — ARCHITECTURAL BENTO -->
+  <!-- 05. THE CLUB — ARCHITECTURAL BENTO (COMPACT 2 IMAGES PER LINE ON MOBILE) -->
   <section class="club-section" id="club">
     <div class="container">
-      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.75rem;">[ CONVERTED CONCRETE GALLERY ]</div>
-      <h2 style="font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 900; text-transform: uppercase;">
+      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.5rem;">[ CONVERTED CONCRETE GALLERY ]</div>
+      <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 900; text-transform: uppercase;">
         THE SANCTUARY OF <span class="text-acid">PERFORMANCE.</span>
       </h2>
 
@@ -1653,61 +1683,59 @@
           </div>
           <div class="bento-content">
             <h3 class="bento-title">The Iron Hall</h3>
-            <p class="bento-desc">Free weights, power platforms, and calibrated competition racks. The space to become dangerous.</p>
+            <p class="bento-desc">Free weights, power platforms, and calibrated competition racks.</p>
             <a href="#membership" class="bento-link">EXPLORE SPACE &rarr;</a>
           </div>
         </div>
 
-        <!-- ZONE 2: CONDITIONING FLOOR -->
+        <!-- ZONE 2: CONDITIONING FLOOR (IMAGE 1 SIDE BY SIDE) -->
         <div class="bento-zone zone-2" data-cursor="EXPLORE">
           <img src="img/People_training_in_luxury_gym_20260917194156.jpeg" alt="Conditioning Floor" class="bento-img">
           <div class="bento-header-tags">
             <div class="bento-code">02 / CONDITIONING</div>
           </div>
           <div class="bento-content">
-            <h3 class="bento-title">The Conditioning Floor</h3>
-            <p class="bento-desc">Engineered metabolic intensity without the noise.</p>
+            <h3 class="bento-title">Conditioning Floor</h3>
+            <p class="bento-desc">Engineered metabolic intensity.</p>
             <a href="#membership" class="bento-link">EXPLORE SPACE &rarr;</a>
           </div>
         </div>
 
-        <!-- ZONE 3: PRIVATE COACHING -->
+        <!-- ZONE 3: PRIVATE COACHING (IMAGE 2 SIDE BY SIDE) -->
         <div class="bento-zone zone-3" data-cursor="EXPLORE">
           <img src="img/bento_recovery.png" alt="Private Suite" class="bento-img">
           <div class="bento-header-tags">
             <div class="bento-code">03 / PRIVATE SUITES</div>
-            <div class="bento-access-tag">MEMBER ACCESS</div>
           </div>
           <div class="bento-content">
-            <h3 class="bento-title">Private Coaching Rooms</h3>
-            <p class="bento-desc">Quiet focus. Precise feedback. No audience required.</p>
+            <h3 class="bento-title">Private Suites</h3>
+            <p class="bento-desc">Quiet focus. Precise feedback.</p>
             <a href="#membership" class="bento-link">EXPLORE SPACE &rarr;</a>
           </div>
         </div>
 
-        <!-- ZONE 4: RECOVERY STUDIO -->
+        <!-- ZONE 4: RECOVERY STUDIO (IMAGE 3 SIDE BY SIDE) -->
         <div class="bento-zone zone-4" data-cursor="EXPLORE">
           <img src="img/People_exercising_in_gym_20260917194141.jpeg" alt="Recovery Studio" class="bento-img">
           <div class="bento-header-tags">
             <div class="bento-code">04 / RECOVERY</div>
           </div>
           <div class="bento-content">
-            <h3 class="bento-title">The Recovery Studio</h3>
-            <p class="bento-desc">Mobility, restoration, and readiness treated as primary performance tools.</p>
+            <h3 class="bento-title">Recovery Studio</h3>
+            <p class="bento-desc">Mobility, restoration, readiness.</p>
             <a href="#membership" class="bento-link">EXPLORE SPACE &rarr;</a>
           </div>
         </div>
 
-        <!-- ZONE 5: NUTRITION DESK -->
+        <!-- ZONE 5: NUTRITION DESK (IMAGE 4 SIDE BY SIDE) -->
         <div class="bento-zone zone-5" data-cursor="EXPLORE">
           <img src="img/Gym_juice_bar_and_lounge_20260917194109.jpeg" alt="Nutrition Desk" class="bento-img">
           <div class="bento-header-tags">
             <div class="bento-code">05 / NUTRITION</div>
-            <div class="bento-access-tag">MEMBER ACCESS</div>
           </div>
           <div class="bento-content">
-            <h3 class="bento-title">Nutrition & Bio Desk</h3>
-            <p class="bento-desc">Food strategy built around the executive life you actually live.</p>
+            <h3 class="bento-title">Nutrition Bio-Desk</h3>
+            <p class="bento-desc">Tailored executive nutrition.</p>
             <a href="#membership" class="bento-link">EXPLORE SPACE &rarr;</a>
           </div>
         </div>
@@ -1726,8 +1754,8 @@
         </div>
 
         <div>
-          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.75rem;">[ EXECUTIVE PERFORMANCE DIRECTOR ]</div>
-          <h2 style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase;">
+          <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.5rem;">[ EXECUTIVE PERFORMANCE DIRECTOR ]</div>
+          <h2 style="font-family: var(--font-heading); font-size: clamp(2.2rem, 4.5vw, 4rem); font-weight: 900; text-transform: uppercase;">
             TITAN <span class="text-acid">VALE.</span>
           </h2>
 
@@ -1735,7 +1763,7 @@
             <p class="coach-quote-text">“Motivation is temporary. Standards are architecture.”</p>
           </div>
 
-          <div class="meta-code" style="margin-bottom: 1.25rem;">FIELD NOTES / CORE PROTOCOLS</div>
+          <div class="meta-code" style="margin-bottom: 1rem;">FIELD NOTES / CORE PROTOCOLS</div>
           <ul class="field-notes-list">
             <li class="field-note-item"><i class="fa-solid fa-angle-right"></i> STRENGTH DEVELOPMENT</li>
             <li class="field-note-item"><i class="fa-solid fa-angle-right"></i> BODY RECOMPOSITION</li>
@@ -1749,15 +1777,15 @@
     </div>
   </section>
 
-  <!-- 07. PROOF OF WORK — TRANSFORMATION ARCHIVE -->
+  <!-- 07. PROOF OF WORK (COMPACT 2-COLUMN PASS ON MOBILE) -->
   <section class="proof-section">
     <div class="container">
-      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.75rem;">[ CASE STUDY ARCHIVE ]</div>
-      <h2 style="font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase;">
+      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.5rem;">[ CASE STUDY ARCHIVE ]</div>
+      <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 900; text-transform: uppercase;">
         PROOF OF <span class="text-acid">WORK.</span>
       </h2>
 
-      <!-- ARCHIVE FRONTEND FILTER TABS -->
+      <!-- ARCHIVE FILTER TABS -->
       <div class="archive-filter-bar">
         <button class="filter-btn active" data-filter="all">ALL CASES</button>
         <button class="filter-btn" data-filter="recomp">RECOMPOSITION</button>
@@ -1771,14 +1799,13 @@
           <div class="proof-header">
             <div>
               <div class="proof-name">AARAV V.</div>
-              <div class="meta-code">RECOMPOSITION / 24 WEEKS</div>
+              <div class="meta-code">RECOMP / 24 WKS</div>
             </div>
             <div class="proof-stat">-18 KG</div>
           </div>
-          <div class="meta-code">PROTOCOL ADHERENCE: 94%</div>
+          <div class="meta-code">ADHERENCE: 94%</div>
           <div class="proof-data-bar"><div class="proof-data-fill" style="width: 94%;"></div></div>
-          <p style="font-size: 0.9rem; color: var(--text-stone);">Muscle density increased by 14%. Metabolic output doubled.</p>
-          <div class="proof-hover-insight"><i class="fa-solid fa-bolt"></i> Key Insight: Hypertrophy density protocol with 0% missed sessions.</div>
+          <p style="font-size: 0.8rem; color: var(--text-stone);">Muscle density +14%. Output doubled.</p>
         </div>
 
         <!-- CASE 2 -->
@@ -1786,14 +1813,13 @@
           <div class="proof-header">
             <div>
               <div class="proof-name">RIYA S.</div>
-              <div class="meta-code">STRENGTH / 16 WEEKS</div>
+              <div class="meta-code">STRENGTH / 16 WKS</div>
             </div>
             <div class="proof-stat">+70 KG</div>
           </div>
-          <div class="meta-code">DEADLIFT MAX INCREASE</div>
+          <div class="meta-code">DEADLIFT MAX</div>
           <div class="proof-data-bar"><div class="proof-data-fill" style="width: 98%;"></div></div>
-          <p style="font-size: 0.9rem; color: var(--text-stone);">Neural output peak achieved with zero joint compromise.</p>
-          <div class="proof-hover-insight"><i class="fa-solid fa-bolt"></i> Key Insight: Progressive density overload with weekly force scans.</div>
+          <p style="font-size: 0.8rem; color: var(--text-stone);">Neural output peak with zero joint issue.</p>
         </div>
 
         <!-- CASE 3 -->
@@ -1801,14 +1827,13 @@
           <div class="proof-header">
             <div>
               <div class="proof-name">KABIR M.</div>
-              <div class="meta-code">ATHLETIC CAPACITY / 12 WEEKS</div>
+              <div class="meta-code">ATHLETIC / 12 WKS</div>
             </div>
             <div class="proof-stat">-4:20 MIN</div>
           </div>
-          <div class="meta-code">5KM PACING IMPROVEMENT</div>
+          <div class="meta-code">5KM PACING</div>
           <div class="proof-data-bar"><div class="proof-data-fill" style="width: 91%;"></div></div>
-          <p style="font-size: 0.9rem; color: var(--text-stone);">V02 max expanded through targeted threshold intervals.</p>
-          <div class="proof-hover-insight"><i class="fa-solid fa-bolt"></i> Key Insight: Lactate threshold conditioning & oxygen suite recovery.</div>
+          <p style="font-size: 0.8rem; color: var(--text-stone);">V02 max threshold expanded.</p>
         </div>
 
         <!-- CASE 4 -->
@@ -1816,29 +1841,28 @@
           <div class="proof-header">
             <div>
               <div class="proof-name">ELENA R.</div>
-              <div class="meta-code">EXECUTIVE RECOMP / 20 WEEKS</div>
+              <div class="meta-code">RECOMP / 20 WKS</div>
             </div>
             <div class="proof-stat">-12% FAT</div>
           </div>
-          <div class="meta-code">BODY FAT REDUCTION</div>
+          <div class="meta-code">FAT REDUCTION</div>
           <div class="proof-data-bar"><div class="proof-data-fill" style="width: 96%;"></div></div>
-          <p style="font-size: 0.9rem; color: var(--text-stone);">Complete structural shift aligned with high corporate stress.</p>
-          <div class="proof-hover-insight"><i class="fa-solid fa-bolt"></i> Key Insight: Cortisol management & personalized nutritional meal prep.</div>
+          <p style="font-size: 0.8rem; color: var(--text-stone);">Structural shift aligned with executive schedule.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 08. MEMBERSHIP — YOU JOIN A STANDARD -->
+  <!-- 08. MEMBERSHIP SECTION -->
   <section class="membership-section" id="membership">
     <div class="container">
-      <div style="text-align: center; max-width: 800px; margin: 0 auto 3rem auto;">
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.75rem;">[ ADMISSIONS CHARTER ]</div>
-        <h2 style="font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 900; text-transform: uppercase; line-height: 1.05;">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 2.5rem auto;">
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.5rem;">[ ADMISSIONS CHARTER ]</div>
+        <h2 style="font-family: var(--font-heading); font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 900; text-transform: uppercase; line-height: 1.05;">
           YOU DON’T JOIN A GYM. <br>
           YOU JOIN A <span class="text-acid">STANDARD.</span>
         </h2>
-        <div class="meta-code" style="margin-top: 0.75rem; color: var(--text-stone);">
+        <div class="meta-code" style="margin-top: 0.5rem; color: var(--text-stone);">
           “Membership applications are reviewed individually.”
         </div>
       </div>
@@ -1848,9 +1872,9 @@
         <div class="membership-panel">
           <div>
             <div class="meta-code">TIER 01</div>
-            <h3 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800;">FOUNDATION</h3>
-            <p style="color: var(--text-stone); font-size: 0.88rem;">For self-led consistency and high performance baseline.</p>
-            <div class="membership-price">$299 <span style="font-size: 0.85rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800;">FOUNDATION</h3>
+            <p style="color: var(--text-stone); font-size: 0.85rem;">For self-led consistency and high performance baseline.</p>
+            <div class="membership-price">$299 <span style="font-size: 0.8rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
             <ul class="charter-list">
               <li class="charter-item"><i class="fa-solid fa-check"></i> 24/7 Full Club Access</li>
               <li class="charter-item"><i class="fa-solid fa-check"></i> Biomechanical Audit</li>
@@ -1865,9 +1889,9 @@
           <div class="panel-badge">THE STANDARD</div>
           <div>
             <div class="meta-code" style="color: var(--accent-acid);">TIER 02</div>
-            <h3 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800;">EVOLVE</h3>
-            <p style="color: var(--text-stone); font-size: 0.88rem;">For people ready to make permanent, measurable change.</p>
-            <div class="membership-price">$499 <span style="font-size: 0.85rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800;">EVOLVE</h3>
+            <p style="color: var(--text-stone); font-size: 0.85rem;">For people ready to make permanent, measurable change.</p>
+            <div class="membership-price">$499 <span style="font-size: 0.8rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
             <ul class="charter-list">
               <li class="charter-item"><i class="fa-solid fa-check"></i> 24/7 Unlimited Access</li>
               <li class="charter-item"><i class="fa-solid fa-check"></i> 4 Monthly 1-on-1 Sessions</li>
@@ -1882,9 +1906,9 @@
         <div class="membership-panel">
           <div>
             <div class="meta-code">TIER 03</div>
-            <h3 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800;">PRIVATE</h3>
-            <p style="color: var(--text-stone); font-size: 0.88rem;">Bespoke dedicated transformation for executive leaders.</p>
-            <div class="membership-price">$899 <span style="font-size: 0.85rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800;">PRIVATE</h3>
+            <p style="color: var(--text-stone); font-size: 0.85rem;">Bespoke dedicated transformation for executive leaders.</p>
+            <div class="membership-price">$899 <span style="font-size: 0.8rem; color: var(--text-stone); font-family: var(--font-body);">/ MO</span></div>
             <ul class="charter-list">
               <li class="charter-item"><i class="fa-solid fa-check"></i> Head Coach Titan Direct Access</li>
               <li class="charter-item"><i class="fa-solid fa-check"></i> Unlimited 1-on-1 Coaching</li>
@@ -1895,18 +1919,18 @@
         </div>
       </div>
 
-      <div style="text-align: center; margin-top: 3rem;" class="meta-code">
+      <div style="text-align: center; margin-top: 2.5rem;" class="meta-code">
         * LIMITED ADMISSIONS ACCEPTED EACH MONTH TO PRESERVE SERENE SPACE.
       </div>
     </div>
   </section>
 
-  <!-- 09. THE DATA — PERFORMANCE ASSESSMENT -->
+  <!-- 09. THE DATA -->
   <section class="data-section">
     <div class="container">
       <div class="data-panel">
         <div class="meta-code" style="color: var(--accent-acid);">[ BIOMETRIC ANALYTICS ]</div>
-        <h2 style="font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 3.5rem); font-weight: 900; text-transform: uppercase; margin-top: 0.5rem;">
+        <h2 style="font-family: var(--font-heading); font-size: clamp(1.6rem, 3.5vw, 3.25rem); font-weight: 900; text-transform: uppercase; margin-top: 0.4rem;">
           WHAT GETS MEASURED <span class="text-acid">GETS RESPECTED.</span>
         </h2>
 
@@ -1940,7 +1964,7 @@
     </div>
   </section>
 
-  <!-- 10. TESTIMONIALS — THE SHIFT -->
+  <!-- 10. TESTIMONIALS -->
   <section class="testimonials-section">
     <div class="container">
       <div class="testimonial-box">
@@ -1948,27 +1972,27 @@
         <p class="testimonial-text" id="testiText">
           “I stopped negotiating with myself. That changed more than my body.”
         </p>
-        <div style="font-family: var(--font-heading); font-size: clamp(0.95rem, 2.5vw, 1.1rem); font-weight: 800; color: var(--accent-acid);" id="testiAuthor">
+        <div style="font-family: var(--font-heading); font-size: clamp(0.9rem, 2.2vw, 1.05rem); font-weight: 800; color: var(--accent-acid);" id="testiAuthor">
           RIYA S. / STRENGTH PROTOCOL / 16 WEEKS
         </div>
-        <div class="meta-code" style="margin-top: 1.75rem;" id="testiCounter">01 / 03</div>
+        <div class="meta-code" style="margin-top: 1.5rem;" id="testiCounter">01 / 03</div>
       </div>
     </div>
   </section>
 
-  <!-- 11. FINAL CTA — MAKE THE DECISION -->
+  <!-- 11. FINAL CTA -->
   <section class="final-cta">
     <div class="container">
-      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1.25rem;">[ MAKE THE DECISION ]</div>
+      <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ MAKE THE DECISION ]</div>
       <h2 class="final-title">
         THE NEXT VERSION OF YOU <br>
         IS NOT A <span class="text-acid">THEORY.</span>
       </h2>
-      <p style="font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--text-stone); margin-bottom: 2.75rem;">
+      <p style="font-size: clamp(0.95rem, 2.2vw, 1.15rem); color: var(--text-stone); margin-bottom: 2.25rem;">
         It is a decision repeated daily.
       </p>
-      <button class="btn-acid js-open-modal btn-magnetic" data-cursor="APPLY" style="padding: 1.15rem 3rem; font-size: 0.95rem;">APPLY TO TRAIN</button>
-      <div class="meta-code" style="margin-top: 1.75rem;">Private consultation. No pressure. Just an honest plan.</div>
+      <button class="btn-acid js-open-modal btn-magnetic" data-cursor="APPLY" style="padding: 1rem 2.5rem; font-size: 0.9rem;">APPLY TO TRAIN</button>
+      <div class="meta-code" style="margin-top: 1.5rem;">Private consultation. No pressure. Just an honest plan.</div>
     </div>
   </section>
 
@@ -1978,31 +2002,31 @@
       <button class="modal-close" id="modalCloseBtn" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
 
       <div id="modalFormBody">
-        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.4rem;">[ PRIVATE ADMISSIONS ]</div>
-        <h2 style="font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.25rem); font-weight: 900; text-transform: uppercase;" id="modalTitle">
+        <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 0.35rem;">[ PRIVATE ADMISSIONS ]</div>
+        <h2 style="font-family: var(--font-heading); font-size: clamp(1.6rem, 3.5vw, 2rem); font-weight: 900; text-transform: uppercase;" id="modalTitle">
           START WITH THE TRUTH.
         </h2>
-        <p style="color: var(--text-stone); font-size: 0.9rem; margin-bottom: 2rem;">
+        <p style="color: var(--text-stone); font-size: 0.85rem; margin-bottom: 1.5rem;">
           Tell us where you are. We’ll help map the work ahead.
         </p>
 
         <form id="consultForm">
-          <div style="margin-bottom: 1.25rem;">
+          <div style="margin-bottom: 1rem;">
             <label class="meta-code" for="fullName">Full Name</label>
             <input type="text" id="fullName" class="input-field" required placeholder="e.g. Alexander Wright">
           </div>
 
-          <div style="margin-bottom: 1.25rem;">
+          <div style="margin-bottom: 1rem;">
             <label class="meta-code" for="emailAddr">Email Address</label>
             <input type="email" id="emailAddr" class="input-field" required placeholder="alexander@example.com">
           </div>
 
-          <div style="margin-bottom: 1.25rem;">
+          <div style="margin-bottom: 1rem;">
             <label class="meta-code" for="primaryGoal">Primary Goal</label>
             <input type="text" id="primaryGoal" class="input-field" required placeholder="e.g. Recomposition & Strength">
           </div>
 
-          <div style="margin-bottom: 1.75rem;">
+          <div style="margin-bottom: 1.5rem;">
             <label class="meta-code" for="trainingExp">Current Training Experience</label>
             <input type="text" id="trainingExp" class="input-field" required placeholder="e.g. 5 Years inconsistent / Advanced">
           </div>
@@ -2012,23 +2036,23 @@
       </div>
 
       <!-- SUCCESS STATE -->
-      <div id="modalSuccessBody" style="display: none; text-align: center; padding: 1.5rem 0;">
-        <i class="fa-solid fa-check" style="font-size: 2.75rem; color: var(--accent-acid); margin-bottom: 1.25rem;"></i>
-        <h2 style="font-family: var(--font-heading); font-size: 1.75rem; font-weight: 900; text-transform: uppercase;">APPLICATION RECEIVED.</h2>
-        <p style="color: var(--text-stone); margin-top: 0.75rem;">We’ll be in touch within 24 hours.</p>
-        <button class="btn-secondary-line" id="successCloseBtn" style="margin-top: 1.75rem; width: 100%; justify-content: center;">CLOSE</button>
+      <div id="modalSuccessBody" style="display: none; text-align: center; padding: 1.25rem 0;">
+        <i class="fa-solid fa-check" style="font-size: 2.5rem; color: var(--accent-acid); margin-bottom: 1rem;"></i>
+        <h2 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 900; text-transform: uppercase;">APPLICATION RECEIVED.</h2>
+        <p style="color: var(--text-stone); margin-top: 0.5rem; font-size: 0.9rem;">We’ll be in touch within 24 hours.</p>
+        <button class="btn-secondary-line" id="successCloseBtn" style="margin-top: 1.5rem; width: 100%; justify-content: center;">CLOSE</button>
       </div>
     </div>
   </div>
 
   <!-- SITE FOOTER -->
   <footer class="site-footer">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem;">
       <div>
         <div style="font-family: var(--font-heading); font-weight: 900; color: var(--text-bone); letter-spacing: 0.15em;">EVOLVE PERFORMANCE HOUSE</div>
-        <div style="font-size: 0.78rem;">DISCIPLINE, ELEVATED. &copy; 2026 EVOLVE FITNESS. ALL RIGHTS RESERVED.</div>
+        <div style="font-size: 0.75rem;">DISCIPLINE, ELEVATED. &copy; 2026 EVOLVE FITNESS. ALL RIGHTS RESERVED.</div>
       </div>
-      <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
         <div class="meta-code"><span class="live-dot-green" style="width: 6px; height: 6px;"></span> CLUB STATUS: OPEN / 24 HOURS</div>
         <div class="meta-code">450 PARK AVENUE, NEW YORK</div>
       </div>
@@ -2036,11 +2060,11 @@
   </footer>
 
   <!-- ==========================================
-     JAVASCRIPT LOGIC & PERFORMANT MOBILE MOTION
+     JAVASCRIPT LOGIC
      ========================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. FLOATING CUSTOM HOVER CURSOR INDICATOR (DESKTOP FINE POINTERS ONLY)
+      // 1. FLOATING CUSTOM HOVER CURSOR INDICATOR
       const cursor = document.getElementById('customCursor');
       const cursorElements = document.querySelectorAll('[data-cursor]');
 
@@ -2066,7 +2090,7 @@
         });
       }
 
-      // 2. MAGNETIC / TOUCH BUTTON PRESS FEEDBACK
+      // 2. MAGNETIC BUTTONS
       const magneticBtns = document.querySelectorAll('.btn-magnetic');
       magneticBtns.forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
@@ -2081,7 +2105,7 @@
         });
       });
 
-      // 3. PRELOADER ANIMATION
+      // 3. PRELOADER
       const preloaderFill = document.getElementById('preloaderFill');
       const preloader = document.getElementById('preloader');
       let progress = 0;
@@ -2102,7 +2126,7 @@
         }
       }, 25);
 
-      // 4. NAV SCROLL PROGRESS & NAVBAR SCROLLED CLASS
+      // 4. NAVBAR SCROLL
       const navbar = document.getElementById('navbar');
       const scrollIndicator = document.getElementById('scrollIndicator');
       window.addEventListener('scroll', () => {
@@ -2117,7 +2141,7 @@
         if (scrollIndicator) scrollIndicator.style.width = pct + '%';
       }, { passive: true });
 
-      // MOBILE MENU TAKEOVER
+      // MOBILE MENU
       const mobileToggleBtn = document.getElementById('mobileToggleBtn');
       const mobileCloseBtn = document.getElementById('mobileCloseBtn');
       const mobileTakeover = document.getElementById('mobileTakeover');
@@ -2131,7 +2155,7 @@
       }
       mobLinks.forEach(l => l.addEventListener('click', () => mobileTakeover.classList.remove('active')));
 
-      // 5. HERO SPOTLIGHT REVEAL SLIDER + MOBILE TOUCH RANGE INPUT
+      // 5. HERO REVEAL SLIDER
       const heroInst = document.getElementById('heroInstallation');
       const imgAfter = document.getElementById('imgAfter');
       const divider = document.getElementById('spotlightDivider');
@@ -2168,7 +2192,7 @@
         });
       }
 
-      // 6. BENTO ZONE CURSOR REFLECTION LIGHT
+      // 6. BENTO ZONE REFLECTION
       const bentoZones = document.querySelectorAll('.bento-zone');
       bentoZones.forEach(zone => {
         zone.addEventListener('mousemove', (e) => {
@@ -2180,7 +2204,7 @@
         });
       });
 
-      // 7. ARCHIVE CASE STUDIES FRONTEND FILTERING
+      // 7. ARCHIVE CASE STUDIES FILTERING
       const filterBtns = document.querySelectorAll('.filter-btn');
       const proofCards = document.querySelectorAll('.proof-card');
 
@@ -2194,7 +2218,7 @@
             const cardCat = card.getAttribute('data-category');
             if (category === 'all' || cardCat === category) {
               card.style.display = 'block';
-              gsap.fromTo(card, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35 });
+              gsap.fromTo(card, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3 });
             } else {
               card.style.display = 'none';
             }
@@ -2284,7 +2308,7 @@
         });
       }
 
-      // 10. REFINED GSAP MOTION
+      // 10. GSAP MOTION
       function initGSAP() {
         if (typeof gsap === 'undefined') return;
 
