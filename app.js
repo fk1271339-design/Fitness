@@ -36,34 +36,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentSliderVal = 0;
 
-  // ── Dynamic Rotating Motivational Words in Hero Title ─────────────
-  const dynamicWordEl = q('#heroDynamicWord') || q('.title em');
-  if (dynamicWordEl) {
-    const motivationalWords = [
-      'TRANSFORM',
-      'EVOLVE',
-      'REBUILD',
-      'CONQUER',
-      'ELEVATE',
-      'DOMINATE',
-      'UNLEASH',
-      'TRANSCEND'
+  // ── Dynamic Rotating Theory Words ("IS NOT A THEORY") ─────────────────
+  const theoryWordEl = q('#theoryDynamicWord');
+  const theoryArticleEl = q('#theoryArticle');
+  if (theoryWordEl) {
+    const theoryWords = [
+      { article: 'A', word: 'THEORY.' },
+      { article: 'A', word: 'COINCIDENCE.' },
+      { article: 'AN', word: 'ILLUSION.' },
+      { article: 'A', word: 'MYTH.' },
+      { article: 'AN', word: 'ACCIDENT.' },
+      { article: 'A', word: 'FANTASY.' },
+      { article: 'AN', word: 'OPTION.' },
+      { article: 'A', word: 'DREAM.' },
+      { article: 'A', word: 'SHORTCUT.' },
+      { article: 'A', word: 'GUESSWORK.' }
     ];
-    let wordIdx = 0;
+    let tWordIdx = 0;
 
     setInterval(() => {
-      dynamicWordEl.classList.add('word-swap-out');
+      theoryWordEl.classList.remove('word-flip-in');
+      theoryWordEl.classList.add('word-flip-out');
+      if (theoryArticleEl) theoryArticleEl.classList.add('article-swap');
+
       setTimeout(() => {
-        wordIdx = (wordIdx + 1) % motivationalWords.length;
-        dynamicWordEl.textContent = motivationalWords[wordIdx];
-        dynamicWordEl.classList.remove('word-swap-out');
-        dynamicWordEl.classList.add('word-swap-in');
-        
+        tWordIdx = (tWordIdx + 1) % theoryWords.length;
+        const currentItem = theoryWords[tWordIdx];
+
+        theoryWordEl.textContent = currentItem.word;
+        if (theoryArticleEl) {
+          theoryArticleEl.textContent = currentItem.article;
+          theoryArticleEl.classList.remove('article-swap');
+        }
+
+        theoryWordEl.classList.remove('word-flip-out');
+        theoryWordEl.classList.add('word-flip-in-prep');
+
         requestAnimationFrame(() => {
-          dynamicWordEl.classList.remove('word-swap-in');
+          requestAnimationFrame(() => {
+            theoryWordEl.classList.remove('word-flip-in-prep');
+            theoryWordEl.classList.add('word-flip-in');
+          });
         });
-      }, 350);
-    }, 2200);
+      }, 450);
+    }, 2500);
   }
 
   // ── 0. Dynamic Scroll Background Image Switcher ───────────────────

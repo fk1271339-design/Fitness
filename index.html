@@ -1360,6 +1360,83 @@
       margin-bottom: 1.5rem;
     }
 
+    /* DYNAMIC ROTATING THEORY WORD ANIMATION */
+    .theory-word-wrapper {
+      display: inline-block;
+      position: relative;
+      vertical-align: bottom;
+      perspective: 1000px;
+      overflow: hidden;
+      line-height: 1.1;
+      padding: 0 0.1em;
+    }
+
+    .theory-word {
+      display: inline-block;
+      color: var(--accent-acid);
+      text-shadow: 0 0 25px rgba(181, 255, 61, 0.45);
+      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease, filter 0.45s ease;
+      will-change: transform, opacity, filter;
+      transform-origin: 50% 50% -20px;
+    }
+
+    .theory-word.word-flip-out {
+      transform: translateY(-100%) rotateX(75deg);
+      opacity: 0;
+      filter: blur(10px);
+    }
+
+    .theory-word.word-flip-in-prep {
+      transform: translateY(100%) rotateX(-75deg);
+      opacity: 0;
+      filter: blur(10px);
+    }
+
+    .theory-word.word-flip-in {
+      transform: translateY(0) rotateX(0deg);
+      opacity: 1;
+      filter: blur(0);
+    }
+
+    #theoryArticle {
+      display: inline-block;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+
+    #theoryArticle.article-swap {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.85);
+    }
+
+    /* ENHANCED GLOW AND BUTTON SHIMMER ANIMATIONS */
+    @keyframes glowPulse {
+      0%, 100% {
+        text-shadow: 0 0 15px rgba(181, 255, 61, 0.3), 0 0 30px rgba(181, 255, 61, 0.1);
+      }
+      50% {
+        text-shadow: 0 0 28px rgba(181, 255, 61, 0.65), 0 0 55px rgba(181, 255, 61, 0.35);
+      }
+    }
+
+    .text-acid {
+      animation: glowPulse 3s infinite ease-in-out;
+    }
+
+    .btn-acid::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      transition: 0.5s;
+    }
+
+    .btn-acid:hover::before {
+      left: 100%;
+    }
+
     /* ==========================================
        12. CONSULTATION MODAL
        ========================================== */
@@ -2034,7 +2111,7 @@
       <div class="meta-code" style="color: var(--accent-acid); margin-bottom: 1rem;">[ MAKE THE DECISION ]</div>
       <h2 class="final-title">
         THE NEXT VERSION OF YOU <br>
-        IS NOT A <span class="text-acid">THEORY.</span>
+        IS NOT <span id="theoryArticle">A</span> <span class="theory-word-wrapper"><span id="theoryDynamicWord" class="theory-word text-acid">THEORY.</span></span>
       </h2>
       <p style="font-size: clamp(0.95rem, 2.2vw, 1.15rem); color: var(--text-stone); margin-bottom: 2.25rem;">
         It is a decision repeated daily.
@@ -2392,6 +2469,55 @@
             }
           });
         }
+      }
+      // 11. DYNAMIC THEORY WORD ROTATOR (3D Morph/Flip Animation)
+      const theoryWordEl = document.getElementById('theoryDynamicWord');
+      const theoryArticleEl = document.getElementById('theoryArticle');
+
+      if (theoryWordEl) {
+        const theoryWords = [
+          { article: 'A', word: 'THEORY.' },
+          { article: 'A', word: 'COINCIDENCE.' },
+          { article: 'AN', word: 'ILLUSION.' },
+          { article: 'A', word: 'MYTH.' },
+          { article: 'AN', word: 'ACCIDENT.' },
+          { article: 'A', word: 'FANTASY.' },
+          { article: 'AN', word: 'OPTION.' },
+          { article: 'A', word: 'DREAM.' },
+          { article: 'A', word: 'SHORTCUT.' },
+          { article: 'A', word: 'GUESSWORK.' }
+        ];
+        let tWordIdx = 0;
+
+        setInterval(() => {
+          theoryWordEl.classList.remove('word-flip-in');
+          theoryWordEl.classList.add('word-flip-out');
+
+          if (theoryArticleEl) {
+            theoryArticleEl.classList.add('article-swap');
+          }
+
+          setTimeout(() => {
+            tWordIdx = (tWordIdx + 1) % theoryWords.length;
+            const currentItem = theoryWords[tWordIdx];
+
+            theoryWordEl.textContent = currentItem.word;
+            if (theoryArticleEl) {
+              theoryArticleEl.textContent = currentItem.article;
+              theoryArticleEl.classList.remove('article-swap');
+            }
+
+            theoryWordEl.classList.remove('word-flip-out');
+            theoryWordEl.classList.add('word-flip-in-prep');
+
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                theoryWordEl.classList.remove('word-flip-in-prep');
+                theoryWordEl.classList.add('word-flip-in');
+              });
+            });
+          }, 450);
+        }, 2500);
       }
     });
   </script>
